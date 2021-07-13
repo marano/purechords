@@ -1,6 +1,9 @@
 import React from 'react';
-import MajorScales from './MajorScales';
+import { range } from 'ramda';
+import MajorScale from './MajorScale';
 
 export default function App() {
-  return <MajorScales />;
+  const notes = range(0, 12);
+
+  return notes.map((noteIndex) => <div><MajorScale key={noteIndex} keyIndex={noteIndex} /></div>);
 }
