@@ -6,6 +6,12 @@ export default function GuitarString({ noteIndex, fretCount }) {
   const noteOffsets = range(0, fretCount);
 
   return noteOffsets.map(
-    (noteOffset) => <GuitarFret stringNoteIndex={noteIndex} fretIndex={noteOffset} />,
+    (noteOffset) => (
+      <GuitarFret
+        key={noteOffset}
+        stringNoteIndex={noteIndex}
+        fretIndex={noteOffset}
+      />
+    ),
   );
 }
