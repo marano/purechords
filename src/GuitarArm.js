@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import { always, times } from 'ramda';
 import GuitarString from './GuitarString';
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: ${(props) => times(always('1fr'), props.columnCount).join(' ')};
+  grid-template-columns: repeat(${(props) => props.columnCount}, 1fr);};
+  justify-items: center;
+  place-items: center;
 `;
 
 export default function GuitarArm() {
