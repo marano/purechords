@@ -5,9 +5,5 @@ import GuitarFret from './GuitarFret';
 export default function GuitarString({ noteIndex }) {
   const noteOffsets = range(0, 13);
 
-  return (
-    <div>
-      {noteOffsets.map((noteOffset) => <GuitarFret noteIndex={noteIndex + noteOffset} />)}
-    </div>
-  );
+  return noteOffsets.map((noteOffset) => <GuitarFret noteIndex={noteIndex + noteOffset} />);
 }
