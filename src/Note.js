@@ -1,4 +1,4 @@
-import getNoteName from './getNoteName';
+import { getNoteName } from './notes';
 
 export default function Note({ index }) {
   return getNoteName(index);

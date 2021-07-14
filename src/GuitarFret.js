@@ -1,5 +1,5 @@
 import React from 'react';
-import getNoteName from './getNoteName';
+import { getNoteName } from './notes';
 
 export default function GuitarFret({ stringNoteIndex, fretIndex }) {
   return (

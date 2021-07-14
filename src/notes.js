@@ -1,3 +1,5 @@
+import { range } from 'ramda';
+
 const notes = [
   'C',
   'C#',
@@ -13,7 +15,9 @@ const notes = [
   'B',
 ];
 
-export default function getNoteName(noteIndex) {
+export const noteIndexes = range(0, notes.length);
+
+export function getNoteName(noteIndex) {
   const rotatedIndex = noteIndex - (notes.length * Math.floor(noteIndex / notes.length));
 
   return notes[rotatedIndex];
