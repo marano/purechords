@@ -14,7 +14,7 @@ export default function App() {
       <br />
       <br />
       <div>
-        <GuitarArm />
+        <GuitarArm fretCount={13} />
       </div>
     </>
   );
