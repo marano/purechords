@@ -1,10 +1,10 @@
 import React from 'react';
-import { getNoteName } from './notes';
+import Note from './Note';
 
 export default function GuitarFret({ stringNoteIndex, fretIndex }) {
   return (
     <div className={fretIndex === 0 && 'open-string'}>
-      {getNoteName(stringNoteIndex + fretIndex)}
+      <Note index={stringNoteIndex + fretIndex} />
     </div>
   );
 }
