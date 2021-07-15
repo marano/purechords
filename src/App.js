@@ -7,7 +7,9 @@ export default function App() {
   return (
     <>
       <div>
-        {noteIndexes.map((noteIndex) => <div><MajorScale key={noteIndex} keyIndex={noteIndex} /></div>)}
+        {noteIndexes.map(
+          (noteIndex) => <div><MajorScale key={noteIndex} keyIndex={noteIndex} /></div>,
+        )}
       </div>
       <br />
       <br />
