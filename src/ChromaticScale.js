@@ -20,7 +20,9 @@ const Grid = styled.div`
 export default function ChromaticScale() {
   return (
     <Grid columnCount={12}>
-      {noteIndexes.map((noteIndex) => <HighligthableNote key={noteIndex} index={noteIndex} />)}
+      {noteIndexes.map(
+        (noteIndex) => <HighligthableNote key={noteIndex} index={noteIndex} />,
+      )}
     </Grid>
   );
 }

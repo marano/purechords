@@ -5,13 +5,19 @@ import useHighlightedNote from './useHighlightedNote';
 
 const Button = styled.div`
   cursor: pointer;
+
+  &.highlighted {
+    background-color: black;
+    color: white;
+  }
 `;
 
 export default function HighligthableNote({ index }) {
   const { setHighlightedNote } = useHighlightedNote();
+  const { highlightedNote } = useHighlightedNote();
 
   return (
-    <Button onClick={onClick}>
+    <Button className={highlightedNote === index && 'highlighted'} onClick={onClick}>
       <Note index={index} />
     </Button>
   );
