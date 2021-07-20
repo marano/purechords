@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import { getNoteName } from './notes';
+import { getNoteName, rotateNoteIndex } from './notes';
 import useHighlightedNote from './useHighlightedNote';
 
 const Highlight = styled.span`
@@ -10,9 +10,11 @@ const Highlight = styled.span`
 export default function Note({ index }) {
   const { highlightedNote } = useHighlightedNote();
 
-  if (highlightedNote === index) {
-    return <Highlight>{getNoteName(index)}</Highlight>;
+  const rotatedNoteIndex = rotateNoteIndex(index);
+
+  if (highlightedNote === rotatedNoteIndex) {
+    return <Highlight>{getNoteName(rotatedNoteIndex)}</Highlight>;
   } else {
-    return getNoteName(index);
+    return getNoteName(rotatedNoteIndex);
   }
 }
