@@ -7,7 +7,11 @@ import GuitarString from './GuitarString';
 
 const GuitarArmGrid = styled(Grid)`
   .open-string {
-    border 0;
+    margin-left: -2px;
+    margin-top: -2px;
+    margin-bottom: -2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
   }
 `;
 
