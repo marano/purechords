@@ -20,8 +20,11 @@ const Grid = styled.div`
 
     &.open-string {
       border 0;
-      text-align: right;
-      padding-right: 30px;
+    }
+
+    &.highlighted {
+      background-color: black;
+      color: white;
     }
   }
 `;
