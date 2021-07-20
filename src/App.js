@@ -21,7 +21,7 @@ export default function App() {
       <br />
       <br />
       <div>
-        <GuitarArm fretCount={13} />
+        <GuitarArm strings={[4, 11, 7, 2, 9, 4]} fretCount={13} />
       </div>
     </NoteHighlightProvider>
   );

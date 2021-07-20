@@ -22,15 +22,13 @@ const Grid = styled.div`
   }
 `;
 
-export default function GuitarArm({ fretCount }) {
+export default function GuitarArm({ strings, fretCount }) {
   return (
     <Grid columnCount={fretCount}>
-      <GuitarString noteIndex={4} fretCount={fretCount} />
-      <GuitarString noteIndex={11} fretCount={fretCount} />
-      <GuitarString noteIndex={7} fretCount={fretCount} />
-      <GuitarString noteIndex={2} fretCount={fretCount} />
-      <GuitarString noteIndex={9} fretCount={fretCount} />
-      <GuitarString noteIndex={4} fretCount={fretCount} />
+      {strings.map(
+        // eslint-disable-next-line react/no-array-index-key
+        (string, index) => <GuitarString key={index} noteIndex={string} fretCount={fretCount} />,
+      )}
     </Grid>
   );
 }
