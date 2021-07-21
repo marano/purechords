@@ -18,6 +18,7 @@ module.exports = {
     'react',
   ],
   rules: {
+    'array-callback-return': [0],
     'consistent-return': [0],
     'no-else-return': [0],
     'no-use-before-define': ['error', { functions: false, classes: false }],

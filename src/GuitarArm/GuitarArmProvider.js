@@ -1,10 +1,14 @@
 import React from 'react';
+import { range, xprod } from 'ramda';
 import GuitarArmContext from './GuitarArmContext';
-import { rotateNoteIndex } from '../notes';
 import useHighlightedNote from '../useHighlightedNote';
+import { rotateNoteIndex } from '../notes';
 
 export default function GuitarArmProvider({ strings, fretCount, children }) {
-  const { highlightedNote } = useHighlightedNote();
+  const {
+    highlightedNote,
+    highlightedNoteSequence,
+  } = useHighlightedNote();
 
   const value = {
     fretCount,
@@ -23,8 +27,39 @@ export default function GuitarArmProvider({ strings, fretCount, children }) {
   }
 
   function isFretHighlighted(stringIndex, fretIndex) {
-    if (highlightedNote) {
+    if (highlightedNote !== null) {
       return getNoteIndex(stringIndex, fretIndex) === highlightedNote;
+    }
+
+    if (highlightedNoteSequence !== null) {
+      const stringStart = 0;
+      const stringEnd = strings.length - 1;
+
+      const fretStart = 2;
+      const fretEnd = 6;
+
+      const stringRange = range(stringStart, stringEnd + 1).reverse();
+      const fretRange = range(fretStart, fretEnd + 1);
+
+      const fretCoordinates = xprod(stringRange, fretRange);
+
+      return highlightedNoteSequence
+        .map(
+          (noteIndex) => {
+            while (fretCoordinates.length) {
+              const nextCoordinates = fretCoordinates.shift();
+
+              if (noteIndex === getNoteIndex(nextCoordinates[0], nextCoordinates[1])) {
+                return nextCoordinates;
+              }
+            }
+          },
+        )
+        .filter(Boolean)
+        .some(
+          ([highlightedStringIndex, highlightedFretIndex]) => highlightedStringIndex === stringIndex
+            && highlightedFretIndex === fretIndex,
+        );
     }
   }
 }
