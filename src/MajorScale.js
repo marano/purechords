@@ -1,11 +1,15 @@
 import React from 'react';
-import { sum } from 'ramda';
+import { equals, sum } from 'ramda';
 import { majorScaleIntervals, rotateNoteIndex } from './notes';
 import ClickableNote from './ClickableNote';
 import useHighlightedNote from './useHighlightedNote';
 
 export default function MajorScale({ keyIndex }) {
-  const { highlightedNote, setHighlightedNoteSequence } = useHighlightedNote();
+  const {
+    highlightedNote,
+    highlightedNoteSequence,
+    setHighlightedNoteSequence,
+  } = useHighlightedNote();
 
   const notes = majorScaleIntervals
     .map((_, index) => keyIndex + sum(majorScaleIntervals.slice(0, index)))
@@ -16,7 +20,9 @@ export default function MajorScale({ keyIndex }) {
       <ClickableNote
         key={noteIndex}
         index={noteIndex}
-        isHighlighted={noteIndex === highlightedNote}
+        isHighlighted={
+          noteIndex === highlightedNote || equals(notes, highlightedNoteSequence)
+        }
         onClick={() => setHighlightedNoteSequence(notes)}
       />
     ),
