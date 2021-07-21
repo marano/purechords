@@ -44,17 +44,15 @@ export default function GuitarArmProvider({ strings, fretCount, children }) {
       const fretCoordinates = xprod(stringRange, fretRange);
 
       return highlightedNoteSequence
-        .map(
-          (noteIndex) => {
-            while (fretCoordinates.length) {
-              const nextCoordinates = fretCoordinates.shift();
+        .map((noteIndex) => {
+          while (fretCoordinates.length) {
+            const nextCoordinates = fretCoordinates.shift();
 
-              if (noteIndex === getNoteIndex(nextCoordinates[0], nextCoordinates[1])) {
-                return nextCoordinates;
-              }
+            if (noteIndex === getNoteIndex(nextCoordinates[0], nextCoordinates[1])) {
+              return nextCoordinates;
             }
-          },
-        )
+          }
+        })
         .filter(Boolean)
         .some(
           ([highlightedStringIndex, highlightedFretIndex]) => highlightedStringIndex === stringIndex
