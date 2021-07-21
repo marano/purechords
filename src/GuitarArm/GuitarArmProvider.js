@@ -1,6 +1,6 @@
 import React from 'react';
 import GuitarArmContext from './GuitarArmContext';
-import { rotateNoteIndex } from './notes';
+import { rotateNoteIndex } from '../notes';
 
 export default function GuitarArmProvider({ strings, fretCount, children }) {
   return (

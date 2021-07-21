@@ -1,7 +1,7 @@
 import { range } from 'ramda';
 import React from 'react';
 import styled from 'styled-components/macro';
-import Grid from './Grid';
+import Grid from '../Grid';
 import GuitarArmProvider from './GuitarArmProvider';
 import GuitarString from './GuitarString';
 

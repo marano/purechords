@@ -1,8 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
-import Note from './Note';
+import Note from '../Note';
 import useGuitarArmContext from './useGuitarArmContext';
-import useHighlightedNote from './useHighlightedNote';
+import useHighlightedNote from '../useHighlightedNote';
 
 export default function GuitarFret({ stringIndex, fretIndex }) {
   const { getNoteIndex } = useGuitarArmContext();
