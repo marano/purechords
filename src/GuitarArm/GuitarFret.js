@@ -2,17 +2,15 @@ import React from 'react';
 import classNames from 'classnames';
 import Note from '../Note';
 import useGuitarArmContext from './useGuitarArmContext';
-import useHighlightedNote from '../useHighlightedNote';
 
 export default function GuitarFret({ stringIndex, fretIndex }) {
-  const { getNoteIndex } = useGuitarArmContext();
-  const { highlightedNote } = useHighlightedNote();
+  const { getNoteIndex, isFretHighlighted } = useGuitarArmContext();
 
   const noteIndex = getNoteIndex(stringIndex, fretIndex);
 
   const className = classNames({
     'open-string': fretIndex === 0,
-    highlighted: highlightedNote === noteIndex,
+    highlighted: isFretHighlighted(stringIndex, fretIndex),
   });
 
   return (

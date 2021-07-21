@@ -18,6 +18,7 @@ module.exports = {
     'react',
   ],
   rules: {
+    'consistent-return': [0],
     'no-else-return': [0],
     'no-use-before-define': ['error', { functions: false, classes: false }],
     'jsx-a11y/no-static-element-interactions': [0],
