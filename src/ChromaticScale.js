@@ -5,7 +5,7 @@ import { noteIndexes } from './notes';
 import useHighlightedNote from './useHighlightedNote';
 
 export default function ChromaticScale() {
-  const { setHighlightedNote } = useHighlightedNote();
+  const { highlightedNote, setHighlightedNote } = useHighlightedNote();
 
   return (
     <Grid columnCount={12}>
@@ -14,6 +14,7 @@ export default function ChromaticScale() {
           <ClickableNote
             key={noteIndex}
             index={noteIndex}
+            isHighlighted={noteIndex === highlightedNote}
             onClick={() => setHighlightedNote(noteIndex)}
           />
         ),
