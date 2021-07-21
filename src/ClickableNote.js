@@ -7,8 +7,8 @@ const Pointer = styled.div`
   cursor: pointer;
 `;
 
-export default function HighligthableNote({ index }) {
-  const { highlightedNote, setHighlightedNote } = useHighlightedNote();
+export default function ClickableNote({ index, onClick }) {
+  const { highlightedNote } = useHighlightedNote();
 
   const isHighlighted = highlightedNote === index;
 
@@ -17,8 +17,4 @@ export default function HighligthableNote({ index }) {
       <Note index={index} />
     </Pointer>
   );
-
-  function onClick() {
-    setHighlightedNote(index);
-  }
 }
