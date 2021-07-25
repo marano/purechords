@@ -21,7 +21,7 @@ export default function GuitarArm({ strings, fretCount }) {
   return (
     <GuitarArmProvider strings={strings} fretCount={fretCount}>
       <GuitarArmGrid columnCount={fretCount}>
-        {stringIndexes.map(
+        {stringIndexes.reverse().map(
           (stringIndex) => <GuitarString key={stringIndex} stringIndex={stringIndex} />,
         )}
       </GuitarArmGrid>
