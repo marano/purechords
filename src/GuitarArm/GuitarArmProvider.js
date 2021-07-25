@@ -1,14 +1,14 @@
 import React from 'react';
 import { range, xprod } from 'ramda';
 import GuitarArmContext from './GuitarArmContext';
-import useHighlightedNote from '../useHighlightedNote';
+import useSelectionContext from '../useSelectionContext';
 import { rotateNoteIndex } from '../notes';
 
 export default function GuitarArmProvider({ strings, fretCount, children }) {
   const {
-    highlightedNote,
-    highlightedNoteSequence,
-  } = useHighlightedNote();
+    selectedNote,
+    selectedNoteSequence,
+  } = useSelectionContext();
 
   const value = {
     fretCount,
@@ -27,11 +27,11 @@ export default function GuitarArmProvider({ strings, fretCount, children }) {
   }
 
   function isFretHighlighted(stringIndex, fretIndex) {
-    if (highlightedNote !== null) {
-      return getNoteIndex(stringIndex, fretIndex) === highlightedNote;
+    if (selectedNote !== null) {
+      return getNoteIndex(stringIndex, fretIndex) === selectedNote;
     }
 
-    if (highlightedNoteSequence !== null) {
+    if (selectedNoteSequence !== null) {
       const stringStart = 0;
       const stringEnd = strings.length - 1;
 
@@ -43,7 +43,7 @@ export default function GuitarArmProvider({ strings, fretCount, children }) {
 
       const fretCoordinates = xprod(stringRange, fretRange);
 
-      return highlightedNoteSequence
+      return selectedNoteSequence
         .map((noteIndex) => {
           while (fretCoordinates.length) {
             const nextCoordinates = fretCoordinates.shift();

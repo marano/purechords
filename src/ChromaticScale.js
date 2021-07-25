@@ -2,10 +2,10 @@ import React from 'react';
 import Grid from './Grid';
 import ClickableNote from './ClickableNote';
 import { noteIndexes } from './notes';
-import useHighlightedNote from './useHighlightedNote';
+import useSelectionContext from './useSelectionContext';
 
 export default function ChromaticScale() {
-  const { highlightedNote, setHighlightedNote } = useHighlightedNote();
+  const { selectedNote, setSelectedNote } = useSelectionContext();
 
   return (
     <Grid columnCount={12}>
@@ -14,8 +14,8 @@ export default function ChromaticScale() {
           <ClickableNote
             key={noteIndex}
             index={noteIndex}
-            isHighlighted={noteIndex === highlightedNote}
-            onClick={() => setHighlightedNote(noteIndex)}
+            isHighlighted={noteIndex === selectedNote}
+            onClick={() => setSelectedNote(noteIndex)}
           />
         ),
       )}
