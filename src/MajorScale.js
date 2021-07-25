@@ -15,10 +15,10 @@ export default function MajorScale({ keyIndex }) {
     .map(rotateNoteIndex);
 
   return notes.map(
-    (noteIndex) => (
+    (note) => (
       <ClickableNote
-        key={noteIndex}
-        index={noteIndex}
+        key={note}
+        index={note}
         isHighlighted={equals(notes, selectedNoteSequence)}
         onClick={() => setSelectedNoteSequence(notes)}
       />

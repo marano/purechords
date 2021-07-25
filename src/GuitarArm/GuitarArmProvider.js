@@ -12,7 +12,7 @@ export default function GuitarArmProvider({ strings, fretCount, children }) {
 
   const value = {
     fretCount,
-    getNoteIndex,
+    getNote,
     isFretHighlighted,
   };
 
@@ -22,13 +22,13 @@ export default function GuitarArmProvider({ strings, fretCount, children }) {
     </GuitarArmContext.Provider>
   );
 
-  function getNoteIndex(stringIndex, fretIndex) {
+  function getNote(stringIndex, fretIndex) {
     return rotateNoteIndex(strings[stringIndex] + fretIndex);
   }
 
   function isFretHighlighted(stringIndex, fretIndex) {
     if (selectedNote !== null) {
-      return getNoteIndex(stringIndex, fretIndex) === selectedNote;
+      return getNote(stringIndex, fretIndex) === selectedNote;
     }
 
     if (selectedNoteSequence !== null) {
@@ -44,11 +44,11 @@ export default function GuitarArmProvider({ strings, fretCount, children }) {
       const fretCoordinates = xprod(stringRange, fretRange);
 
       return selectedNoteSequence
-        .map((noteIndex) => {
+        .map((note) => {
           while (fretCoordinates.length) {
             const nextCoordinates = fretCoordinates.shift();
 
-            if (noteIndex === getNoteIndex(nextCoordinates[0], nextCoordinates[1])) {
+            if (note === getNote(nextCoordinates[0], nextCoordinates[1])) {
               return nextCoordinates;
             }
           }

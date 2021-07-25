@@ -4,9 +4,9 @@ import Note from '../Note';
 import useGuitarArmContext from './useGuitarArmContext';
 
 export default function GuitarFret({ stringIndex, fretIndex }) {
-  const { getNoteIndex, isFretHighlighted } = useGuitarArmContext();
+  const { getNote, isFretHighlighted } = useGuitarArmContext();
 
-  const noteIndex = getNoteIndex(stringIndex, fretIndex);
+  const note = getNote(stringIndex, fretIndex);
 
   const className = classNames({
     'open-string': fretIndex === 0,
@@ -15,7 +15,7 @@ export default function GuitarFret({ stringIndex, fretIndex }) {
 
   return (
     <div className={className}>
-      <Note index={noteIndex} />
+      <Note index={note} />
     </div>
   );
 }

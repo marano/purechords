@@ -1,6 +1,6 @@
 import { range } from 'ramda';
 
-const notes = [
+const noteNames = [
   'C',
   'C#',
   'D',
@@ -20,12 +20,12 @@ const semiTone = 1;
 
 export const majorScaleIntervals = [tone, tone, semiTone, tone, tone, tone, semiTone];
 
-export const noteIndexes = range(0, notes.length);
+export const notes = range(0, noteNames.length);
 
-export function getNoteName(noteIndex) {
-  return notes[noteIndex];
+export function getNoteName(note) {
+  return noteNames[note];
 }
 
-export function rotateNoteIndex(noteIndex) {
-  return noteIndex - (notes.length * Math.floor(noteIndex / notes.length));
+export function rotateNoteIndex(note) {
+  return note - (noteNames.length * Math.floor(note / noteNames.length));
 }
