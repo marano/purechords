@@ -18,7 +18,7 @@ export default function MajorScale({ keyIndex }) {
     (note) => (
       <ClickableNote
         key={note}
-        index={note}
+        note={note}
         isHighlighted={equals(notes, selectedNoteSequence)}
         onClick={() => setSelectedNoteSequence(notes)}
       />

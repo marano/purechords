@@ -6,10 +6,10 @@ const Pointer = styled.div`
   cursor: pointer;
 `;
 
-export default function ClickableNote({ index, isHighlighted, onClick }) {
+export default function ClickableNote({ note, isHighlighted, onClick }) {
   return (
     <Pointer className={isHighlighted && 'highlighted'} onClick={onClick}>
-      <Note index={index} />
+      <Note note={note} />
     </Pointer>
   );
 }

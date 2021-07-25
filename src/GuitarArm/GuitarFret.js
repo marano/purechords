@@ -15,7 +15,7 @@ export default function GuitarFret({ stringIndex, fretIndex }) {
 
   return (
     <div className={className}>
-      <Note index={note} />
+      <Note note={note} />
     </div>
   );
 }

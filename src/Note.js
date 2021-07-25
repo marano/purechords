@@ -1,5 +1,5 @@
 import { getNoteName } from './notes';
 
-export default function Note({ index }) {
-  return getNoteName(index);
+export default function Note({ note }) {
+  return getNoteName(note);
 }

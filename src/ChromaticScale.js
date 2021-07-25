@@ -13,7 +13,7 @@ export default function ChromaticScale() {
         (note) => (
           <ClickableNote
             key={note}
-            index={note}
+            note={note}
             isHighlighted={note === selectedNote}
             onClick={() => setSelectedNote(note)}
           />
