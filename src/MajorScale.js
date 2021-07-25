@@ -1,7 +1,7 @@
 import React from 'react';
 import { equals, sum } from 'ramda';
 import { majorScaleIntervals, rotateNoteIndex } from './notes';
-import ClickableNote from './ClickableNote';
+import ClickableNoteName from './ClickableNoteName';
 import useSelectionContext from './useSelectionContext';
 
 export default function MajorScale({ keyIndex }) {
@@ -16,7 +16,7 @@ export default function MajorScale({ keyIndex }) {
 
   return notes.map(
     (note) => (
-      <ClickableNote
+      <ClickableNoteName
         key={note}
         note={note}
         isHighlighted={equals(notes, selectedNoteSequence)}
