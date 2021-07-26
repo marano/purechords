@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import NoteName from '../NoteName';
+import { getNoteName } from '../notes';
 import useGuitarArmContext from './useGuitarArmContext';
 
 export default function GuitarFret({ stringIndex, fretIndex }) {
@@ -15,7 +15,7 @@ export default function GuitarFret({ stringIndex, fretIndex }) {
 
   return (
     <div className={className}>
-      <NoteName note={note} />
+      {getNoteName(note)}
     </div>
   );
 }

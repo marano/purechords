@@ -1,8 +1,7 @@
 import React from 'react';
+import { getNoteName, notes } from './notes';
 import Grid from './Grid';
 import Selectable from './Selectable';
-import NoteName from './NoteName';
-import { notes } from './notes';
 import useSelectionContext from './useSelectionContext';
 
 export default function ChromaticScale() {
@@ -17,7 +16,7 @@ export default function ChromaticScale() {
             isSelected={note === selectedNote}
             onSelect={() => setSelectedNote(note)}
           >
-            <NoteName note={note} />
+            {getNoteName(note)}
           </Selectable>
         ),
       )}
