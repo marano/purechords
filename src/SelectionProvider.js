@@ -4,19 +4,19 @@ import SelectionContext from './SelectionContext';
 export default function SelectionProvider({ children }) {
   const [selectedNote, setSelectedNote] = useState();
   const [selectedIntervals, setSelectedIntervals] = useState();
-  const [selectedNoteSequence, setSelectedNoteSequence] = useState();
+  const [selectedScaleNotes, setSelectedScaleNotes] = useState();
 
   const value = {
     selectedNote,
     setSelectedNote(note) {
-      setSelectedNoteSequence(null);
+      setSelectedScaleNotes(null);
       setSelectedNote(note);
     },
 
-    selectedNoteSequence,
-    setSelectedNoteSequence(noteSequence) {
+    selectedScaleNotes,
+    setSelectedScaleNotes(noteSequence) {
       setSelectedNote(null);
-      setSelectedNoteSequence(noteSequence);
+      setSelectedScaleNotes(noteSequence);
     },
 
     selectedIntervals,

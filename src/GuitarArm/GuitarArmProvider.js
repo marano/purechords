@@ -7,7 +7,7 @@ import { rotateNoteIndex } from '../notes';
 export default function GuitarArmProvider({ strings, fretCount, children }) {
   const {
     selectedNote,
-    selectedNoteSequence,
+    selectedScaleNotes,
   } = useSelectionContext();
 
   const value = {
@@ -31,7 +31,7 @@ export default function GuitarArmProvider({ strings, fretCount, children }) {
       return getNote(stringIndex, fretIndex) === selectedNote;
     }
 
-    if (selectedNoteSequence !== null) {
+    if (selectedScaleNotes !== null) {
       const stringStart = 0;
       const stringEnd = strings.length - 1;
 
@@ -43,15 +43,15 @@ export default function GuitarArmProvider({ strings, fretCount, children }) {
 
       const fretCoordinates = xprod(stringRange, fretRange);
 
-      return selectedNoteSequence.map((note) => {
-          while (fretCoordinates.length) {
-            const nextCoordinates = fretCoordinates.shift();
+      return selectedScaleNotes.map((note) => {
+        while (fretCoordinates.length) {
+          const nextCoordinates = fretCoordinates.shift();
 
-            if (note === getNote(nextCoordinates[0], nextCoordinates[1])) {
-              return nextCoordinates;
-            }
+          if (note === getNote(nextCoordinates[0], nextCoordinates[1])) {
+            return nextCoordinates;
           }
-        })
+        }
+      })
         .filter(Boolean)
         .some(
           ([highlightedStringIndex, highlightedFretIndex]) => highlightedStringIndex === stringIndex

@@ -6,8 +6,8 @@ import useSelectionContext from './useSelectionContext';
 
 export default function MajorScale({ keyNote }) {
   const {
-    selectedNoteSequence,
-    setSelectedNoteSequence,
+    selectedScaleNotes,
+    setSelectedScaleNotes,
   } = useSelectionContext();
 
 
@@ -19,8 +19,8 @@ export default function MajorScale({ keyNote }) {
     (note) => (
       <Selectable
         key={note}
-        isSelected={selectedNoteSequence && startsWith(notes, selectedNoteSequence)}
-        onSelect={() => setSelectedNoteSequence(visibleNotes)}
+        isSelected={selectedScaleNotes && startsWith(notes, selectedScaleNotes)}
+        onSelect={() => setSelectedScaleNotes(visibleNotes)}
       >
         {getNoteName(note)}
       </Selectable>
