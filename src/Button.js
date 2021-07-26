@@ -7,6 +7,7 @@ const Container = styled.div`
   display: inline-block;
   color: ${props => props.isSelected ? 'white' : 'black'};
   background-color: ${props => props.isSelected ? 'black' : 'white'};
+  padding: 5px;
 `
 
 export default function Button({ isSelected, onClick, children }) {

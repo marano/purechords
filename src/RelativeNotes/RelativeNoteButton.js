@@ -15,11 +15,15 @@ export default function RelativeNoteButton({ intervals }) {
 
   return (
     <Button isSelected={isSelected} onClick={onClick}>
-      {notes.map(note => getNoteName(note))}
+      {notes.map(note => getNoteName(note)).join(' ')}
     </Button>
   )
 
   function onClick() {
-    setSelectedIntervals(intervals)
+    if (isSelected) {
+      setSelectedIntervals(null)
+    } else {
+      setSelectedIntervals(intervals)
+    }
   }
 }
