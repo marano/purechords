@@ -67,6 +67,8 @@ export default function GuitarArmProvider({ strings, fretCount, children }) {
         })
         .filter(Boolean)
     }
+
+    return []
   }
 
   function isFretHighlighted(stringIndex, fretIndex) {

@@ -1,21 +1,41 @@
 import React from 'react';
-import classNames from 'classnames';
-import { getNoteName } from '../notes';
+import styled from 'styled-components/macro';
+import { getNoteColor, getNoteName } from '../notes';
+import useSelectionContext from '../useSelectionContext';
 import useGuitarArmContext from './useGuitarArmContext';
 
+const Container = styled.div`
+  background-color: ${props => props.color} !important;
+
+  margin-left: ${props => props.isOpenString ? -2 : 0}px;
+  margin-top: ${props => props.isOpenString ? -2 : 0}px;
+  margin-bottom: ${props => props.isOpenString ? -2 : 0}px;
+  padding-right: ${props => props.isOpenString ? 2 : 0}px;
+  padding-bottom: ${props => props.isOpenString ? 2 : 0}px;
+`
+
 export default function GuitarFret({ stringIndex, fretIndex }) {
+  const { selectedNote, selectedScaleNotes } = useSelectionContext()
   const { getNote, isFretHighlighted } = useGuitarArmContext();
 
   const note = getNote(stringIndex, fretIndex);
+  const noteColor = getNoteColor(note);
 
-  const className = classNames({
-    'open-string': fretIndex === 0,
-    highlighted: isFretHighlighted(stringIndex, fretIndex),
-  });
+  const isHighlighted = isFretHighlighted(stringIndex, fretIndex)
 
   return (
-    <div className={className}>
+    <Container isOpenString={fretIndex === 0} color={getContainerColor()}>
       {getNoteName(note)}
-    </div>
+    </Container>
   );
+
+  function getContainerColor() {
+    if (selectedNote === null && !selectedScaleNotes) {
+      return noteColor
+    } else if (isHighlighted) {
+      return noteColor
+    } else {
+      return 'white'
+    }
+  }
 }
