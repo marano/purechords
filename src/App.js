@@ -3,11 +3,15 @@ import GuitarArm from './GuitarArm';
 import ChromaticScale from './ChromaticScale';
 import MajorScales from './MajorScales';
 import SelectionProvider from './SelectionProvider';
+import RelativeNotes from './RelativeNotes';
 
 export default function App() {
   return (
     <SelectionProvider>
       <ChromaticScale />
+      <br />
+      <RelativeNotes />
+      <br />
       <br />
       <MajorScales />
       <br />

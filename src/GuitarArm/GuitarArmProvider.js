@@ -35,16 +35,15 @@ export default function GuitarArmProvider({ strings, fretCount, children }) {
       const stringStart = 0;
       const stringEnd = strings.length - 1;
 
-      const fretStart = 2;
-      const fretEnd = 6;
+      const fretStart = 0;
+      const fretEnd = 5;
 
       const stringRange = range(stringStart, stringEnd + 1).reverse();
       const fretRange = range(fretStart, fretEnd + 1);
 
       const fretCoordinates = xprod(stringRange, fretRange);
 
-      return selectedNoteSequence
-        .map((note) => {
+      return selectedNoteSequence.map((note) => {
           while (fretCoordinates.length) {
             const nextCoordinates = fretCoordinates.shift();
 
