@@ -7,7 +7,7 @@ export default function MajorScales() {
   return (
     <Grid columnCount={majorScaleIntervals.length}>
       {notes.map(
-        (note) => <MajorScale key={note} keyIndex={note} />,
+        (note) => <MajorScale key={note} keyNote={note} />,
       )}
     </Grid>
   );

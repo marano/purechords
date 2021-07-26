@@ -1,4 +1,4 @@
-import { range } from 'ramda';
+import { range, sum } from 'ramda';
 
 const noteNames = [
   'C',
@@ -28,4 +28,10 @@ export function getNoteName(note) {
 
 export function rotateNoteIndex(note) {
   return note - (noteNames.length * Math.floor(note / noteNames.length));
+}
+
+export function intervalsToNotes(intervals, key) {
+  return intervals
+    .map((_, index) => key + sum(intervals.slice(0, index)))
+    .map(rotateNoteIndex);
 }

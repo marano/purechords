@@ -1,20 +1,18 @@
 import React from 'react';
-import { startsWith, sum } from 'ramda';
-import { majorScaleIntervals, rotateNoteIndex } from './notes';
+import { startsWith } from 'ramda';
+import { intervalsToNotes, majorScaleIntervals } from './notes';
 import Selectable from './Selectable';
 import NoteName from './NoteName';
 import useSelectionContext from './useSelectionContext';
 
-export default function MajorScale({ keyIndex }) {
+export default function MajorScale({ keyNote }) {
   const {
     selectedNoteSequence,
     setSelectedNoteSequence,
   } = useSelectionContext();
 
 
-  const notes = majorScaleIntervals
-    .map((_, index) => keyIndex + sum(majorScaleIntervals.slice(0, index)))
-    .map(rotateNoteIndex);
+  const notes = intervalsToNotes(majorScaleIntervals, keyNote)
 
   const visibleNotes = notes.concat(notes).concat(notes)
 
