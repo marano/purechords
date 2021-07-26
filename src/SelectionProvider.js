@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
+import { intervalsToNotes } from './notes';
 import SelectionContext from './SelectionContext';
 
 export default function SelectionProvider({ children }) {
   const [selectedNote, setSelectedNote] = useState();
   const [selectedIntervals, setSelectedIntervals] = useState();
   const [selectedScaleNotes, setSelectedScaleNotes] = useState();
+
+  const selectedIntervalNotes = selectedNote != null
+    && selectedIntervals
+    && intervalsToNotes(selectedIntervals, selectedNote)
 
   const value = {
     selectedNote,
@@ -20,7 +25,9 @@ export default function SelectionProvider({ children }) {
     },
 
     selectedIntervals,
-    setSelectedIntervals
+    setSelectedIntervals,
+
+    selectedIntervalNotes
   };
 
   return (

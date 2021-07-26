@@ -8,6 +8,7 @@ export default function GuitarArmProvider({ strings, fretCount, children }) {
   const {
     selectedNote,
     selectedScaleNotes,
+    selectedIntervalNotes
   } = useSelectionContext();
 
   const value = {
@@ -36,8 +37,13 @@ export default function GuitarArmProvider({ strings, fretCount, children }) {
       const fretStart = 0;
       const fretEnd = fretCount - 1;
 
+      const highlightedNotes = [].concat(selectedNote).concat(selectedIntervalNotes)
+
       return getFrets(stringStart, stringEnd, fretStart, fretEnd)
-        .filter(([stringIndex, fretIndex]) => getNote(stringIndex, fretIndex) === selectedNote)
+        .filter(
+          ([stringIndex, fretIndex]) =>
+            highlightedNotes.includes(getNote(stringIndex, fretIndex))
+        )
     }
 
     if (selectedScaleNotes !== null) {
