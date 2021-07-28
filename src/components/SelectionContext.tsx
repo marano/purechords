@@ -1,16 +1,17 @@
 import { createContext } from 'react';
+import { Note } from '../types';
 
 type Value = {
-  selectedNote: number | null
-  setSelectedNote: (note: number | null) => void
+  selectedNote: Note | null
+  setSelectedNote: (note: Note | null) => void
 
-  selectedScaleNotes: number[] | null
-  setSelectedScaleNotes: (notes: number[] | null) => void
+  selectedScaleNotes: Note[] | null
+  setSelectedScaleNotes: (notes: Note[] | null) => void
 
   selectedIntervals: number[] | null
   setSelectedIntervals: (notes: number[] | null) => void
 
-  selectedIntervalNotes: number[] | null
+  selectedIntervalNotes: Note[] | null
 }
 
 export default createContext<Value>(null!);

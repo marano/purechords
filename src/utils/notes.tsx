@@ -1,4 +1,5 @@
 import { range, sum } from 'ramda';
+import { Note } from '../types';
 
 const noteNames = [
   'C',
@@ -35,21 +36,21 @@ const semiTone = 1;
 
 export const majorScaleIntervals = [tone, tone, semiTone, tone, tone, tone, semiTone];
 
-export const notes = range(0, noteNames.length);
+export const notes = range(0, noteNames.length) as Note[];
 
-export function getNoteName(note: number) {
+export function getNoteName(note: Note) {
   return noteNames[note];
 }
 
-export function getNoteColor(note: number) {
+export function getNoteColor(note: Note) {
   return noteColors[note];
 }
 
-export function rotateNoteIndex(note: number) {
-  return note - (noteNames.length * Math.floor(note / noteNames.length));
+export function rotateNoteIndex(exceedingNote: number) {
+  return exceedingNote - (noteNames.length * Math.floor(exceedingNote / noteNames.length)) as Note;
 }
 
-export function intervalsToNotes(intervals: number[], key: number) {
+export function intervalsToNotes(intervals: number[], key: Note) {
   return intervals
     .map((_, index) => key + sum(intervals.slice(0, index)))
     .map(rotateNoteIndex);

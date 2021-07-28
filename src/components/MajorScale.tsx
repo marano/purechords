@@ -1,10 +1,11 @@
 import { startsWith } from 'ramda';
+import { Note } from '../types';
 import { getNoteName, intervalsToNotes, majorScaleIntervals } from '../utils/notes';
 import Selectable from './Selectable';
 import useSelectionContext from './useSelectionContext';
 
 type Props = {
-  keyNote: number
+  keyNote: Note
 }
 
 export default function MajorScale({ keyNote }: Props) {

@@ -4,7 +4,7 @@ import RelativeNoteButton from "./RelativeNoteButton";
 export default function RelativeNotes() {
   const { selectedNote } = useSelectionContext()
 
-  if (selectedNote !== 0 && !selectedNote) {
+  if (selectedNote === null) {
     return null
   }
 

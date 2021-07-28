@@ -1,10 +1,11 @@
 import { range } from 'ramda';
+import { Note } from '../../types';
 import Grid from '../Grid';
 import GuitarArmProvider from './GuitarArmProvider';
 import GuitarString from './GuitarString';
 
 type Props = {
-  strings: number[]
+  strings: Note[]
   fretCount: number
 }
 

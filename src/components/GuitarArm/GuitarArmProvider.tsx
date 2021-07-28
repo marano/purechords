@@ -1,12 +1,13 @@
 import { ReactNode } from 'react';
 import { equals, range, xprod } from 'ramda';
+import { Note } from '../../types';
 import isNonNullable from '../../utils/isNonNullable';
 import { rotateNoteIndex } from '../../utils/notes';
 import useSelectionContext from '../useSelectionContext';
 import GuitarArmContext from './GuitarArmContext';
 
 type Props = {
-  strings: number[]
+  strings: Note[]
   fretCount: number
   children: ReactNode
 }
