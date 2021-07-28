@@ -1,4 +1,3 @@
-import React from 'react'
 import useSelectionContext from "../useSelectionContext";
 import RelativeNoteButton from "./RelativeNoteButton";
 

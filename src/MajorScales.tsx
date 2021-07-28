@@ -1,4 +1,3 @@
-import React from 'react';
 import Grid from './Grid';
 import MajorScale from './MajorScale';
 import { majorScaleIntervals, notes } from './notes';

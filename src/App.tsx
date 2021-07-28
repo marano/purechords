@@ -1,4 +1,3 @@
-import React from 'react';
 import GuitarArm from './GuitarArm';
 import ChromaticScale from './ChromaticScale';
 import MajorScales from './MajorScales';

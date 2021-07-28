@@ -1,10 +1,14 @@
 import { range } from 'ramda';
-import React from 'react';
 import Grid from '../Grid';
 import GuitarArmProvider from './GuitarArmProvider';
 import GuitarString from './GuitarString';
 
-export default function GuitarArm({ strings, fretCount }) {
+type Props = {
+  strings: number[]
+  fretCount: number
+}
+
+export default function GuitarArm({ strings, fretCount }: Props) {
   const stringIndexes = range(0, strings.length);
 
   return (

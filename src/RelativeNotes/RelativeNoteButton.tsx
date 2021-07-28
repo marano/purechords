@@ -3,7 +3,11 @@ import { getNoteName, intervalsToNotes } from "../notes"
 import useSelectionContext from "../useSelectionContext"
 import Button from "../Button"
 
-export default function RelativeNoteButton({ intervals }) {
+type Props = {
+  intervals: number[]
+}
+
+export default function RelativeNoteButton({ intervals }: Props) {
   const {
     selectedNote,
     selectedIntervals,
@@ -11,7 +15,7 @@ export default function RelativeNoteButton({ intervals }) {
   } = useSelectionContext()
 
   const isSelected = equals(intervals, selectedIntervals)
-  const notes = intervalsToNotes(intervals, selectedNote)
+  const notes = intervalsToNotes(intervals, selectedNote!)
 
   return (
     <Button isSelected={isSelected} onClick={onClick}>

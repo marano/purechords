@@ -1,10 +1,17 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import { equals, range, xprod } from 'ramda';
-import GuitarArmContext from './GuitarArmContext';
-import useSelectionContext from '../useSelectionContext';
+import isNonNullable from '../utils/isNonNullable';
 import { rotateNoteIndex } from '../notes';
+import useSelectionContext from '../useSelectionContext';
+import GuitarArmContext from './GuitarArmContext';
 
-export default function GuitarArmProvider({ strings, fretCount, children }) {
+type Props = {
+  strings: number[]
+  fretCount: number
+  children: ReactNode
+}
+
+export default function GuitarArmProvider({ strings, fretCount, children }: Props) {
   const {
     selectedNote,
     selectedScaleNotes,
@@ -25,11 +32,11 @@ export default function GuitarArmProvider({ strings, fretCount, children }) {
     </GuitarArmContext.Provider>
   );
 
-  function getNote(stringIndex, fretIndex) {
+  function getNote(stringIndex: number, fretIndex: number) {
     return rotateNoteIndex(strings[stringIndex] + fretIndex);
   }
 
-  function getHighlightedFrets() {
+  function getHighlightedFrets(): [number, number][] {
     if (selectedNote !== null) {
       const stringStart = 0;
       const stringEnd = strings.length - 1;
@@ -37,7 +44,7 @@ export default function GuitarArmProvider({ strings, fretCount, children }) {
       const fretStart = 0;
       const fretEnd = fretCount - 1;
 
-      const highlightedNotes = [].concat(selectedNote).concat(selectedIntervalNotes)
+      const highlightedNotes = [selectedNote, ...(selectedIntervalNotes || [])]
 
       return getFrets(stringStart, stringEnd, fretStart, fretEnd)
         .filter(
@@ -58,26 +65,26 @@ export default function GuitarArmProvider({ strings, fretCount, children }) {
       return selectedScaleNotes
         .map((note) => {
           while (fretCoordinates.length) {
-            const nextCoordinates = fretCoordinates.shift();
+            const nextCoordinates = fretCoordinates.shift()!;
 
             if (note === getNote(nextCoordinates[0], nextCoordinates[1])) {
               return nextCoordinates;
             }
+
           }
-        })
-        .filter(Boolean)
+        }).filter(isNonNullable)
     }
 
     return []
   }
 
-  function isFretHighlighted(stringIndex, fretIndex) {
+  function isFretHighlighted(stringIndex: number, fretIndex: number) {
     const fret = [stringIndex, fretIndex]
 
     return highlightedFrets.some(equals(fret))
   }
 
-  function getFrets(stringStart, stringEnd, fretStart, fretEnd) {
+  function getFrets(stringStart: number, stringEnd: number, fretStart: number, fretEnd: number) {
     const stringRange = range(stringStart, stringEnd + 1).reverse();
     const fretRange = range(fretStart, fretEnd + 1);
 

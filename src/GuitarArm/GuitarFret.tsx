@@ -1,20 +1,29 @@
-import React from 'react';
 import styled from 'styled-components/macro';
 import { getNoteColor, getNoteName } from '../notes';
 import useSelectionContext from '../useSelectionContext';
 import useGuitarArmContext from './useGuitarArmContext';
 
-const Container = styled.div`
-  background-color: ${props => props.color} !important;
+type ContainerProps = {
+  color: string
+  isOpenString: boolean
+}
 
-  margin-left: ${props => props.isOpenString ? -2 : 0}px;
-  margin-top: ${props => props.isOpenString ? -2 : 0}px;
-  margin-bottom: ${props => props.isOpenString ? -2 : 0}px;
-  padding-right: ${props => props.isOpenString ? 2 : 0}px;
-  padding-bottom: ${props => props.isOpenString ? 2 : 0}px;
+const Container = styled.div`
+  background-color: ${(props: ContainerProps) => props.color} !important;
+
+  margin-left: ${(props: ContainerProps) => props.isOpenString ? -2 : 0}px;
+  margin-top: ${(props: ContainerProps) => props.isOpenString ? -2 : 0}px;
+  margin-bottom: ${(props: ContainerProps) => props.isOpenString ? -2 : 0}px;
+  padding-right: ${(props: ContainerProps) => props.isOpenString ? 2 : 0}px;
+  padding-bottom: ${(props: ContainerProps) => props.isOpenString ? 2 : 0}px;
 `
 
-export default function GuitarFret({ stringIndex, fretIndex }) {
+type Props = {
+  stringIndex: number
+  fretIndex: number
+}
+
+export default function GuitarFret({ stringIndex, fretIndex }: Props) {
   const { selectedNote, selectedScaleNotes } = useSelectionContext()
   const { getNote, isFretHighlighted } = useGuitarArmContext();
 

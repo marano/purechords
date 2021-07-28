@@ -1,20 +1,24 @@
-import React, { useState } from 'react';
+import { useState, ReactNode } from 'react';
 import { equals } from 'ramda';
 import { intervalsToNotes } from './notes';
 import SelectionContext from './SelectionContext';
 
-export default function SelectionProvider({ children }) {
-  const [selectedNote, setSelectedNote] = useState();
-  const [selectedIntervals, setSelectedIntervals] = useState();
-  const [selectedScaleNotes, setSelectedScaleNotes] = useState();
+type Props = {
+  children: ReactNode
+}
 
-  const selectedIntervalNotes = selectedNote != null
-    && selectedIntervals
-    && intervalsToNotes(selectedIntervals, selectedNote)
+export default function SelectionProvider({ children }: Props) {
+  const [selectedNote, setSelectedNote] = useState<number | null>(null);
+  const [selectedIntervals, setSelectedIntervals] = useState<number[] | null>(null);
+  const [selectedScaleNotes, setSelectedScaleNotes] = useState<number[] | null>(null);
+
+  const selectedIntervalNotes = selectedNote !== null && selectedIntervals
+    ? intervalsToNotes(selectedIntervals, selectedNote)
+    : null
 
   const value = {
     selectedNote,
-    setSelectedNote(note) {
+    setSelectedNote(note: number | null) {
       if (selectedNote === note) {
         setSelectedNote(null);
       } else {
@@ -24,7 +28,7 @@ export default function SelectionProvider({ children }) {
     },
 
     selectedScaleNotes,
-    setSelectedScaleNotes(noteSequence) {
+    setSelectedScaleNotes(noteSequence: number[] | null) {
       if (equals(selectedScaleNotes, noteSequence)) {
         setSelectedScaleNotes(null);
       } else {

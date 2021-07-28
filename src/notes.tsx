@@ -37,19 +37,19 @@ export const majorScaleIntervals = [tone, tone, semiTone, tone, tone, tone, semi
 
 export const notes = range(0, noteNames.length);
 
-export function getNoteName(note) {
+export function getNoteName(note: number) {
   return noteNames[note];
 }
 
-export function getNoteColor(note) {
+export function getNoteColor(note: number) {
   return noteColors[note];
 }
 
-export function rotateNoteIndex(note) {
+export function rotateNoteIndex(note: number) {
   return note - (noteNames.length * Math.floor(note / noteNames.length));
 }
 
-export function intervalsToNotes(intervals, key) {
+export function intervalsToNotes(intervals: number[], key: number) {
   return intervals
     .map((_, index) => key + sum(intervals.slice(0, index)))
     .map(rotateNoteIndex);
