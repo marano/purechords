@@ -1,6 +1,6 @@
 import { useState, ReactNode } from 'react';
 import { equals } from 'ramda';
-import { intervalsToNotes } from './notes';
+import { intervalsToNotes } from '../notes';
 import SelectionContext from './SelectionContext';
 
 type Props = {

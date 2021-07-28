@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { equals, range, xprod } from 'ramda';
-import isNonNullable from '../utils/isNonNullable';
-import { rotateNoteIndex } from '../notes';
+import isNonNullable from '../../utils/isNonNullable';
+import { rotateNoteIndex } from '../../notes';
 import useSelectionContext from '../useSelectionContext';
 import GuitarArmContext from './GuitarArmContext';
 
