@@ -1,5 +1,5 @@
 import { equals } from 'ramda'
-import { getNoteName, intervalsToNotes } from "../../notes"
+import { getNoteName, intervalsToNotes } from "../../utils/notes"
 import useSelectionContext from "../useSelectionContext"
 import Button from "../Button"
 

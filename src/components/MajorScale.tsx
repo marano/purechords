@@ -1,5 +1,5 @@
 import { startsWith } from 'ramda';
-import { getNoteName, intervalsToNotes, majorScaleIntervals } from '../notes';
+import { getNoteName, intervalsToNotes, majorScaleIntervals } from '../utils/notes';
 import Selectable from './Selectable';
 import useSelectionContext from './useSelectionContext';
 

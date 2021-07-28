@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import { getNoteColor, getNoteName } from '../../notes';
+import { getNoteColor, getNoteName } from '../../utils/notes';
 import useSelectionContext from '../useSelectionContext';
 import useGuitarArmContext from './useGuitarArmContext';
 
