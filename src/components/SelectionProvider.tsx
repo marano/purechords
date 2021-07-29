@@ -1,6 +1,6 @@
 import { useState, ReactNode } from 'react';
-import { equals } from 'ramda';
 import { Note } from '../types';
+import areNumberArraysEquals from '../utils/areNumberArraysEquals';
 import { intervalsToNotes } from '../utils/notes';
 import SelectionContext from './SelectionContext';
 
@@ -30,7 +30,7 @@ export default function SelectionProvider({ children }: Props) {
 
     selectedScaleNotes,
     setSelectedScaleNotes(noteSequence: Note[] | null) {
-      if (equals(selectedScaleNotes, noteSequence)) {
+      if (selectedScaleNotes && noteSequence && areNumberArraysEquals(selectedScaleNotes, noteSequence)) {
         setSelectedScaleNotes(null);
       } else {
         setSelectedNote(null);

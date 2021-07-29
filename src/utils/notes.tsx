@@ -1,4 +1,4 @@
-import { range, sum } from 'ramda';
+import { range } from 'fp-ts/NonEmptyArray'
 import { Note } from '../types';
 
 const noteNames = [
@@ -36,7 +36,7 @@ const semiTone = 1;
 
 export const majorScaleIntervals = [tone, tone, semiTone, tone, tone, tone, semiTone];
 
-export const notes = range(0, noteNames.length) as Note[];
+export const notes = range(0, noteNames.length - 1) as Note[];
 
 export function getNoteName(note: Note) {
   return noteNames[note];
@@ -54,4 +54,8 @@ export function intervalsToNotes(intervals: number[], key: Note) {
   return intervals
     .map((_, index) => key + sum(intervals.slice(0, index)))
     .map(rotateNoteIndex);
+}
+
+function sum(array: number[]) {
+  return array.reduce((result, value) => result + value, 0)
 }

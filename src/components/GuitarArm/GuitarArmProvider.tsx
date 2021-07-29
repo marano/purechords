@@ -1,6 +1,8 @@
 import { ReactNode } from 'react';
-import { equals, range, xprod } from 'ramda';
+import { cartesian } from 'fp-ts-std/Array'
+import { range } from 'fp-ts/NonEmptyArray'
 import { Note } from '../../types';
+import areNumberArraysEquals from '../../utils/areNumberArraysEquals';
 import isNonNullable from '../../utils/isNonNullable';
 import { rotateNoteIndex } from '../../utils/notes';
 import useSelectionContext from '../useSelectionContext';
@@ -71,7 +73,6 @@ export default function GuitarArmProvider({ strings, fretCount, children }: Prop
             if (note === getNote(nextCoordinates[0], nextCoordinates[1])) {
               return nextCoordinates;
             }
-
           }
         }).filter(isNonNullable)
     }
@@ -82,13 +83,13 @@ export default function GuitarArmProvider({ strings, fretCount, children }: Prop
   function isFretHighlighted(stringIndex: number, fretIndex: number) {
     const fret = [stringIndex, fretIndex]
 
-    return highlightedFrets.some(equals(fret))
+    return highlightedFrets.some(highlightedFret => areNumberArraysEquals(fret, highlightedFret))
   }
 
   function getFrets(stringStart: number, stringEnd: number, fretStart: number, fretEnd: number) {
-    const stringRange = range(stringStart, stringEnd + 1).reverse();
-    const fretRange = range(fretStart, fretEnd + 1);
+    const stringRange = range(stringStart, stringEnd).reverse();
+    const fretRange = range(fretStart, fretEnd);
 
-    return xprod(stringRange, fretRange);
+    return cartesian(stringRange)(fretRange);
   }
 }

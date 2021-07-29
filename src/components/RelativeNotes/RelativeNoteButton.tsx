@@ -1,5 +1,5 @@
-import { equals } from 'ramda'
 import { getNoteName, intervalsToNotes } from "../../utils/notes"
+import areNumberArraysEquals from '../../utils/areNumberArraysEquals'
 import useSelectionContext from "../useSelectionContext"
 import Button from "../Button"
 
@@ -14,7 +14,9 @@ export default function RelativeNoteButton({ intervals }: Props) {
     setSelectedIntervals
   } = useSelectionContext()
 
-  const isSelected = equals(intervals, selectedIntervals)
+  const isSelected = selectedIntervals
+    ? areNumberArraysEquals(intervals, selectedIntervals)
+    : false
   const notes = intervalsToNotes(intervals, selectedNote!)
 
   return (
