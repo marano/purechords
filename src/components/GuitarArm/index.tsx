@@ -10,7 +10,7 @@ type Props = {
 }
 
 export default function GuitarArm({ strings, fretCount }: Props) {
-  const frets = getFrets(0, strings.length - 1, 0, fretCount - 1)
+  const frets = getFrets(0, strings.length, 0, fretCount)
 
   return (
     <GuitarArmProvider strings={strings} fretCount={fretCount}>

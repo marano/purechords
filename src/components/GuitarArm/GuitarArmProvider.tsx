@@ -40,10 +40,10 @@ export default function GuitarArmProvider({ strings, fretCount, children }: Prop
   function getHighlightedFrets(): Fret[] {
     if (selectedNote !== null) {
       const stringStart = 0;
-      const stringEnd = strings.length - 1;
+      const stringEnd = strings.length;
 
       const fretStart = 0;
-      const fretEnd = fretCount - 1;
+      const fretEnd = fretCount;
 
       const highlightedNotes = [selectedNote, ...(selectedIntervalNotes || [])]
 
@@ -55,10 +55,10 @@ export default function GuitarArmProvider({ strings, fretCount, children }: Prop
 
     if (selectedScaleNotes !== null) {
       const stringStart = 0;
-      const stringEnd = strings.length - 1;
+      const stringEnd = strings.length;
 
       const fretStart = 0;
-      const fretEnd = 5;
+      const fretEnd = 6;
 
       const frets = getFrets(stringStart, stringEnd, fretStart, fretEnd)
 
