@@ -1,5 +1,6 @@
 import { Note } from '../types';
-import areNumberArraysEquals from '../utils/areNumberArraysEquals';
+import { Eq } from 'fp-ts/number'
+import { startsWith } from 'fp-ts-std/Array'
 import { getNoteName, intervalsToNotes, majorScaleIntervals } from '../utils/notes';
 import Selectable from './Selectable';
 import useSelectionContext from './useSelectionContext';
@@ -20,7 +21,7 @@ export default function MajorScale({ keyNote }: Props) {
   const visibleNotes = notes.concat(notes).concat(notes)
 
   const isSelected = selectedScaleNotes
-    ? areNumberArraysEquals(notes, selectedScaleNotes.slice(0, notes.length))
+    ? startsWith(Eq)(notes)(selectedScaleNotes)
     : false
 
   return (
