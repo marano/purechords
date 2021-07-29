@@ -15,7 +15,6 @@ export default function MajorScale({ keyNote }: Props) {
     setSelectedScaleNotes,
   } = useSelectionContext();
 
-
   const notes = intervalsToNotes(majorScaleIntervals, keyNote)
 
   const visibleNotes = notes.concat(notes).concat(notes)
