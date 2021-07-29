@@ -14,11 +14,10 @@ export default function GuitarString({ stringIndex }: Props) {
   return (
     <>
       {fretIndexes.map(
-        (fretIndex) => (
+        fretIndex => (
           <GuitarFret
             key={fretIndex}
-            stringIndex={stringIndex}
-            fretIndex={fretIndex}
+            fret={[stringIndex, fretIndex]}
           />
         )
       )}

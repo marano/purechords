@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { cartesian } from 'fp-ts-std/Array'
 import { range } from 'fp-ts/NonEmptyArray'
-import { Note } from '../../types';
+import { Fret, Note } from '../../types';
 import areNumberArraysEquals from '../../utils/areNumberArraysEquals';
 import isNonNullable from '../../utils/isNonNullable';
 import { rotateNoteIndex } from '../../utils/notes';
@@ -35,11 +35,11 @@ export default function GuitarArmProvider({ strings, fretCount, children }: Prop
     </GuitarArmContext.Provider>
   );
 
-  function getNote(stringIndex: number, fretIndex: number) {
-    return rotateNoteIndex(strings[stringIndex] + fretIndex);
+  function getNote(fret: Fret) {
+    return rotateNoteIndex(strings[fret[0]] + fret[1]);
   }
 
-  function getHighlightedFrets(): [number, number][] {
+  function getHighlightedFrets(): Fret[] {
     if (selectedNote !== null) {
       const stringStart = 0;
       const stringEnd = strings.length - 1;
@@ -51,8 +51,7 @@ export default function GuitarArmProvider({ strings, fretCount, children }: Prop
 
       return getFrets(stringStart, stringEnd, fretStart, fretEnd)
         .filter(
-          ([stringIndex, fretIndex]) =>
-            highlightedNotes.includes(getNote(stringIndex, fretIndex))
+          (fret) => highlightedNotes.includes(getNote(fret))
         )
     }
 
@@ -63,14 +62,14 @@ export default function GuitarArmProvider({ strings, fretCount, children }: Prop
       const fretStart = 0;
       const fretEnd = 5;
 
-      const fretCoordinates = getFrets(stringStart, stringEnd, fretStart, fretEnd)
+      const frets = getFrets(stringStart, stringEnd, fretStart, fretEnd)
 
       return selectedScaleNotes
         .map((note) => {
-          while (fretCoordinates.length) {
-            const nextCoordinates = fretCoordinates.shift()!;
+          while (frets.length) {
+            const nextCoordinates = frets.shift()!;
 
-            if (note === getNote(nextCoordinates[0], nextCoordinates[1])) {
+            if (note === getNote(nextCoordinates)) {
               return nextCoordinates;
             }
           }
@@ -80,9 +79,7 @@ export default function GuitarArmProvider({ strings, fretCount, children }: Prop
     return []
   }
 
-  function isFretHighlighted(stringIndex: number, fretIndex: number) {
-    const fret = [stringIndex, fretIndex]
-
+  function isFretHighlighted(fret: Fret) {
     return highlightedFrets.some(highlightedFret => areNumberArraysEquals(fret, highlightedFret))
   }
 

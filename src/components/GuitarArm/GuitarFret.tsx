@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+import { Fret } from '../../types';
 import { getNoteColor, getNoteName } from '../../utils/notes';
 import useSelectionContext from '../useSelectionContext';
 import useGuitarArmContext from './useGuitarArmContext';
@@ -19,21 +20,20 @@ const Container = styled.div`
 `
 
 type Props = {
-  stringIndex: number
-  fretIndex: number
+  fret: Fret
 }
 
-export default function GuitarFret({ stringIndex, fretIndex }: Props) {
+export default function GuitarFret({ fret }: Props) {
   const { selectedNote, selectedScaleNotes } = useSelectionContext()
   const { getNote, isFretHighlighted } = useGuitarArmContext();
 
-  const note = getNote(stringIndex, fretIndex);
+  const note = getNote(fret);
   const noteColor = getNoteColor(note);
 
-  const isHighlighted = isFretHighlighted(stringIndex, fretIndex)
+  const isHighlighted = isFretHighlighted(fret)
 
   return (
-    <Container isOpenString={fretIndex === 0} color={getContainerColor()}>
+    <Container isOpenString={fret[1] === 0} color={getContainerColor()}>
       {getNoteName(note)}
     </Container>
   );
