@@ -31,25 +31,15 @@ export const noteColors = [
   '#e957b2',
 ];
 
-export const intervalNames = [
-  'm2',
-  'M2',
-  'm3',
-  'M3',
-  'P4',
-  'TT',
-  'P5',
-  'm6',
-  'M6',
-  'm7',
-  'M7',
-  'Oct',
-];
+export const chordIntervals = {
+  major: [Interval.U, Interval.M3, Interval.P5],
+  augmented: [Interval.U, Interval.M3, Interval.m6],
+  minor: [Interval.U, Interval.m3, Interval.P5],
+}
 
-export const tone: Interval = 2;
-export const semiTone: Interval = 1;
+export const tone: Interval = Interval.M2;
+export const semiTone: Interval = Interval.m2;
 
 export const majorScaleIntervals = [tone, tone, semiTone, tone, tone, tone, semiTone];
 
 export const notes = range(0, noteNames.length - 1) as Note[];
-export const intervals = range(0, intervalNames.length - 1) as Interval[];

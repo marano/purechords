@@ -1,5 +1,5 @@
 import { Interval } from "../../types"
-import { getNoteName, intervalsToNotes } from "../../utils/notes"
+import { getNoteName, relativeIntervalsToNotes } from "../../utils/notes"
 import areNumberArraysEquals from '../../utils/areNumberArraysEquals'
 import useSelectionContext from "../useSelectionContext"
 import Button from "../Button"
@@ -18,11 +18,12 @@ export default function RelativeNoteButton({ intervals }: Props) {
   const isSelected = selectedIntervals
     ? areNumberArraysEquals(intervals, selectedIntervals)
     : false
-  const notes = intervalsToNotes(intervals, selectedNote!)
+
+  const notes = relativeIntervalsToNotes(intervals, selectedNote!)
 
   return (
     <Button isSelected={isSelected} onClick={onClick}>
-      {notes.map(note => getNoteName(note)).join(' ')}
+      {notes.map(getNoteName).join(' ')}
     </Button>
   )
 

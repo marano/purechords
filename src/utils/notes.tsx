@@ -14,9 +14,15 @@ export function addIntervalToNote(note: Note, interval: number) {
 }
 
 export function intervalsToNotes(intervals: Interval[], key: Note) {
-  return intervals
-    .map((_, index) => sum(intervals.slice(0, index)))
-    .map(interval => addIntervalToNote(key, interval));
+  return intervals.map(interval => addIntervalToNote(key, interval));
+}
+
+export function relativeIntervalsToNotes(intervals: Interval[], key: Note) {
+  const absoluteIntervals = intervals.map(
+    (_, index) => sum(intervals.slice(0, index))
+  )
+
+  return intervalsToNotes(absoluteIntervals, key)
 }
 
 function rotateNoteIndex(exceedingNote: number) {

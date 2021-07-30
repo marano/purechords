@@ -1,7 +1,7 @@
 import { useState, ReactNode } from 'react';
 import { Interval, Note } from '../types';
 import areNumberArraysEquals from '../utils/areNumberArraysEquals';
-import { intervalsToNotes } from '../utils/notes';
+import { relativeIntervalsToNotes } from '../utils/notes';
 import SelectionContext from './SelectionContext';
 
 type Props = {
@@ -15,7 +15,7 @@ export default function SelectionProvider({ children }: Props) {
   const [selectedChordNote, setSelectedChordNote] = useState<Note | undefined>();
 
   const selectedIntervalNotes = selectedNote !== undefined && selectedIntervals
-    ? intervalsToNotes(selectedIntervals, selectedNote)
+    ? relativeIntervalsToNotes(selectedIntervals, selectedNote)
     : undefined
 
   const value = {
