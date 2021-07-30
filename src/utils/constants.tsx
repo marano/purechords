@@ -46,8 +46,8 @@ export const intervalNames = [
   'Oct',
 ];
 
-export const tone = 2;
-export const semiTone = 1;
+export const tone: Interval = 2;
+export const semiTone: Interval = 1;
 
 export const majorScaleIntervals = [tone, tone, semiTone, tone, tone, tone, semiTone];
 

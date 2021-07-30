@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { Note } from '../types';
+import { Interval, Note } from '../types';
 
 type Value = {
   selectedNote: Note | null
@@ -8,8 +8,8 @@ type Value = {
   selectedScaleNotes: Note[] | null
   setSelectedScaleNotes: (notes: Note[] | null) => void
 
-  selectedIntervals: number[] | null
-  setSelectedIntervals: (notes: number[] | null) => void
+  selectedIntervals: Interval[] | null
+  setSelectedIntervals: (notes: Interval[] | null) => void
 
   selectedIntervalNotes: Note[] | null
 }

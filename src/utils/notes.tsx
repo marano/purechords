@@ -1,4 +1,4 @@
-import { Note } from '../types';
+import { Interval, Note } from '../types';
 import { noteColors, noteNames, notes } from './constants';
 
 export function getNoteName(note: Note) {
@@ -13,7 +13,7 @@ export function addIntervalToNote(note: Note, interval: number) {
   return rotateNoteIndex(note + interval)
 }
 
-export function intervalsToNotes(intervals: number[], key: Note) {
+export function intervalsToNotes(intervals: Interval[], key: Note) {
   return intervals
     .map((_, index) => sum(intervals.slice(0, index)))
     .map(interval => addIntervalToNote(key, interval));

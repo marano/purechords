@@ -1,5 +1,5 @@
 import { useState, ReactNode } from 'react';
-import { Note } from '../types';
+import { Interval, Note } from '../types';
 import areNumberArraysEquals from '../utils/areNumberArraysEquals';
 import { intervalsToNotes } from '../utils/notes';
 import SelectionContext from './SelectionContext';
@@ -10,7 +10,7 @@ type Props = {
 
 export default function SelectionProvider({ children }: Props) {
   const [selectedNote, setSelectedNote] = useState<Note | null>(null);
-  const [selectedIntervals, setSelectedIntervals] = useState<number[] | null>(null);
+  const [selectedIntervals, setSelectedIntervals] = useState<Interval[] | null>(null);
   const [selectedScaleNotes, setSelectedScaleNotes] = useState<Note[] | null>(null);
 
   const selectedIntervalNotes = selectedNote !== null && selectedIntervals
