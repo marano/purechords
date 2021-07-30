@@ -46,14 +46,18 @@ export function getNoteColor(note: Note) {
   return noteColors[note];
 }
 
-export function rotateNoteIndex(exceedingNote: number) {
-  return exceedingNote - (noteNames.length * Math.floor(exceedingNote / noteNames.length)) as Note;
+export function addIntervalToNote(note: Note, interval: number) {
+  return rotateNoteIndex(note + interval)
 }
 
 export function intervalsToNotes(intervals: number[], key: Note) {
   return intervals
     .map((_, index) => key + sum(intervals.slice(0, index)))
     .map(rotateNoteIndex);
+}
+
+function rotateNoteIndex(exceedingNote: number) {
+  return exceedingNote - (noteNames.length * Math.floor(exceedingNote / noteNames.length)) as Note;
 }
 
 function sum(array: number[]) {

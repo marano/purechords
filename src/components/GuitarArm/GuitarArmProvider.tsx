@@ -3,7 +3,7 @@ import { Fret, Note } from '../../types';
 import areNumberArraysEquals from '../../utils/areNumberArraysEquals';
 import { getFrets } from '../../utils/frets';
 import isNonNullable from '../../utils/isNonNullable';
-import { rotateNoteIndex } from '../../utils/notes';
+import { addIntervalToNote } from '../../utils/notes';
 import useSelectionContext from '../useSelectionContext';
 import GuitarArmContext from './GuitarArmContext';
 
@@ -33,8 +33,8 @@ export default function GuitarArmProvider({ strings, fretCount, children }: Prop
     </GuitarArmContext.Provider>
   );
 
-  function getNote(fret: Fret) {
-    return rotateNoteIndex(strings[fret[0]] + fret[1]);
+  function getNote([stringIndex, fretIndex]: Fret) {
+    return addIntervalToNote(strings[stringIndex], fretIndex)
   }
 
   function getHighlightedFrets(): Fret[] {
