@@ -28,7 +28,7 @@ export default function RelativeNoteButton({ intervals }: Props) {
 
   function onClick() {
     if (isSelected) {
-      setSelectedIntervals(null)
+      setSelectedIntervals(undefined)
     } else {
       setSelectedIntervals(intervals)
     }

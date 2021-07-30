@@ -6,4 +6,4 @@ type Value = {
   isFretHighlighted: (fret: Fret) => boolean
 }
 
-export default createContext<Value>(null!);
+export default createContext<Value>(undefined!);

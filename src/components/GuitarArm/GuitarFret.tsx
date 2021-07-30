@@ -39,7 +39,7 @@ export default function GuitarFret({ fret }: Props) {
   );
 
   function getContainerColor() {
-    if (selectedNote === null && !selectedScaleNotes) {
+    if (selectedNote === undefined && !selectedScaleNotes) {
       return noteColor
     } else if (isHighlighted) {
       return noteColor

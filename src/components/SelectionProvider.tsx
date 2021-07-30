@@ -9,39 +9,48 @@ type Props = {
 }
 
 export default function SelectionProvider({ children }: Props) {
-  const [selectedNote, setSelectedNote] = useState<Note | null>(null);
-  const [selectedIntervals, setSelectedIntervals] = useState<Interval[] | null>(null);
-  const [selectedScaleNotes, setSelectedScaleNotes] = useState<Note[] | null>(null);
+  const [selectedNote, setSelectedNote] = useState<Note | undefined>();
+  const [selectedIntervals, setSelectedIntervals] = useState<Interval[] | undefined>();
+  const [selectedScaleNotes, setSelectedScaleNotes] = useState<Note[] | undefined>();
+  const [selectedChordKey, setSelectedChordKey] = useState<Note | undefined>();
 
-  const selectedIntervalNotes = selectedNote !== null && selectedIntervals
+  const selectedIntervalNotes = selectedNote !== undefined && selectedIntervals
     ? intervalsToNotes(selectedIntervals, selectedNote)
-    : null
+    : undefined
 
   const value = {
     selectedNote,
-    setSelectedNote(note: Note | null) {
+    setSelectedNote(note?: Note) {
       if (selectedNote === note) {
-        setSelectedNote(null);
+        setSelectedNote(undefined);
       } else {
-        setSelectedScaleNotes(null);
+        setSelectedScaleNotes(undefined);
         setSelectedNote(note);
       }
     },
 
     selectedScaleNotes,
-    setSelectedScaleNotes(noteSequence: Note[] | null) {
+    setSelectedScaleNotes(noteSequence?: Note[]) {
       if (selectedScaleNotes && noteSequence && areNumberArraysEquals(selectedScaleNotes, noteSequence)) {
-        setSelectedScaleNotes(null);
+        setSelectedScaleNotes(undefined);
       } else {
-        setSelectedNote(null);
+        setSelectedNote(undefined);
         setSelectedScaleNotes(noteSequence);
       }
     },
 
     selectedIntervals,
     setSelectedIntervals,
+    selectedIntervalNotes,
 
-    selectedIntervalNotes
+    selectedChordKey,
+    setSelectedChordKey(key?: Note) {
+      if (key === selectedChordKey) {
+        setSelectedChordKey(undefined)
+      } else {
+        setSelectedChordKey(key)
+      }
+    }
   };
 
   return (

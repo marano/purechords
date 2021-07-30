@@ -2,7 +2,6 @@ import { ReactNode } from 'react';
 import { Fret, Note } from '../../types';
 import areNumberArraysEquals from '../../utils/areNumberArraysEquals';
 import { getFrets } from '../../utils/frets';
-import isNonNullable from '../../utils/isNonNullable';
 import { addIntervalToNote } from '../../utils/notes';
 import useSelectionContext from '../useSelectionContext';
 import GuitarArmContext from './GuitarArmContext';
@@ -38,7 +37,7 @@ export default function GuitarArmProvider({ strings, fretCount, children }: Prop
   }
 
   function getHighlightedFrets(): Fret[] {
-    if (selectedNote !== null) {
+    if (selectedNote !== undefined) {
       const stringStart = 0;
       const stringEnd = strings.length;
 
@@ -53,7 +52,7 @@ export default function GuitarArmProvider({ strings, fretCount, children }: Prop
         )
     }
 
-    if (selectedScaleNotes !== null) {
+    if (selectedScaleNotes !== undefined) {
       const stringStart = 0;
       const stringEnd = strings.length;
 
