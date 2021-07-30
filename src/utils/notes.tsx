@@ -52,8 +52,8 @@ export function addIntervalToNote(note: Note, interval: number) {
 
 export function intervalsToNotes(intervals: number[], key: Note) {
   return intervals
-    .map((_, index) => key + sum(intervals.slice(0, index)))
-    .map(rotateNoteIndex);
+    .map((_, index) => sum(intervals.slice(0, index)))
+    .map(interval => addIntervalToNote(key, interval));
 }
 
 function rotateNoteIndex(exceedingNote: number) {
