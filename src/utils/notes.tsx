@@ -57,7 +57,7 @@ export function intervalsToNotes(intervals: number[], key: Note) {
 }
 
 function rotateNoteIndex(exceedingNote: number) {
-  return exceedingNote - (noteNames.length * Math.floor(exceedingNote / noteNames.length)) as Note;
+  return exceedingNote - (notes.length * Math.floor(exceedingNote / notes.length)) as Note;
 }
 
 function sum(array: number[]) {
