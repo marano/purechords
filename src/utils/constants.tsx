@@ -40,6 +40,15 @@ export const chordIntervals = {
 export const tone: Interval = Interval.M2;
 export const semiTone: Interval = Interval.m2;
 
-export const majorScaleIntervals = [tone, tone, semiTone, tone, tone, tone, semiTone];
+export const majorScaleIntervals = [
+  Interval.U,
+  Interval.M2,
+  Interval.M3,
+  Interval.P4,
+  Interval.P5,
+  Interval.M6,
+  Interval.M7,
+  Interval.Oct
+];
 
 export const notes = range(0, noteNames.length - 1) as Note[];
