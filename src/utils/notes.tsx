@@ -1,42 +1,5 @@
-import { range } from 'fp-ts/NonEmptyArray'
 import { Note } from '../types';
-
-const noteNames = [
-  'C',
-  'C#',
-  'D',
-  'D#',
-  'E',
-  'F',
-  'F#',
-  'G',
-  'G#',
-  'A',
-  'A#',
-  'B',
-];
-
-const noteColors = [
-  '#e23058',
-  '#f7583a',
-  '#f8943e',
-  '#f3b72f',
-  '#edd92a',
-  '#95c531',
-  '#55a753',
-  '#11926e',
-  '#3161a3',
-  '#5b37cb',
-  '#a247be',
-  '#e957b2',
-];
-
-const tone = 2;
-const semiTone = 1;
-
-export const majorScaleIntervals = [tone, tone, semiTone, tone, tone, tone, semiTone];
-
-export const notes = range(0, noteNames.length - 1) as Note[];
+import { noteColors, noteNames, notes } from './constants';
 
 export function getNoteName(note: Note) {
   return noteNames[note];

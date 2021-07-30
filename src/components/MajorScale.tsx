@@ -1,7 +1,8 @@
 import { Note } from '../types';
 import { Eq } from 'fp-ts/number'
-import { startsWith } from 'fp-ts-std/Array'
-import { getNoteName, intervalsToNotes, majorScaleIntervals } from '../utils/notes';
+import { getEq } from 'fp-ts/Array'
+import { majorScaleIntervals } from '../utils/constants';
+import { getNoteName, intervalsToNotes } from '../utils/notes';
 import Selectable from './Selectable';
 import useSelectionContext from './useSelectionContext';
 
@@ -17,10 +18,8 @@ export default function MajorScale({ keyNote }: Props) {
 
   const notes = intervalsToNotes(majorScaleIntervals, keyNote)
 
-  const visibleNotes = notes.concat(notes).concat(notes)
-
   const isSelected = selectedScaleNotes
-    ? startsWith(Eq)(notes)(selectedScaleNotes)
+    ? getEq(Eq).equals(notes, selectedScaleNotes)
     : false
 
   return (
@@ -30,7 +29,7 @@ export default function MajorScale({ keyNote }: Props) {
           <Selectable
             key={note}
             isSelected={isSelected}
-            onSelect={() => setSelectedScaleNotes(visibleNotes)}
+            onSelect={() => setSelectedScaleNotes(notes)}
           >
             {getNoteName(note)}
           </Selectable>

@@ -1,4 +1,5 @@
-import { getNoteName, notes } from '../utils/notes';
+import { notes } from '../utils/constants';
+import { getNoteName } from '../utils/notes';
 import Grid from './Grid';
 import Selectable from './Selectable';
 import useSelectionContext from './useSelectionContext';

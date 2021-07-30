@@ -62,16 +62,18 @@ export default function GuitarArmProvider({ strings, fretCount, children }: Prop
 
       const frets = getFrets(stringStart, stringEnd, fretStart, fretEnd)
 
-      return selectedScaleNotes
-        .map((note) => {
-          while (frets.length) {
-            const nextCoordinates = frets.shift()!;
+      let currentScaleNote = 0
 
-            if (note === getNote(nextCoordinates)) {
-              return nextCoordinates;
+      return frets.filter(
+        fret => {
+          if (selectedScaleNotes[currentScaleNote] === getNote(fret)) {
+            if (++currentScaleNote === selectedScaleNotes.length) {
+              currentScaleNote = 0
             }
+            return true;
           }
-        }).filter(isNonNullable)
+        }
+      )
     }
 
     return []

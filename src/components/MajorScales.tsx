@@ -1,6 +1,6 @@
 import Grid from './Grid';
 import MajorScale from './MajorScale';
-import { majorScaleIntervals, notes } from '../utils/notes';
+import { majorScaleIntervals, notes } from '../utils/constants';
 
 export default function MajorScales() {
   return (
