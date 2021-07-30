@@ -1,4 +1,4 @@
-import { Note } from '../../types';
+import { Fret, Note } from '../../types';
 import { getFrets } from '../../utils/frets';
 import Grid from '../Grid';
 import GuitarArmProvider from './GuitarArmProvider';
@@ -15,8 +15,12 @@ export default function GuitarArm({ strings, fretCount }: Props) {
   return (
     <GuitarArmProvider strings={strings} fretCount={fretCount}>
       <Grid columnCount={fretCount}>
-        {frets.map(fret => <GuitarFret key={`${fret[0]}-${fret[1]}`} fret={fret} />)}
+        {frets.map(fret => <GuitarFret key={key(fret)} fret={fret} />)}
       </Grid>
     </GuitarArmProvider>
   );
+}
+
+function key(fret: Fret) {
+  return `${fret[0]}-${fret[1]}`
 }
