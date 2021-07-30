@@ -1,20 +1,5 @@
-import { range } from 'fp-ts/NonEmptyArray'
+import { isNumber } from 'fp-ts/number';
 import { Interval, Note } from '../types';
-
-export const noteNames = [
-  'C',
-  'C#',
-  'D',
-  'D#',
-  'E',
-  'F',
-  'F#',
-  'G',
-  'G#',
-  'A',
-  'A#',
-  'B',
-];
 
 export const noteColors = [
   '#e23058',
@@ -48,7 +33,6 @@ export const majorScaleIntervals = [
   Interval.P5,
   Interval.M6,
   Interval.M7,
-  Interval.Oct
 ];
 
-export const notes = range(0, noteNames.length - 1) as Note[];
+export const notes = Object.values(Note).filter(isNumber);
