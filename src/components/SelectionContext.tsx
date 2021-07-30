@@ -12,8 +12,8 @@ type Value = {
   setSelectedIntervals: (notes?: Interval[]) => void
   selectedIntervalNotes?: Note[]
 
-  selectedChordKey?: Note
-  setSelectedChordKey: (key?: Note) => void
+  selectedChordNote?: Note
+  setSelectedChordNote: (note?: Note) => void
 }
 
 export default createContext<Value>(undefined!);

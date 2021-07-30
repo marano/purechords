@@ -12,7 +12,7 @@ export default function SelectionProvider({ children }: Props) {
   const [selectedNote, setSelectedNote] = useState<Note | undefined>();
   const [selectedIntervals, setSelectedIntervals] = useState<Interval[] | undefined>();
   const [selectedScaleNotes, setSelectedScaleNotes] = useState<Note[] | undefined>();
-  const [selectedChordKey, setSelectedChordKey] = useState<Note | undefined>();
+  const [selectedChordNote, setSelectedChordNote] = useState<Note | undefined>();
 
   const selectedIntervalNotes = selectedNote !== undefined && selectedIntervals
     ? intervalsToNotes(selectedIntervals, selectedNote)
@@ -43,12 +43,12 @@ export default function SelectionProvider({ children }: Props) {
     setSelectedIntervals,
     selectedIntervalNotes,
 
-    selectedChordKey,
-    setSelectedChordKey(key?: Note) {
-      if (key === selectedChordKey) {
-        setSelectedChordKey(undefined)
+    selectedChordNote,
+    setSelectedChordNote(note?: Note) {
+      if (note === selectedChordNote) {
+        setSelectedChordNote(undefined)
       } else {
-        setSelectedChordKey(key)
+        setSelectedChordNote(note)
       }
     }
   };
