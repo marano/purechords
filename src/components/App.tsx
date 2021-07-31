@@ -1,3 +1,4 @@
+import { Note } from '../types'
 import GuitarArm from './GuitarArm'
 import ChromaticScale from './ChromaticScale'
 import Scales from './Scales'
@@ -18,7 +19,7 @@ export default function App() {
       <Chords />
       <br />
       <br />
-      <GuitarArm strings={[4, 11, 7, 2, 9, 4]} fretCount={13} />
+      <GuitarArm strings={[Note.E, Note.B, Note.G, Note.D, Note.A, Note.E]} fretCount={13} />
     </SelectionProvider>
   )
 }
