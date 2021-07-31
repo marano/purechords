@@ -13,7 +13,11 @@ export default function ChordSelection() {
     <>
       {Object.entries(chordIntervals).map(
         ([chordName, intervals]) =>
-          <ChordOption key={chordName} note={selectedChordNote} intervals={intervals} />
+          <ChordOption
+            key={chordName}
+            note={selectedChordNote}
+            intervals={intervals}
+          />
       )}
     </>
   )
