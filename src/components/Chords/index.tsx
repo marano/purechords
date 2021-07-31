@@ -13,8 +13,15 @@ export default function Chords() {
   return (
     <>
       <Grid columnCount={selectedScaleNotes.length}>
-        {selectedScaleNotes.map((note, index) => <ChordNote key={`${index}-${note}`} note={note} />)}
+        {selectedScaleNotes.map(
+          (note, index) =>
+            <ChordNote
+              key={`${index}-${note}`}
+              note={note}
+            />
+        )}
       </Grid>
+
       <ChordSelection />
     </>
   )
