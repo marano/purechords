@@ -7,7 +7,6 @@
     "@types/react": "^17.0.15",
     "@types/react-dom": "^17.0.9",
     "@types/styled-components": "^5.1.11",
-    "classnames": "^2.3.1",
     "fp-ts": "^2.11.1",
     "fp-ts-std": "^0.10.1",
     "react": "^17.0.2",
