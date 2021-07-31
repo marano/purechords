@@ -19,7 +19,7 @@ export default function App() {
       <Chords />
       <br />
       <br />
-      <GuitarArm strings={[Note.E, Note.B, Note.G, Note.D, Note.A, Note.E]} fretCount={13} />
+      <GuitarArm strings={[Note.E, Note.B, Note.G, Note.D, Note.A, Note.E]} fretCount={21} />
     </SelectionProvider>
   )
 }
