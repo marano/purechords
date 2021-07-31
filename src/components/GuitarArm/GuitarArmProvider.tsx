@@ -16,7 +16,8 @@ export default function GuitarArmProvider({ strings, fretCount, children }: Prop
   const {
     selectedNote,
     selectedScaleNotes,
-    selectedIntervalNotes
+    selectedIntervalNotes,
+    selectedChord
   } = useSelectionContext()
 
   const value = {
@@ -50,6 +51,20 @@ export default function GuitarArmProvider({ strings, fretCount, children }: Prop
         .filter(
           (fret) => highlightedNotes.includes(getNote(fret))
         )
+    }
+
+    if (selectedChord) {
+      const stringStart = 0
+      const stringEnd = strings.length
+
+      const fretStart = 0
+      const fretEnd = 21
+
+      const frets = getFrets(stringStart, stringEnd, fretStart, fretEnd)
+
+      return frets.filter(
+        fret => selectedChord.includes(getNote(fret))
+      )
     }
 
     if (selectedScaleNotes !== undefined) {
