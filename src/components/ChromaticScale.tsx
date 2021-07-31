@@ -1,11 +1,11 @@
-import notes from '../constants/notes';
-import getNoteName from '../utils/getNoteName';
-import useSelectionContext from './useSelectionContext';
-import Grid from './Grid';
-import Selectable from './Selectable';
+import notes from '../constants/notes'
+import getNoteName from '../utils/getNoteName'
+import useSelectionContext from './useSelectionContext'
+import Grid from './Grid'
+import Selectable from './Selectable'
 
 export default function ChromaticScale() {
-  const { selectedNote, setSelectedNote } = useSelectionContext();
+  const { selectedNote, setSelectedNote } = useSelectionContext()
 
   return (
     <Grid columnCount={12}>
@@ -21,5 +21,5 @@ export default function ChromaticScale() {
         ),
       )}
     </Grid>
-  );
+  )
 }

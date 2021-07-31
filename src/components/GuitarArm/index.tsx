@@ -1,8 +1,8 @@
-import { Fret, Note } from '../../types';
-import getFrets from '../../utils/getFrets';
-import Grid from '../Grid';
-import GuitarArmProvider from './GuitarArmProvider';
-import GuitarFret from './GuitarFret';
+import { Fret, Note } from '../../types'
+import getFrets from '../../utils/getFrets'
+import Grid from '../Grid'
+import GuitarArmProvider from './GuitarArmProvider'
+import GuitarFret from './GuitarFret'
 
 type Props = {
   strings: Note[]
@@ -18,7 +18,7 @@ export default function GuitarArm({ strings, fretCount }: Props) {
         {frets.map(fret => <GuitarFret key={key(fret)} fret={fret} />)}
       </Grid>
     </GuitarArmProvider>
-  );
+  )
 }
 
 function key(fret: Fret) {

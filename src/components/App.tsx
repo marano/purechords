@@ -1,9 +1,9 @@
-import GuitarArm from './GuitarArm';
-import ChromaticScale from './ChromaticScale';
-import Scales from './Scales';
-import SelectionProvider from './SelectionProvider';
-import RelativeNotes from './RelativeNotes';
-import Chords from './Chords';
+import GuitarArm from './GuitarArm'
+import ChromaticScale from './ChromaticScale'
+import Scales from './Scales'
+import SelectionProvider from './SelectionProvider'
+import RelativeNotes from './RelativeNotes'
+import Chords from './Chords'
 
 export default function App() {
   return (
@@ -20,5 +20,5 @@ export default function App() {
       <br />
       <GuitarArm strings={[4, 11, 7, 2, 9, 4]} fretCount={13} />
     </SelectionProvider>
-  );
+  )
 }

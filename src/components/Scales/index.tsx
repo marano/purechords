@@ -1,7 +1,7 @@
-import notes from '../../constants/notes';
-import scaleIntervals from '../../constants/scaleIntervals';
-import Grid from '../Grid';
-import Scale from './Scale';
+import notes from '../../constants/notes'
+import scaleIntervals from '../../constants/scaleIntervals'
+import Grid from '../Grid'
+import Scale from './Scale'
 
 export default function Scales() {
   return (
@@ -15,5 +15,5 @@ export default function Scales() {
           />,
       )}
     </Grid>
-  );
+  )
 }

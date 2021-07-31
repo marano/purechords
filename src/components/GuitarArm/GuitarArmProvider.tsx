@@ -1,10 +1,10 @@
-import { ReactNode } from 'react';
-import { Fret, Note } from '../../types';
-import addIntervalToNote from '../../utils/addIntervalToNotes';
-import areNumberArraysEquals from '../../utils/areNumberArraysEquals';
-import getFrets from '../../utils/getFrets';
-import useSelectionContext from '../useSelectionContext';
-import GuitarArmContext from './GuitarArmContext';
+import { ReactNode } from 'react'
+import { Fret, Note } from '../../types'
+import addIntervalToNote from '../../utils/addIntervalToNotes'
+import areNumberArraysEquals from '../../utils/areNumberArraysEquals'
+import getFrets from '../../utils/getFrets'
+import useSelectionContext from '../useSelectionContext'
+import GuitarArmContext from './GuitarArmContext'
 
 type Props = {
   strings: Note[]
@@ -17,12 +17,12 @@ export default function GuitarArmProvider({ strings, fretCount, children }: Prop
     selectedNote,
     selectedScaleNotes,
     selectedIntervalNotes
-  } = useSelectionContext();
+  } = useSelectionContext()
 
   const value = {
     getNote,
     isFretHighlighted,
-  };
+  }
 
   const highlightedFrets = getHighlightedFrets()
 
@@ -30,7 +30,7 @@ export default function GuitarArmProvider({ strings, fretCount, children }: Prop
     <GuitarArmContext.Provider value={value}>
       {children}
     </GuitarArmContext.Provider>
-  );
+  )
 
   function getNote([stringIndex, fretIndex]: Fret) {
     return addIntervalToNote(strings[stringIndex], fretIndex)
@@ -38,11 +38,11 @@ export default function GuitarArmProvider({ strings, fretCount, children }: Prop
 
   function getHighlightedFrets(): Fret[] {
     if (selectedNote !== undefined) {
-      const stringStart = 0;
-      const stringEnd = strings.length;
+      const stringStart = 0
+      const stringEnd = strings.length
 
-      const fretStart = 0;
-      const fretEnd = fretCount;
+      const fretStart = 0
+      const fretEnd = fretCount
 
       const highlightedNotes = [selectedNote, ...(selectedIntervalNotes || [])]
 
@@ -53,11 +53,11 @@ export default function GuitarArmProvider({ strings, fretCount, children }: Prop
     }
 
     if (selectedScaleNotes !== undefined) {
-      const stringStart = 0;
-      const stringEnd = strings.length;
+      const stringStart = 0
+      const stringEnd = strings.length
 
-      const fretStart = 0;
-      const fretEnd = 6;
+      const fretStart = 0
+      const fretEnd = 6
 
       const frets = getFrets(stringStart, stringEnd, fretStart, fretEnd)
 
@@ -69,7 +69,7 @@ export default function GuitarArmProvider({ strings, fretCount, children }: Prop
             if (++currentScaleNote === selectedScaleNotes.length) {
               currentScaleNote = 0
             }
-            return true;
+            return true
           }
         }
       )

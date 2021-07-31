@@ -1,5 +1,5 @@
-import { Interval, Note } from "../types"
-import intervalsToNotes from "./intervalsToNotes"
+import { Interval, Note } from '../types'
+import intervalsToNotes from './intervalsToNotes'
 
 export default function relativeIntervalsToNotes(intervals: Interval[], key: Note) {
   const absoluteIntervals = intervals.map(

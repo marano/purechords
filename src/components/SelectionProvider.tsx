@@ -1,18 +1,18 @@
-import { useState, ReactNode } from 'react';
-import { Interval, Note } from '../types';
-import areNumberArraysEquals from '../utils/areNumberArraysEquals';
-import relativeIntervalsToNotes from '../utils/relativeIntervalsToNotes';
-import SelectionContext from './SelectionContext';
+import { useState, ReactNode } from 'react'
+import { Interval, Note } from '../types'
+import areNumberArraysEquals from '../utils/areNumberArraysEquals'
+import relativeIntervalsToNotes from '../utils/relativeIntervalsToNotes'
+import SelectionContext from './SelectionContext'
 
 type Props = {
   children: ReactNode
 }
 
 export default function SelectionProvider({ children }: Props) {
-  const [selectedNote, setSelectedNote] = useState<Note | undefined>();
-  const [selectedIntervals, setSelectedIntervals] = useState<Interval[] | undefined>();
-  const [selectedScaleNotes, setSelectedScaleNotes] = useState<Note[] | undefined>();
-  const [selectedChordNote, setSelectedChordNote] = useState<Note | undefined>();
+  const [selectedNote, setSelectedNote] = useState<Note | undefined>()
+  const [selectedIntervals, setSelectedIntervals] = useState<Interval[] | undefined>()
+  const [selectedScaleNotes, setSelectedScaleNotes] = useState<Note[] | undefined>()
+  const [selectedChordNote, setSelectedChordNote] = useState<Note | undefined>()
 
   const selectedIntervalNotes = selectedNote !== undefined && selectedIntervals
     ? relativeIntervalsToNotes(selectedIntervals, selectedNote)
@@ -22,20 +22,20 @@ export default function SelectionProvider({ children }: Props) {
     selectedNote,
     setSelectedNote(note?: Note) {
       if (selectedNote === note) {
-        setSelectedNote(undefined);
+        setSelectedNote(undefined)
       } else {
-        setSelectedScaleNotes(undefined);
-        setSelectedNote(note);
+        setSelectedScaleNotes(undefined)
+        setSelectedNote(note)
       }
     },
 
     selectedScaleNotes,
     setSelectedScaleNotes(noteSequence?: Note[]) {
       if (selectedScaleNotes && noteSequence && areNumberArraysEquals(selectedScaleNotes, noteSequence)) {
-        setSelectedScaleNotes(undefined);
+        setSelectedScaleNotes(undefined)
       } else {
-        setSelectedNote(undefined);
-        setSelectedScaleNotes(noteSequence);
+        setSelectedNote(undefined)
+        setSelectedScaleNotes(noteSequence)
       }
     },
 
@@ -51,11 +51,11 @@ export default function SelectionProvider({ children }: Props) {
         setSelectedChordNote(note)
       }
     }
-  };
+  }
 
   return (
     <SelectionContext.Provider value={value}>
       {children}
     </SelectionContext.Provider>
-  );
+  )
 }

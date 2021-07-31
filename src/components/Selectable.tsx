@@ -1,9 +1,9 @@
-import { ReactNode } from 'react';
-import styled from 'styled-components/macro';
+import { ReactNode } from 'react'
+import styled from 'styled-components/macro'
 
 const Pointer = styled.div`
   cursor: pointer;
-`;
+`
 
 type Props = {
   isSelected: boolean
@@ -16,5 +16,5 @@ export default function Selectable({ isSelected, onSelect, children }: Props) {
     <Pointer className={isSelected ? 'highlighted' : undefined} onClick={onSelect}>
       {children}
     </Pointer>
-  );
+  )
 }

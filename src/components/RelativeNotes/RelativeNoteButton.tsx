@@ -1,9 +1,9 @@
-import { Interval } from "../../types"
+import { Interval } from '../../types'
 import areNumberArraysEquals from '../../utils/areNumberArraysEquals'
-import relativeIntervalsToNotes from "../../utils/relativeIntervalsToNotes"
-import getNoteName from "../../utils/getNoteName"
-import useSelectionContext from "../useSelectionContext"
-import Button from "../Button"
+import relativeIntervalsToNotes from '../../utils/relativeIntervalsToNotes'
+import getNoteName from '../../utils/getNoteName'
+import useSelectionContext from '../useSelectionContext'
+import Button from '../Button'
 
 type Props = {
   intervals: Interval[]

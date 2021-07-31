@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import styled from "styled-components/macro"
+import styled from 'styled-components/macro'
 
 type ContainerProps = {
   isSelected: boolean

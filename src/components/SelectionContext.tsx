@@ -1,5 +1,5 @@
-import { createContext } from 'react';
-import { Interval, Note } from '../types';
+import { createContext } from 'react'
+import { Interval, Note } from '../types'
 
 type Value = {
   selectedNote?: Note
@@ -16,4 +16,4 @@ type Value = {
   setSelectedChordNote: (note?: Note) => void
 }
 
-export default createContext<Value>(undefined!);
+export default createContext<Value>(undefined!)

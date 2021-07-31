@@ -1,9 +1,9 @@
-import styled from 'styled-components/macro';
-import { Fret } from '../../types';
-import { getNoteColor } from '../../utils/getNoteColor';
-import getNoteName from '../../utils/getNoteName';
-import useSelectionContext from '../useSelectionContext';
-import useGuitarArmContext from './useGuitarArmContext';
+import styled from 'styled-components/macro'
+import { Fret } from '../../types'
+import { getNoteColor } from '../../utils/getNoteColor'
+import getNoteName from '../../utils/getNoteName'
+import useSelectionContext from '../useSelectionContext'
+import useGuitarArmContext from './useGuitarArmContext'
 
 type ContainerProps = {
   color: string
@@ -26,10 +26,10 @@ type Props = {
 
 export default function GuitarFret({ fret }: Props) {
   const { selectedNote, selectedScaleNotes } = useSelectionContext()
-  const { getNote, isFretHighlighted } = useGuitarArmContext();
+  const { getNote, isFretHighlighted } = useGuitarArmContext()
 
-  const note = getNote(fret);
-  const noteColor = getNoteColor(note);
+  const note = getNote(fret)
+  const noteColor = getNoteColor(note)
 
   const isHighlighted = isFretHighlighted(fret)
 
@@ -37,7 +37,7 @@ export default function GuitarFret({ fret }: Props) {
     <Container isOpenString={fret[1] === 0} color={getContainerColor()}>
       {getNoteName(note)}
     </Container>
-  );
+  )
 
   function getContainerColor() {
     if (selectedNote === undefined && !selectedScaleNotes) {

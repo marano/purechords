@@ -1,7 +1,7 @@
-import useSelectionContext from "../useSelectionContext";
-import Grid from "../Grid";
-import ChordNote from "./ChordNote";
-import ChordSelection from "./ChordSelection";
+import useSelectionContext from '../useSelectionContext'
+import Grid from '../Grid'
+import ChordNote from './ChordNote'
+import ChordSelection from './ChordSelection'
 
 export default function Chords() {
   const { selectedScaleNotes } = useSelectionContext()

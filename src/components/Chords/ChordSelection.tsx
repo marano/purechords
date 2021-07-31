@@ -1,6 +1,6 @@
-import chordIntervals from "../../constants/chordIntervals";
-import useSelectionContext from "../useSelectionContext";
-import ChordOption from "./ChordOption";
+import chordIntervals from '../../constants/chordIntervals'
+import useSelectionContext from '../useSelectionContext'
+import ChordOption from './ChordOption'
 
 export default function ChordSelection() {
   const { selectedChordNote } = useSelectionContext()

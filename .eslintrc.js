@@ -2,11 +2,15 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    node: true,
   },
   extends: [
+    'eslint:recommended',
     'plugin:react/recommended',
-    'airbnb',
+    'plugin:react-hooks/recommended',
+    'plugin:@typescript-eslint/recommended'
   ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -16,15 +20,26 @@ module.exports = {
   },
   plugins: [
     'react',
+    'react-hooks',
+    '@typescript-eslint',
   ],
   rules: {
-    'array-callback-return': [0],
-    'consistent-return': [0],
-    'no-else-return': [0],
+    'array-callback-return': ['off'],
+    'consistent-return': ['off'],
+
+    'indent': ['error', 2],
+    'linebreak-style': ['error', 'unix'],
+    'no-else-return': ['off'],
+    'no-multiple-empty-lines': [2, { max: 1 }],
     'no-use-before-define': ['error', { functions: false, classes: false }],
-    'jsx-a11y/no-static-element-interactions': [0],
-    'jsx-a11y/click-events-have-key-events': [0],
-    'react/prop-types': [0],
-    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'quotes': ['error', 'single'],
+    'semi': ['error', 'never'],
+
+    '@typescript-eslint/explicit-module-boundary-types': ['off'],
+    '@typescript-eslint/no-non-null-assertion': ['off'],
+
+    'react/prop-types': ['off'],
+    'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
+    'react/react-in-jsx-scope': ['off'],
   },
-};
+}

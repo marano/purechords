@@ -1,4 +1,4 @@
-import { Interval } from "../types";
+import { Interval } from '../types'
 
 export default {
   major: [Interval.U, Interval.M3, Interval.P5],

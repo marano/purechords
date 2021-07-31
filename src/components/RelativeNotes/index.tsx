@@ -1,5 +1,5 @@
-import useSelectionContext from "../useSelectionContext";
-import RelativeNoteButton from "./RelativeNoteButton";
+import useSelectionContext from '../useSelectionContext'
+import RelativeNoteButton from './RelativeNoteButton'
 
 export default function RelativeNotes() {
   const { selectedNote } = useSelectionContext()
