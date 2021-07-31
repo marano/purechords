@@ -1,6 +1,6 @@
 import GuitarArm from './GuitarArm';
 import ChromaticScale from './ChromaticScale';
-import MajorScales from './MajorScales';
+import Scales from './Scales';
 import SelectionProvider from './SelectionProvider';
 import RelativeNotes from './RelativeNotes';
 import Chords from './Chords';
@@ -13,7 +13,7 @@ export default function App() {
       <RelativeNotes />
       <br />
       <br />
-      <MajorScales />
+      <Scales />
       <br />
       <Chords />
       <br />

@@ -1,22 +1,22 @@
-import { Note } from '../types';
+import { Interval, Note } from '../../types';
 import { Eq } from 'fp-ts/number'
 import { getEq } from 'fp-ts/Array'
-import { majorScaleIntervals } from '../utils/constants';
-import { getNoteName, intervalsToNotes } from '../utils/notes';
-import Selectable from './Selectable';
-import useSelectionContext from './useSelectionContext';
+import { getNoteName, intervalsToNotes } from '../../utils/notes';
+import Selectable from '../Selectable';
+import useSelectionContext from '../useSelectionContext';
 
 type Props = {
-  keyNote: Note
+  keyNote: Note,
+  intervals: Interval[]
 }
 
-export default function MajorScale({ keyNote }: Props) {
+export default function MajorScale({ keyNote, intervals }: Props) {
   const {
     selectedScaleNotes,
     setSelectedScaleNotes,
   } = useSelectionContext();
 
-  const notes = intervalsToNotes(majorScaleIntervals, keyNote)
+  const notes = intervalsToNotes(intervals, keyNote)
 
   const isSelected = selectedScaleNotes
     ? getEq(Eq).equals(notes, selectedScaleNotes)
@@ -25,9 +25,9 @@ export default function MajorScale({ keyNote }: Props) {
   return (
     <>
       {notes.map(
-        (note) => (
+        (note, index) => (
           <Selectable
-            key={note}
+            key={`${index}-${note}`}
             isSelected={isSelected}
             onSelect={() => setSelectedScaleNotes(notes)}
           >

@@ -16,20 +16,22 @@ export const noteColors = [
   '#e957b2',
 ];
 
+export const scaleIntervals = {
+  major: [
+    Interval.U,
+    Interval.M2,
+    Interval.M3,
+    Interval.P4,
+    Interval.P5,
+    Interval.M6,
+    Interval.M7
+  ]
+}
+
 export const chordIntervals = {
   major: [Interval.U, Interval.M3, Interval.P5],
   augmented: [Interval.U, Interval.M3, Interval.m6],
   minor: [Interval.U, Interval.m3, Interval.P5],
 }
-
-export const majorScaleIntervals = [
-  Interval.U,
-  Interval.M2,
-  Interval.M3,
-  Interval.P4,
-  Interval.P5,
-  Interval.M6,
-  Interval.M7,
-];
 
 export const notes = Object.values(Note).filter(isNumber);
