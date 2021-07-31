@@ -1,6 +1,7 @@
 import { Interval } from "../../types"
-import { getNoteName, relativeIntervalsToNotes } from "../../utils/notes"
 import areNumberArraysEquals from '../../utils/areNumberArraysEquals'
+import relativeIntervalsToNotes from "../../utils/relativeIntervalsToNotes"
+import getNoteName from "../../utils/getNoteName"
 import useSelectionContext from "../useSelectionContext"
 import Button from "../Button"
 

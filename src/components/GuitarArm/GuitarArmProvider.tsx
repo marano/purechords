@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 import { Fret, Note } from '../../types';
+import addIntervalToNote from '../../utils/addIntervalToNotes';
 import areNumberArraysEquals from '../../utils/areNumberArraysEquals';
-import { getFrets } from '../../utils/frets';
-import { addIntervalToNote } from '../../utils/notes';
+import getFrets from '../../utils/getFrets';
 import useSelectionContext from '../useSelectionContext';
 import GuitarArmContext from './GuitarArmContext';
 

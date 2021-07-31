@@ -1,5 +1,5 @@
 import { Fret, Note } from '../../types';
-import { getFrets } from '../../utils/frets';
+import getFrets from '../../utils/getFrets';
 import Grid from '../Grid';
 import GuitarArmProvider from './GuitarArmProvider';
 import GuitarFret from './GuitarFret';

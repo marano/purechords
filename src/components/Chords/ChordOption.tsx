@@ -1,5 +1,6 @@
 import { Interval, Note } from "../../types";
-import { getNoteName, intervalsToNotes } from "../../utils/notes";
+import getNoteName from "../../utils/getNoteName";
+import intervalsToNotes from "../../utils/intervalsToNotes";
 
 type Props = {
   note: Note

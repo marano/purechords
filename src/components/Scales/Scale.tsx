@@ -1,7 +1,8 @@
-import { Interval, Note } from '../../types';
 import { Eq } from 'fp-ts/number'
 import { getEq } from 'fp-ts/Array'
-import { getNoteName, intervalsToNotes } from '../../utils/notes';
+import { Interval, Note } from '../../types';
+import getNoteName from '../../utils/getNoteName';
+import intervalsToNotes from '../../utils/intervalsToNotes';
 import Selectable from '../Selectable';
 import useSelectionContext from '../useSelectionContext';
 

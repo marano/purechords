@@ -1,7 +1,7 @@
 import { useState, ReactNode } from 'react';
 import { Interval, Note } from '../types';
 import areNumberArraysEquals from '../utils/areNumberArraysEquals';
-import { relativeIntervalsToNotes } from '../utils/notes';
+import relativeIntervalsToNotes from '../utils/relativeIntervalsToNotes';
 import SelectionContext from './SelectionContext';
 
 type Props = {

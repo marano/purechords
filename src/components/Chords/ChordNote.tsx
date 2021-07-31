@@ -1,5 +1,5 @@
 import { Note } from "../../types";
-import { getNoteName } from "../../utils/notes";
+import getNoteName from "../../utils/getNoteName";
 import Selectable from "../Selectable";
 import useSelectionContext from "../useSelectionContext";
 

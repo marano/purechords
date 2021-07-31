@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro';
 import { Fret } from '../../types';
-import { getNoteColor, getNoteName } from '../../utils/notes';
+import { getNoteColor } from '../../utils/getNoteColor';
+import getNoteName from '../../utils/getNoteName';
 import useSelectionContext from '../useSelectionContext';
 import useGuitarArmContext from './useGuitarArmContext';
 
