@@ -22,9 +22,6 @@ export const chordIntervals = {
   minor: [Interval.U, Interval.m3, Interval.P5],
 }
 
-export const tone: Interval = Interval.M2;
-export const semiTone: Interval = Interval.m2;
-
 export const majorScaleIntervals = [
   Interval.U,
   Interval.M2,
