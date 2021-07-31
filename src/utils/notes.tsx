@@ -1,5 +1,6 @@
 import { Interval, Note } from '../types';
-import { noteColors, notes } from './constants';
+import noteColors from '../constants/noteColors';
+import notes from '../constants/notes';
 
 export function getNoteName(note: Note) {
   return Note[note]

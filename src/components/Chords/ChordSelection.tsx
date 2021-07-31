@@ -1,4 +1,4 @@
-import { chordIntervals } from "../../utils/constants";
+import chordIntervals from "../../constants/chordIntervals";
 import useSelectionContext from "../useSelectionContext";
 import ChordOption from "./ChordOption";
 

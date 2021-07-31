@@ -1,8 +1,8 @@
-import { notes } from '../utils/constants';
+import notes from '../constants/notes';
 import { getNoteName } from '../utils/notes';
+import useSelectionContext from './useSelectionContext';
 import Grid from './Grid';
 import Selectable from './Selectable';
-import useSelectionContext from './useSelectionContext';
 
 export default function ChromaticScale() {
   const { selectedNote, setSelectedNote } = useSelectionContext();
