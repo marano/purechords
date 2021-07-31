@@ -22,7 +22,8 @@ export default {
     Interval.P4,
     Interval.P5,
     Interval.M6,
-    Interval.M7
+    Interval.M7,
+    Interval.Oct,
   ],
   naturalMinor: [ // Aeolian mode
     Interval.U,

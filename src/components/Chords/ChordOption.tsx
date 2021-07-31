@@ -9,8 +9,8 @@ type Props = {
 
 export default function ChordOption({ note, intervals }: Props) {
   return (
-    <>
+    <div>
       {intervalsToNotes(intervals, note).map(getNoteName).join(' ')}
-    </>
+    </div>
   )
 }
