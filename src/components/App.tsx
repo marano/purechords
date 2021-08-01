@@ -11,7 +11,7 @@ export default function App() {
       <Scales />
       <Separator />
       <Chords />
-      <GuitarArm strings={[Note.E, Note.B, Note.G, Note.D, Note.A, Note.E]} fretCount={21} />
+      <GuitarArm strings={[Note.E, Note.A, Note.D, Note.G, Note.B, Note.E]} fretCount={21} />
     </SelectionProvider>
   )
 }
