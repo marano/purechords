@@ -1,7 +1,7 @@
 import { Interval } from '../types'
 
 export default {
-  'Chormatic': [
+  'Chromatic': [
     Interval.U,
     Interval.m2,
     Interval.M2,
