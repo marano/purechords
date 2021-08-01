@@ -1,6 +1,5 @@
 import { useState, ReactNode } from 'react'
 import { Note } from '../types'
-import areNumberArraysEquals from '../utils/areNumberArraysEquals'
 import SelectionContext from './SelectionContext'
 
 type Props = {
@@ -13,22 +12,9 @@ export default function SelectionProvider({ children }: Props) {
 
   const value = {
     selectedScaleNotes,
-    setSelectedScaleNotes(noteSequence?: Note[]) {
-      if (selectedScaleNotes && noteSequence && areNumberArraysEquals(selectedScaleNotes, noteSequence)) {
-        setSelectedScaleNotes(undefined)
-      } else {
-        setSelectedScaleNotes(noteSequence)
-      }
-    },
-
+    setSelectedScaleNotes,
     selectedChord,
-    setSelectedChord(chord?: Note[]) {
-      if (chord === selectedChord) {
-        setSelectedChord(undefined)
-      } else {
-        setSelectedChord(chord)
-      }
-    }
+    setSelectedChord
   }
 
   return (

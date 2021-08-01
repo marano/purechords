@@ -1,5 +1,4 @@
 import { Interval, Note } from '../../types'
-import areNumberArraysEquals from '../../utils/areNumberArraysEquals'
 import getNoteName from '../../utils/getNoteName'
 import intervalsToNotes from '../../utils/intervalsToNotes'
 import Selectable from '../Selectable'
@@ -17,8 +16,9 @@ export default function ChordOption({ note, intervals }: Props) {
 
   return (
     <Selectable
-      isSelected={selectedChord ? areNumberArraysEquals(selectedChord, chord) : false}
-      onSelect={() => setSelectedChord(chord)}
+      value={chord}
+      selectedValue={selectedChord}
+      onSelect={setSelectedChord}
     >
       {chord.map(getNoteName).join(' ')}
     </Selectable>

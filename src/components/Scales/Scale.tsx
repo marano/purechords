@@ -1,5 +1,3 @@
-import { Eq } from 'fp-ts/number'
-import { getEq } from 'fp-ts/Array'
 import { Interval, Note } from '../../types'
 import getNoteName from '../../utils/getNoteName'
 import intervalsToNotes from '../../utils/intervalsToNotes'
@@ -19,18 +17,15 @@ export default function MajorScale({ keyNote, intervals }: Props) {
 
   const notes = intervalsToNotes(intervals, keyNote)
 
-  const isSelected = selectedScaleNotes
-    ? getEq(Eq).equals(notes, selectedScaleNotes)
-    : false
-
   return (
     <>
       {notes.map(
         (note, index) => (
           <Selectable
             key={`${index}-${note}`}
-            isSelected={isSelected}
-            onSelect={() => setSelectedScaleNotes(notes)}
+            value={notes}
+            selectedValue={selectedScaleNotes}
+            onSelect={setSelectedScaleNotes}
           >
             {getNoteName(note)}
           </Selectable>
