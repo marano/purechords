@@ -1,7 +1,7 @@
 import { Note } from '../types'
 import notes from '../constants/notes'
-import rotateArrayIndex from './rotateArrayIndex'
+import rotateNumber from './rotateNumber'
 
 export default function addIntervalToNote(note: Note, interval: number) {
-  return rotateArrayIndex(note + interval, notes)
+  return rotateNumber(note + interval, notes.length) as Note
 }
