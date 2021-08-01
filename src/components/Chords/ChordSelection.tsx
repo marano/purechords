@@ -5,7 +5,7 @@ import rotateArrayIndex from '../../utils/rotateArrayIndex'
 import Grid from '../Grid'
 import Separator from '../Separator'
 import useSelectionContext from '../useSelectionContext'
-import ChordOption from './Chord'
+import ChordOption from './ChordOption'
 
 export default function ChordSelection() {
   const { selectedScale, selectedChordType } = useSelectionContext()
