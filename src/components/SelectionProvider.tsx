@@ -29,7 +29,11 @@ export default function SelectionProvider({ children }: Props) {
 
   const value = {
     selectedScaleIntervals,
-    setSelectedScaleIntervals,
+    setSelectedScaleIntervals(intervals?: Interval[]) {
+      setSelectedScale(undefined)
+      setSelectedChord(undefined)
+      setSelectedScaleIntervals(intervals)
+    },
 
     selectedScale,
     setSelectedScale,
