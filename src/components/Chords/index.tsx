@@ -5,6 +5,7 @@ import Grid from '../Grid'
 import Separator from '../Separator'
 import useSelectionContext from '../useSelectionContext'
 import ChordOption from './Chord'
+import ChordTypeSelection from './ChordTypeSelection'
 
 export default function Chords() {
   const { selectedScaleNotes } = useSelectionContext()
@@ -15,6 +16,8 @@ export default function Chords() {
 
   return (
     <>
+      <ChordTypeSelection />
+      <Separator />
       <Grid columnCount={selectedScaleNotes.length}>
         {selectedScaleNotes.map(
           (note, index) =>

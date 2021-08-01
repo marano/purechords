@@ -29,7 +29,7 @@ export default function MajorScale({ keyNote, intervals }: Props) {
           >
             {getNoteName(note)}
           </Selectable>
-        ),
+        )
       )}
     </>
   )

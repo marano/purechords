@@ -13,7 +13,7 @@ export default {
     Interval.m6,
     Interval.M6,
     Interval.m7,
-    Interval.M7
+    Interval.M7,
   ],
   major: [ // Ionian mode
     Interval.U,
@@ -32,7 +32,7 @@ export default {
     Interval.P4,
     Interval.P5,
     Interval.m6,
-    Interval.m7
+    Interval.m7,
   ],
   harmonicMinor: [ // Aeolian #7 scale
     Interval.U,
@@ -41,7 +41,7 @@ export default {
     Interval.P4,
     Interval.P5,
     Interval.m6,
-    Interval.M7
+    Interval.M7,
   ],
   melodicMinor: [
     Interval.U,
@@ -50,6 +50,6 @@ export default {
     Interval.P4,
     Interval.P5,
     Interval.M6,
-    Interval.M7
-  ]
+    Interval.M7,
+  ],
 }

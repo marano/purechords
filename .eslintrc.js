@@ -8,7 +8,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
-    'plugin:@typescript-eslint/recommended'
+    'plugin:@typescript-eslint/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -25,12 +25,19 @@ module.exports = {
   ],
   rules: {
     'array-callback-return': ['off'],
+    'comma-dangle': ['error', {
+      arrays: 'always-multiline',
+      objects: 'always-multiline',
+      imports: 'always-multiline',
+      exports: 'always-multiline',
+      functions: 'never',
+    }],
     'consistent-return': ['off'],
-
     'indent': ['error', 2],
     'linebreak-style': ['error', 'unix'],
     'no-else-return': ['off'],
-    'no-multiple-empty-lines': [2, { max: 1 }],
+    'no-multiple-empty-lines': ['error', { max: 1 }],
+    'no-trailing-spaces': ['error'],
     'no-use-before-define': ['error', { functions: false, classes: false }],
     'quotes': ['error', 'single'],
     'semi': ['error', 'never'],

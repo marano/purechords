@@ -12,7 +12,7 @@ export default function Scales() {
             key={note}
             keyNote={note}
             intervals={scaleIntervals.major}
-          />,
+          />
       )}
     </Grid>
   )

@@ -14,7 +14,7 @@ type Props = {
 export default function GuitarArmProvider({ strings, children }: Props) {
   const {
     selectedScaleNotes,
-    selectedChord
+    selectedChord,
   } = useSelectionContext()
 
   const value = {
