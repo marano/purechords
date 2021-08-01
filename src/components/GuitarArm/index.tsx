@@ -1,6 +1,8 @@
+import { range } from 'fp-ts/ReadonlyNonEmptyArray'
 import { Fret, Note } from '../../types'
 import getFrets from '../../utils/getFrets'
 import Grid from '../Grid'
+import FretMark from './FretMark'
 import GuitarArmProvider from './GuitarArmProvider'
 import GuitarFret from './GuitarFret'
 
@@ -15,7 +17,18 @@ export default function GuitarArm({ strings, fretCount }: Props) {
   return (
     <GuitarArmProvider strings={strings}>
       <Grid columnCount={fretCount}>
-        {frets.map(fret => <GuitarFret key={key(fret)} fret={fret} />)}
+        {range(0, fretCount - 1).map(
+          index =>
+            <FretMark key={`${index}-mark`}>
+              &nbsp;
+              {[5, 7, 9].includes(index) ? '●' : ''}
+              &nbsp;
+            </FretMark>
+        )}
+
+        {frets.map(
+          fret => <GuitarFret key={key(fret)} fret={fret} />
+        )}
       </Grid>
     </GuitarArmProvider>
   )
