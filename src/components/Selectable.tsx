@@ -1,12 +1,13 @@
 import { ReactNode } from 'react'
 import styled from 'styled-components/macro'
+import { Scale } from '../types'
 import areNumberArraysEquals from '../utils/areNumberArraysEquals'
 
 const Pointer = styled.div`
   cursor: pointer;
 `
 
-type Comparable = number | number[]
+type Comparable = number | number[] | Scale
 
 type Props<T extends Comparable> = {
   onSelect: (value?: T) => void
@@ -39,7 +40,16 @@ function isEqual<T extends Comparable>(valueA?: T, valueB?: T) {
     return valueA === valueB
   } else if (valueA instanceof Array && valueB instanceof Array) {
     return areNumberArraysEquals(valueA, valueB)
+  } else if (isScale(valueA) && isScale(valueB)) {
+    const scaleA = valueA as Scale
+    const scaleB = valueB as Scale
+
+    return scaleA.key === scaleB.key && areNumberArraysEquals(scaleA.intervals, scaleB.intervals)
   } else {
     return false
   }
+}
+
+function isScale<T extends Comparable>(value?: T): value is NonNullable<T> {
+  return value !== undefined && 'key' in value && 'intervals' in value
 }

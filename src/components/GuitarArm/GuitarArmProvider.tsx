@@ -3,6 +3,7 @@ import { Fret, Note } from '../../types'
 import addIntervalToNote from '../../utils/addIntervalToNotes'
 import areNumberArraysEquals from '../../utils/areNumberArraysEquals'
 import getFrets from '../../utils/getFrets'
+import intervalsToNotes from '../../utils/intervalsToNotes'
 import useSelectionContext from '../useSelectionContext'
 import GuitarArmContext from './GuitarArmContext'
 
@@ -13,7 +14,7 @@ type Props = {
 
 export default function GuitarArmProvider({ strings, children }: Props) {
   const {
-    selectedScaleNotes,
+    selectedScale,
     selectedChord,
   } = useSelectionContext()
 
@@ -49,7 +50,7 @@ export default function GuitarArmProvider({ strings, children }: Props) {
       )
     }
 
-    if (selectedScaleNotes !== undefined) {
+    if (selectedScale !== undefined) {
       const stringStart = 0
       const stringEnd = strings.length
 
@@ -57,6 +58,8 @@ export default function GuitarArmProvider({ strings, children }: Props) {
       const fretEnd = 6
 
       const frets = getFrets(stringStart, stringEnd, fretStart, fretEnd)
+
+      const selectedScaleNotes = intervalsToNotes(selectedScale.intervals, selectedScale.key)
 
       let currentScaleNote = 0
 

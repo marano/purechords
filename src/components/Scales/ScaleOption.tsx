@@ -1,21 +1,20 @@
-import { Interval, Note } from '../../types'
+import { Scale } from '../../types'
 import getNoteName from '../../utils/getNoteName'
 import intervalsToNotes from '../../utils/intervalsToNotes'
 import Selectable from '../Selectable'
 import useSelectionContext from '../useSelectionContext'
 
 type Props = {
-  keyNote: Note,
-  intervals: Interval[]
+  scale: Scale
 }
 
-export default function MajorScale({ keyNote, intervals }: Props) {
+export default function ScaleOption({ scale }: Props) {
   const {
-    selectedScaleNotes,
-    setSelectedScaleNotes,
+    selectedScale,
+    setSelectedScale,
   } = useSelectionContext()
 
-  const notes = intervalsToNotes(intervals, keyNote)
+  const notes = intervalsToNotes(scale.intervals, scale.key)
 
   return (
     <>
@@ -23,9 +22,9 @@ export default function MajorScale({ keyNote, intervals }: Props) {
         (note, index) => (
           <Selectable
             key={`${index}-${note}`}
-            value={notes}
-            selectedValue={selectedScaleNotes}
-            onSelect={setSelectedScaleNotes}
+            value={scale}
+            selectedValue={selectedScale}
+            onSelect={setSelectedScale}
           >
             {getNoteName(note)}
           </Selectable>

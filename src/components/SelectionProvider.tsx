@@ -1,5 +1,5 @@
 import { useState, ReactNode } from 'react'
-import { Interval, Note } from '../types'
+import { Interval, Note, Scale } from '../types'
 import SelectionContext from './SelectionContext'
 
 type Props = {
@@ -8,9 +8,9 @@ type Props = {
 
 export default function SelectionProvider({ children }: Props) {
   const [
-    selectedScaleNotes,
-    setSelectedScaleNotes,
-  ] = useState<Note[] | undefined>()
+    selectedScale,
+    setSelectedScale,
+  ] = useState<Scale | undefined>()
 
   const [
     selectedChordType,
@@ -23,8 +23,8 @@ export default function SelectionProvider({ children }: Props) {
   ] = useState<Note[] | undefined>()
 
   const value = {
-    selectedScaleNotes,
-    setSelectedScaleNotes,
+    selectedScale,
+    setSelectedScale,
 
     selectedChordType,
     setSelectedChordType,

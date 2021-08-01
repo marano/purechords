@@ -33,3 +33,8 @@ export type StringIndex = number
 export type FretIndex = number
 
 export type Fret = [StringIndex, FretIndex]
+
+export interface Scale {
+  key: Note
+  intervals: Interval[]
+}
