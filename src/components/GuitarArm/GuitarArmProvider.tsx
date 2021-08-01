@@ -4,6 +4,7 @@ import addIntervalToNote from '../../utils/addIntervalToNotes'
 import areNumberArraysEquals from '../../utils/areNumberArraysEquals'
 import getFrets from '../../utils/getFrets'
 import getScaleNotes from '../../utils/getScaleNotes'
+import isNonNullable from '../../utils/isNonNullable'
 import useSelectionContext from '../useSelectionContext'
 import GuitarArmContext from './GuitarArmContext'
 
@@ -45,8 +46,12 @@ export default function GuitarArmProvider({ strings, children }: Props) {
 
       const frets = getFrets(stringStart, stringEnd, fretStart, fretEnd)
 
-      return frets.filter(
-        fret => selectedChord.includes(getNote(fret))
+      const rootNoteFrets = frets.filter(
+        fret => getNote(fret) === selectedChord[0]
+      )
+
+      return rootNoteFrets.flatMap(
+        rootNoteFret => getChordFrets(rootNoteFret, selectedChord)
       )
     }
 
@@ -80,5 +85,34 @@ export default function GuitarArmProvider({ strings, children }: Props) {
 
   function isFretHighlighted(fret: Fret) {
     return highlightedFrets.some(highlightedFret => areNumberArraysEquals(fret, highlightedFret))
+  }
+
+  function getChordFrets(rootNoteFret: Fret, chord: Note[]) {
+    const fretEnd = 21
+
+    const frets = chord.slice(1, chord.length).reduce((result, chordNote, index) => {
+      const previousResult = index === 0 ? rootNoteFret : result[index - 1]
+
+      if (previousResult === undefined) {
+        return result
+      }
+
+      const searchFrets = getFrets(
+        previousResult[0] + 1,
+        strings.length,
+        Math.max(0, rootNoteFret[1] - 3),
+        Math.min(fretEnd, rootNoteFret[1] + 3)
+      )
+
+      const fretFound = searchFrets.find(fret => getNote(fret) === chordNote)
+
+      return [...result, fretFound]
+    }, [] as (Fret | undefined)[])
+
+    if (frets.every(isNonNullable)) {
+      return [rootNoteFret, ...frets]
+    } else {
+      return []
+    }
   }
 }
