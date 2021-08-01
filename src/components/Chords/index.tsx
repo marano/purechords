@@ -8,9 +8,5 @@ export default function Chords() {
     return null
   }
 
-  return (
-    <>
-      <ChordSelection />
-    </>
-  )
+  return <ChordSelection />
 }

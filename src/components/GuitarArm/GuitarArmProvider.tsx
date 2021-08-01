@@ -8,15 +8,12 @@ import GuitarArmContext from './GuitarArmContext'
 
 type Props = {
   strings: Note[]
-  fretCount: number
   children: ReactNode
 }
 
-export default function GuitarArmProvider({ strings, fretCount, children }: Props) {
+export default function GuitarArmProvider({ strings, children }: Props) {
   const {
-    selectedNote,
     selectedScaleNotes,
-    selectedIntervalNotes,
     selectedChord
   } = useSelectionContext()
 
@@ -38,21 +35,6 @@ export default function GuitarArmProvider({ strings, fretCount, children }: Prop
   }
 
   function getHighlightedFrets(): Fret[] {
-    if (selectedNote !== undefined) {
-      const stringStart = 0
-      const stringEnd = strings.length
-
-      const fretStart = 0
-      const fretEnd = fretCount
-
-      const highlightedNotes = [selectedNote, ...(selectedIntervalNotes || [])]
-
-      return getFrets(stringStart, stringEnd, fretStart, fretEnd)
-        .filter(
-          (fret) => highlightedNotes.includes(getNote(fret))
-        )
-    }
-
     if (selectedChord) {
       const stringStart = 0
       const stringEnd = strings.length

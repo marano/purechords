@@ -2,7 +2,6 @@ import styled from 'styled-components/macro'
 import { Fret } from '../../types'
 import { getNoteColor } from '../../utils/getNoteColor'
 import getNoteName from '../../utils/getNoteName'
-import useSelectionContext from '../useSelectionContext'
 import useGuitarArmContext from './useGuitarArmContext'
 
 type ContainerProps = {
@@ -25,7 +24,6 @@ type Props = {
 }
 
 export default function GuitarFret({ fret }: Props) {
-  const { selectedNote, selectedScaleNotes } = useSelectionContext()
   const { getNote, isFretHighlighted } = useGuitarArmContext()
 
   const note = getNote(fret)
@@ -40,9 +38,7 @@ export default function GuitarFret({ fret }: Props) {
   )
 
   function getContainerColor() {
-    if (selectedNote === undefined && !selectedScaleNotes) {
-      return noteColor
-    } else if (isHighlighted) {
+    if (isHighlighted) {
       return noteColor
     } else {
       return 'white'
