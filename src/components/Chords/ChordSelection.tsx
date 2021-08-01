@@ -31,7 +31,13 @@ export default function ChordSelection() {
             <ChordOption
               key={`${index}-${note}`}
               note={note}
-              intervals={intervals(index, selectedChordType, selectedScaleIntervals)}
+              intervals={
+                getIntervals(
+                  index,
+                  selectedChordType,
+                  selectedScaleIntervals
+                )
+              }
             />
         )}
       </Grid>
@@ -40,17 +46,30 @@ export default function ChordSelection() {
   )
 }
 
-function intervals(
+function getIntervals(
   index: number,
   chordIntervals: Interval[],
   scaleIntervals: Interval[]
 ) {
   return chordIntervals.map(
-    interval => scaleIntervals[
-      rotateNumber(
-        index + interval,
-        scaleIntervals.length - 1
+    chordInterval =>
+      getInterval(
+        scaleIntervals,
+        chordInterval,
+        index
       )
-    ] - scaleIntervals[index]
   )
+}
+
+function getInterval(
+  scaleIntervals: Interval[],
+  chordInterval: Interval,
+  index: number
+) {
+  return scaleIntervals[
+    rotateNumber(
+      index + chordInterval,
+      scaleIntervals.length - 1
+    )
+  ] - scaleIntervals[index]
 }

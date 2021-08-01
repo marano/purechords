@@ -1,8 +1,11 @@
-import { Interval } from '../types'
+const first = 0
+const third = 2
+const fifth = 4
+const seventh = 6
 
 export default {
-  'Dyad': [Interval.U, Interval.M2],
-  'Power Dyad': [Interval.U, Interval.M3],
-  'Triad': [Interval.U, Interval.M2, Interval.M3],
-  'Seventh': [Interval.U, Interval.M2, Interval.M3, Interval.TT],
+  'Dyad': [first, third],
+  'Power Dyad': [first, fifth],
+  'Triad': [first, third, fifth],
+  'Seventh': [first, third, fifth, seventh],
 }
