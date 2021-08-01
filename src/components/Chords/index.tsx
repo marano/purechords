@@ -2,6 +2,7 @@ import scaleIntervals from '../../constants/scaleIntervals'
 import { Interval } from '../../types'
 import rotateArrayIndex from '../../utils/rotateArrayIndex'
 import Grid from '../Grid'
+import Separator from '../Separator'
 import useSelectionContext from '../useSelectionContext'
 import ChordOption from './Chord'
 
@@ -13,16 +14,19 @@ export default function Chords() {
   }
 
   return (
-    <Grid columnCount={selectedScaleNotes.length}>
-      {selectedScaleNotes.map(
-        (note, index) =>
-          <ChordOption
-            key={`${index}-${note}`}
-            note={note}
-            intervals={intervals(index)}
-          />
-      )}
-    </Grid>
+    <>
+      <Grid columnCount={selectedScaleNotes.length}>
+        {selectedScaleNotes.map(
+          (note, index) =>
+            <ChordOption
+              key={`${index}-${note}`}
+              note={note}
+              intervals={intervals(index)}
+            />
+        )}
+      </Grid>
+      <Separator />
+    </>
   )
 }
 
