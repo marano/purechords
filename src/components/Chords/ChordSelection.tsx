@@ -1,6 +1,6 @@
 import scaleIntervals from '../../constants/scaleIntervals'
 import { Interval } from '../../types'
-import intervalsToNotes from '../../utils/intervalsToNotes'
+import getScaleNotes from '../../utils/getScaleNotes'
 import rotateNumber from '../../utils/rotateNumber'
 import Grid from '../Grid'
 import Separator from '../Separator'
@@ -14,7 +14,7 @@ export default function ChordSelection() {
     return null
   }
 
-  const selectedScaleNotes = intervalsToNotes(selectedScale.intervals, selectedScale.key)
+  const selectedScaleNotes = getScaleNotes(selectedScale)
 
   return (
     <>

@@ -5,7 +5,7 @@ import ScaleOption from './ScaleOption'
 
 export default function Scales() {
   return (
-    <Grid columnCount={scaleIntervals.major.length}>
+    <Grid columnCount={scaleIntervals.major.length - 1}>
       {notes.map(
         (note) =>
           <ScaleOption

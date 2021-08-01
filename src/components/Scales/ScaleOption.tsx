@@ -1,6 +1,6 @@
 import { Scale } from '../../types'
 import getNoteName from '../../utils/getNoteName'
-import intervalsToNotes from '../../utils/intervalsToNotes'
+import getScaleNotes from '../../utils/getScaleNotes'
 import Selectable from '../Selectable'
 import useSelectionContext from '../useSelectionContext'
 
@@ -14,7 +14,7 @@ export default function ScaleOption({ scale }: Props) {
     setSelectedScale,
   } = useSelectionContext()
 
-  const notes = intervalsToNotes(scale.intervals, scale.key)
+  const notes = getScaleNotes(scale)
 
   return (
     <>

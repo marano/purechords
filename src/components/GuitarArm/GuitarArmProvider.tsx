@@ -3,7 +3,7 @@ import { Fret, Note } from '../../types'
 import addIntervalToNote from '../../utils/addIntervalToNotes'
 import areNumberArraysEquals from '../../utils/areNumberArraysEquals'
 import getFrets from '../../utils/getFrets'
-import intervalsToNotes from '../../utils/intervalsToNotes'
+import getScaleNotes from '../../utils/getScaleNotes'
 import useSelectionContext from '../useSelectionContext'
 import GuitarArmContext from './GuitarArmContext'
 
@@ -59,7 +59,7 @@ export default function GuitarArmProvider({ strings, children }: Props) {
 
       const frets = getFrets(stringStart, stringEnd, fretStart, fretEnd)
 
-      const selectedScaleNotes = intervalsToNotes(selectedScale.intervals, selectedScale.key)
+      const selectedScaleNotes = getScaleNotes(selectedScale)
 
       let currentScaleNote = 0
 
