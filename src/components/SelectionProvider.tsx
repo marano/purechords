@@ -27,7 +27,10 @@ export default function SelectionProvider({ children }: Props) {
     setSelectedScale,
 
     selectedChordType,
-    setSelectedChordType,
+    setSelectedChordType(chordType?: Interval[]) {
+      setSelectedChord(undefined)
+      setSelectedChordType(chordType)
+    },
 
     selectedChord,
     setSelectedChord,
