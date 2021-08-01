@@ -31,5 +31,6 @@ function intervals(index: number) {
     Interval.U,
     scaleIntervals.major[rotateArrayIndex(index + 2, scaleIntervals.major.slice(0, scaleIntervals.major.length - 1))] - scaleIntervals.major[index],
     scaleIntervals.major[rotateArrayIndex(index + 4, scaleIntervals.major.slice(0, scaleIntervals.major.length - 1))] - scaleIntervals.major[index],
+    scaleIntervals.major[rotateArrayIndex(index + 6, scaleIntervals.major.slice(0, scaleIntervals.major.length - 1))] - scaleIntervals.major[index],
   ]
 }
