@@ -1,5 +1,5 @@
 import { Note } from '../types'
 
-export default function rotateArrayIndex<T>(exceedingNote: number, array: T[]) {
-  return exceedingNote - (array.length * Math.floor(exceedingNote / array.length)) as Note
+export default function rotateArrayIndex<T>(exceedingIndex: number, array: T[]) {
+  return exceedingIndex - (array.length * Math.floor(exceedingIndex / array.length)) as Note
 }

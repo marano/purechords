@@ -9,7 +9,7 @@ type Props = {
   intervals: Interval[]
 }
 
-export default function ChordOption({ note, intervals }: Props) {
+export default function Chord({ note, intervals }: Props) {
   const { selectedChord, setSelectedChord } = useSelectionContext()
 
   const chord = intervalsToNotes(intervals, note)
