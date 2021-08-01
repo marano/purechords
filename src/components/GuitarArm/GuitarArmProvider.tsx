@@ -100,8 +100,8 @@ export default function GuitarArmProvider({ strings, children }: Props) {
       const searchFrets = getFrets(
         previousResult[0] + 1,
         strings.length,
-        Math.max(0, rootNoteFret[1] - 3),
-        Math.min(fretEnd, rootNoteFret[1] + 3)
+        Math.max(0, previousResult[1] - 3),
+        Math.min(fretEnd, previousResult[1] + 3)
       )
 
       const fretFound = searchFrets.find(fret => getNote(fret) === chordNote)
