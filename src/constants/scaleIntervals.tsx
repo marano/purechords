@@ -1,7 +1,7 @@
 import { Interval } from '../types'
 
 export default {
-  chromatic: [
+  'Chormatic': [
     Interval.U,
     Interval.m2,
     Interval.M2,
@@ -16,7 +16,7 @@ export default {
     Interval.M7,
     Interval.Oct,
   ],
-  major: [ // Ionian mode
+  'Major': [ // Ionian mode
     Interval.U,
     Interval.M2,
     Interval.M3,
@@ -26,7 +26,7 @@ export default {
     Interval.M7,
     Interval.Oct,
   ],
-  naturalMinor: [ // Aeolian mode
+  'Natural Minor': [ // Aeolian mode
     Interval.U,
     Interval.M2,
     Interval.m3,
@@ -36,7 +36,7 @@ export default {
     Interval.m7,
     Interval.Oct,
   ],
-  harmonicMinor: [ // Aeolian #7 scale
+  'Harmonic Minor': [ // Aeolian #7 scale
     Interval.U,
     Interval.M2,
     Interval.m3,
@@ -46,7 +46,7 @@ export default {
     Interval.M7,
     Interval.Oct,
   ],
-  melodicMinor: [
+  'Melodic Minor': [
     Interval.U,
     Interval.M2,
     Interval.m3,

@@ -4,9 +4,9 @@ import ChordSelection from './ChordSelection'
 import ChordTypeSelection from './ChordTypeSelection'
 
 export default function Chords() {
-  const { selectedScale } = useSelectionContext()
+  const { selectedScaleIntervals, selectedScale } = useSelectionContext()
 
-  if (selectedScale === undefined) {
+  if (selectedScaleIntervals === undefined || selectedScale === undefined) {
     return null
   }
 

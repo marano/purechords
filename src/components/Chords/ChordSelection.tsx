@@ -1,4 +1,3 @@
-import scaleIntervals from '../../constants/scaleIntervals'
 import { Interval } from '../../types'
 import getScaleNotes from '../../utils/getScaleNotes'
 import rotateNumber from '../../utils/rotateNumber'
@@ -8,9 +7,17 @@ import useSelectionContext from '../useSelectionContext'
 import ChordOption from './ChordOption'
 
 export default function ChordSelection() {
-  const { selectedScale, selectedChordType } = useSelectionContext()
+  const {
+    selectedScaleIntervals,
+    selectedScale,
+    selectedChordType,
+  } = useSelectionContext()
 
-  if (selectedScale === undefined || selectedChordType === undefined) {
+  if (
+    selectedScaleIntervals === undefined ||
+    selectedScale === undefined ||
+    selectedChordType === undefined
+  ) {
     return null
   }
 
@@ -24,7 +31,7 @@ export default function ChordSelection() {
             <ChordOption
               key={`${index}-${note}`}
               note={note}
-              intervals={intervals(index, selectedChordType)}
+              intervals={intervals(index, selectedChordType, selectedScaleIntervals)}
             />
         )}
       </Grid>
@@ -33,13 +40,17 @@ export default function ChordSelection() {
   )
 }
 
-function intervals(index: number, intervals: Interval[]) {
-  return intervals.map(
-    interval => scaleIntervals.major[
+function intervals(
+  index: number,
+  chordIntervals: Interval[],
+  scaleIntervals: Interval[]
+) {
+  return chordIntervals.map(
+    interval => scaleIntervals[
       rotateNumber(
         index + interval,
-        scaleIntervals.major.length - 1
+        scaleIntervals.length - 1
       )
-    ] - scaleIntervals.major[index]
+    ] - scaleIntervals[index]
   )
 }
