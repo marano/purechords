@@ -32,6 +32,7 @@ export default function ChordSelection() {
           (scaleNoteIndex) =>
             <ChordOption
               key={scaleNoteIndex}
+              chordType={selectedChordType}
               chord={
                 getChord(
                   selectedChordType,

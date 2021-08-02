@@ -1,3 +1,5 @@
+import { ChordType } from '../types'
+
 const first = 0
 const third = 2
 const fifth = 4
@@ -8,4 +10,4 @@ export default {
   'Power Dyad': [first, fifth],
   'Triad': [first, third, fifth],
   'Seventh': [first, third, fifth, seventh],
-}
+} as Record<string, ChordType>
