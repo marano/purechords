@@ -1,18 +1,14 @@
-import { Interval, Note } from '../../types'
+import { Chord } from '../../types'
 import getNoteName from '../../utils/getNoteName'
-import intervalsToNotes from '../../utils/intervalsToNotes'
 import Selectable from '../Selectable'
 import useSelectionContext from '../useSelectionContext'
 
 type Props = {
-  note: Note
-  intervals: Interval[]
+  chord: Chord
 }
 
-export default function Chord({ note, intervals }: Props) {
+export default function ChordOption({ chord }: Props) {
   const { selectedChord, setSelectedChord } = useSelectionContext()
-
-  const chord = intervalsToNotes(intervals, note)
 
   return (
     <Selectable

@@ -1,4 +1,5 @@
-import { Interval } from '../../types'
+import { range } from 'fp-ts/ReadonlyNonEmptyArray'
+import { ChordType, Note } from '../../types'
 import getScaleNotes from '../../utils/getScaleNotes'
 import rotateNumber from '../../utils/rotateNumber'
 import Grid from '../Grid'
@@ -21,21 +22,21 @@ export default function ChordSelection() {
     return null
   }
 
-  const selectedScaleNotes = getScaleNotes(selectedScale)
+  const scaleNotes = getScaleNotes(selectedScale)
+  const scaleNoteIndexes = range(0, scaleNotes.length - 1)
 
   return (
     <>
-      <Grid columnCount={selectedScaleNotes.length}>
-        {selectedScaleNotes.map(
-          (note, index) =>
+      <Grid columnCount={scaleNoteIndexes.length}>
+        {scaleNoteIndexes.map(
+          (scaleNoteIndex) =>
             <ChordOption
-              key={`${index}-${note}`}
-              note={note}
-              intervals={
-                getIntervals(
-                  index,
+              key={scaleNoteIndex}
+              chord={
+                getChord(
                   selectedChordType,
-                  selectedScaleIntervals
+                  scaleNotes,
+                  scaleNoteIndex
                 )
               }
             />
@@ -46,30 +47,18 @@ export default function ChordSelection() {
   )
 }
 
-function getIntervals(
-  index: number,
-  chordIntervals: Interval[],
-  scaleIntervals: Interval[]
+function getChord(
+  chordType: ChordType,
+  scaleNotes: Note[],
+  scaleNoteIndex: number
 ) {
-  return chordIntervals.map(
+  return chordType.map(
     chordInterval =>
-      getInterval(
-        scaleIntervals,
-        chordInterval,
-        index
-      )
+      scaleNotes[
+        rotateNumber(
+          scaleNoteIndex + chordInterval,
+          scaleNotes.length
+        )
+      ]
   )
-}
-
-function getInterval(
-  scaleIntervals: Interval[],
-  chordInterval: Interval,
-  index: number
-) {
-  return scaleIntervals[
-    rotateNumber(
-      index + chordInterval,
-      scaleIntervals.length - 1
-    )
-  ] - scaleIntervals[index]
 }

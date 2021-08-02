@@ -35,6 +35,7 @@ export type FretIndex = number
 export type Fret = [StringIndex, FretIndex]
 
 export type ChordType = Interval[]
+export type Chord = Note[]
 
 export interface Scale {
   key: Note
