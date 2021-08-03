@@ -1,13 +1,23 @@
-import { ChordType } from '../types'
-
-const first = 0
-const third = 2
-const fifth = 4
-const seventh = 6
+import { Position } from '../types'
 
 export default {
-  'Dyad': [first, third],
-  'Power Dyad': [first, fifth],
-  'Triad': [first, third, fifth],
-  'Seventh': [first, third, fifth, seventh],
-} as Record<string, ChordType>
+  'Dyad': [
+    Position.first,
+    Position.third,
+  ],
+  'Power Dyad': [
+    Position.first,
+    Position.fifth,
+  ],
+  'Triad': [
+    Position.first,
+    Position.third,
+    Position.fifth,
+  ],
+  'Seventh': [
+    Position.first,
+    Position.third,
+    Position.fifth,
+    Position.seventh,
+  ],
+}

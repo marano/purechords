@@ -29,12 +29,19 @@ export enum Interval {
   Oct,
 }
 
+export enum Position {
+  first = 0,
+  third = 2,
+  fifth = 4,
+  seventh = 6
+}
+
 export type StringIndex = number
 export type FretIndex = number
 
 export type Fret = [StringIndex, FretIndex]
 
-export type ChordType = Interval[]
+export type ChordType = Position[]
 export type Chord = Note[]
 
 export interface Scale {
