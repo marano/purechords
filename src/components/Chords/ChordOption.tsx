@@ -40,11 +40,11 @@ function getChordName(chordType: ChordType, chord: Chord) {
   case chordTypes['Triad']:
     return isMinor
       ? `${key} minor`
-      : `${key} major`
+      : `${key} Major`
 
   case chordTypes['Seventh']:
     return isMinor
-      ? `${key} minor`
-      : `${key} major`
+      ? `${key} minor 7`
+      : `${key} Major 7`
   }
 }
