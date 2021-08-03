@@ -1,16 +1,20 @@
 import chordTypes from '../../constants/chordTypes'
-import { Chord, ChordType, Interval } from '../../types'
+import { ChordType, Interval, Note } from '../../types'
 import getNoteName from '../../utils/getNoteName'
+import intervalsToNotes from '../../utils/intervalsToNotes'
 import Selectable from '../Selectable'
 import useSelectionContext from '../useSelectionContext'
 
 type Props = {
-  chord: Chord
+  keyNote: Note
   chordType: ChordType
+  intervals: Interval[]
 }
 
-export default function ChordOption({ chord, chordType }: Props) {
+export default function ChordOption({ keyNote, chordType, intervals }: Props) {
   const { selectedChord, setSelectedChord } = useSelectionContext()
+
+  const chord = intervalsToNotes(intervals, keyNote)
 
   return (
     <Selectable
@@ -18,39 +22,41 @@ export default function ChordOption({ chord, chordType }: Props) {
       selectedValue={selectedChord}
       onSelect={setSelectedChord}
     >
-      {getChordName(chordType, chord)}
+      {getChordName(chordType, intervals, keyNote)}
       <br/>
       {chord.map(getNoteName).join(' ')}
     </Selectable>
   )
 }
 
-function getChordName(chordType: ChordType, chord: Chord) {
-  const key = getNoteName(chord[0])
-  const secondInterval = Math.abs(chord[1] - chord[0])
-  const thirdInterval = Math.abs(chord[2] - chord[0])
+function getChordName(chordType: ChordType, intervals: Interval[], keyNote: Note) {
+  const secondInterval = intervals[1]
+  const thirdInterval = intervals[2]
+
   const isMinor = secondInterval === Interval.m3
   const isDiminished = thirdInterval === Interval.m3 * 2
 
+  const keyNoteName = getNoteName(keyNote)
+
   switch(chordType) {
   case chordTypes['Dyad']:
-    return key
+    return keyNoteName
 
   case chordTypes['Power Dyad']:
-    return `${key}5`
+    return `${keyNoteName}5`
 
   case chordTypes['Triad']:
     return isMinor
-      ? `${key}m`
+      ? `${keyNoteName}m`
       : isDiminished
-        ? `${key}dim`
-        : key
+        ? `${keyNoteName}dim`
+        : keyNoteName
 
   case chordTypes['Seventh']:
     return isMinor
-      ? `${key}m7`
+      ? `${keyNoteName}m7`
       :  isDiminished
-        ? `${key}dim7`
-        : `${key}7`
+        ? `${keyNoteName}dim7`
+        : `${keyNoteName}7`
   }
 }

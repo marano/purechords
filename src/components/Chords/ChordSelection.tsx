@@ -1,7 +1,5 @@
-import { range } from 'fp-ts/ReadonlyNonEmptyArray'
-import { ChordType, Note } from '../../types'
+import { ChordType, Interval } from '../../types'
 import getScaleNotes from '../../utils/getScaleNotes'
-import rotateNumber from '../../utils/rotateNumber'
 import Grid from '../Grid'
 import Separator from '../Separator'
 import useSelectionContext from '../useSelectionContext'
@@ -23,20 +21,20 @@ export default function ChordSelection() {
   }
 
   const scaleNotes = getScaleNotes(selectedScale)
-  const scaleNoteIndexes = range(0, scaleNotes.length - 1)
 
   return (
     <>
-      <Grid columnCount={scaleNoteIndexes.length}>
-        {scaleNoteIndexes.map(
-          (scaleNoteIndex) =>
+      <Grid columnCount={scaleNotes.length}>
+        {scaleNotes.map(
+          (scaleNote, scaleNoteIndex) =>
             <ChordOption
-              key={scaleNoteIndex}
+              key={scaleNote}
+              keyNote={scaleNote}
               chordType={selectedChordType}
-              chord={
-                getChord(
+              intervals={
+                getChordIntervals(
                   selectedChordType,
-                  scaleNotes,
+                  selectedScaleIntervals,
                   scaleNoteIndex
                 )
               }
@@ -48,18 +46,26 @@ export default function ChordSelection() {
   )
 }
 
-function getChord(
+function getChordIntervals(
   chordType: ChordType,
-  scaleNotes: Note[],
-  scaleNoteIndex: number
+  scaleIntervals: Interval[],
+  scaleIndex: number
 ) {
   return chordType.map(
-    chordInterval =>
-      scaleNotes[
-        rotateNumber(
-          scaleNoteIndex + chordInterval,
-          scaleNotes.length
-        )
-      ]
+    chordPosition =>
+      getScaleIntervalAtIndex(scaleIntervals, scaleIndex + chordPosition)
+       - getScaleIntervalAtIndex(scaleIntervals, scaleIndex)
   )
+}
+
+function getScaleIntervalAtIndex(
+  scaleIntervals: Interval[],
+  index: number
+) {
+  const lastIndex = scaleIntervals.length - 1
+  const rotations = Math.floor(index / lastIndex)
+  const lastInterval = scaleIntervals[lastIndex]
+  const rest = index - (lastIndex * rotations)
+
+  return (rotations * lastInterval) + scaleIntervals[rest]
 }
