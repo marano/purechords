@@ -41,16 +41,16 @@ function getChordName(chordType: ChordType, chord: Chord) {
 
   case chordTypes['Triad']:
     return isMinor
-      ? `${key}minor`
+      ? `${key}m`
       : isDiminished
-        ?  `${key}dim`
-        :`${key}Major`
+        ? `${key}dim`
+        : key
 
   case chordTypes['Seventh']:
     return isMinor
-      ? `${key}minor7`
+      ? `${key}m7`
       :  isDiminished
         ? `${key}dim7`
-        : `${key}Major7`
+        : `${key}7`
   }
 }
