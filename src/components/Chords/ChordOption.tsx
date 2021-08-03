@@ -47,10 +47,12 @@ function getChordName(chordType: ChordType, intervals: Interval[], keyNote: Note
       const isMajor = thirdInterval === Interval.M3 && fifthInterval === Interval.P5
       const isMinor = thirdInterval === Interval.m3 && fifthInterval === Interval.P5
       const isDiminished = thirdInterval === Interval.m3 && fifthInterval === Interval.TT
+      const isAugmented = thirdInterval === Interval.M3 && fifthInterval === (Interval.P5 + 1)
 
       if (isMajor) return `${keyNoteName}maj`
       if (isMinor) return `${keyNoteName}min`
       if (isDiminished) return `${keyNoteName}dim`
+      if (isAugmented) return `${keyNoteName}aug`
 
       return `${keyNoteName}???`
     }
