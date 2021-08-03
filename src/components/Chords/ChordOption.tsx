@@ -28,7 +28,9 @@ export default function ChordOption({ chord, chordType }: Props) {
 function getChordName(chordType: ChordType, chord: Chord) {
   const key = getNoteName(chord[0])
   const secondInterval = Math.abs(chord[1] - chord[0])
+  const thirdInterval = Math.abs(chord[2] - chord[0])
   const isMinor = secondInterval === Interval.m3
+  const isDiminished = thirdInterval === Interval.m3 * 2
 
   switch(chordType) {
   case chordTypes['Dyad']:
@@ -39,12 +41,16 @@ function getChordName(chordType: ChordType, chord: Chord) {
 
   case chordTypes['Triad']:
     return isMinor
-      ? `${key} minor`
-      : `${key} Major`
+      ? `${key}minor`
+      : isDiminished
+        ?  `${key}dim`
+        :`${key}Major`
 
   case chordTypes['Seventh']:
     return isMinor
-      ? `${key} minor 7`
-      : `${key} Major 7`
+      ? `${key}minor7`
+      :  isDiminished
+        ? `${key}dim7`
+        : `${key}Major7`
   }
 }
