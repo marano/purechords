@@ -13,6 +13,9 @@ type Value = {
 
   selectedChord?: Chord
   setSelectedChord: (chord?: Chord) => void
+
+  selectedVoicing?: number[]
+  setSelectedVoicing: (voicing?: number[]) => void
 }
 
 export default createContext<Value>(undefined!)

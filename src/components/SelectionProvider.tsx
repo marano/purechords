@@ -27,6 +27,11 @@ export default function SelectionProvider({ children }: Props) {
     setSelectedChord,
   ] = useState<Note[] | undefined>()
 
+  const [
+    selectedVoicing,
+    setSelectedVoicing,
+  ] = useState<number[] | undefined>()
+
   const value = {
     selectedScaleIntervals,
     setSelectedScaleIntervals(intervals?: Interval[]) {
@@ -46,6 +51,9 @@ export default function SelectionProvider({ children }: Props) {
 
     selectedChord,
     setSelectedChord,
+
+    selectedVoicing,
+    setSelectedVoicing,
   }
 
   return (
