@@ -1,5 +1,5 @@
 import { useState, ReactNode } from 'react'
-import { ChordType, Interval, Note, Scale } from '../types'
+import { ChordType, Interval, Note, Scale, Voicing } from '../types'
 import SelectionContext from './SelectionContext'
 
 type Props = {
@@ -30,7 +30,7 @@ export default function SelectionProvider({ children }: Props) {
   const [
     selectedVoicing,
     setSelectedVoicing,
-  ] = useState<number[] | undefined>()
+  ] = useState<Voicing | undefined>()
 
   const value = {
     selectedScaleIntervals,

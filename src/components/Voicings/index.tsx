@@ -13,12 +13,12 @@ export default function Voicings() {
         {chordVoicings.map(
           voicing =>
             <Selectable
-              key={voicing.join('')}
+              key={voicing.order.join('')}
               value={voicing}
               selectedValue={selectedVoicing}
               onSelect={setSelectedVoicing}
             >
-              {voicing.join(' ')}
+              {voicing.order.join(' ')}
             </Selectable>
         )}
       </Grid>

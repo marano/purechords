@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import { Chord, ChordType, Interval, Scale } from '../types'
+import { Chord, ChordType, Interval, Scale, Voicing } from '../types'
 
 type Value = {
   selectedScaleIntervals?: Interval[]
@@ -14,8 +14,8 @@ type Value = {
   selectedChord?: Chord
   setSelectedChord: (chord?: Chord) => void
 
-  selectedVoicing?: number[]
-  setSelectedVoicing: (voicing?: number[]) => void
+  selectedVoicing?: Voicing
+  setSelectedVoicing: (voicing?: Voicing) => void
 }
 
 export default createContext<Value>(undefined!)

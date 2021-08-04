@@ -48,3 +48,8 @@ export interface Scale {
   key: Note
   intervals: Interval[]
 }
+
+export interface Voicing {
+  order: number[]
+  strings: number[]
+}

@@ -1,13 +1,13 @@
 import { ReactNode } from 'react'
 import styled from 'styled-components/macro'
-import { Scale } from '../types'
+import { Scale, Voicing } from '../types'
 import areNumberArraysEquals from '../utils/areNumberArraysEquals'
 
 const Pointer = styled.div`
   cursor: pointer;
 `
 
-type Comparable = number | number[] | Scale
+type Comparable = number | number[] | Scale | Voicing
 
 type Props<T extends Comparable> = {
   onSelect: (value?: T) => void
@@ -45,6 +45,13 @@ function isEqual<T extends Comparable>(valueA?: T, valueB?: T) {
     const scaleB = valueB as Scale
 
     return scaleA.key === scaleB.key && areNumberArraysEquals(scaleA.intervals, scaleB.intervals)
+  } else if (isVoicing(valueA) && isVoicing(valueB)) {
+    const voicingA = valueA as Voicing
+    const voicingB = valueB as Voicing
+
+    return areNumberArraysEquals(voicingA.order, voicingB.order)
+      && areNumberArraysEquals(voicingA.strings, voicingB.strings)
+
   } else {
     return false
   }
@@ -53,3 +60,8 @@ function isEqual<T extends Comparable>(valueA?: T, valueB?: T) {
 function isScale<T extends Comparable>(value?: T): value is NonNullable<T> {
   return value !== undefined && 'key' in value && 'intervals' in value
 }
+
+function isVoicing<T extends Comparable>(value?: T): value is NonNullable<T> {
+  return value !== undefined && 'order' in value && 'strings' in value
+}
+
