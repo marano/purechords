@@ -32,6 +32,7 @@ module.exports = {
       exports: 'always-multiline',
       functions: 'never',
     }],
+    'comma-spacing': ['error', { 'before': false, 'after': true }],
     'consistent-return': ['off'],
     'indent': ['error', 2, { SwitchCase: 1 }],
     'linebreak-style': ['error', 'unix'],
