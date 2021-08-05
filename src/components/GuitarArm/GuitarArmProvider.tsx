@@ -54,7 +54,7 @@ export default function GuitarArmProvider({ strings, children }: Props) {
       console.log('voicedChord', voicedChord)
 
       return rootFrets.flatMap(
-        rootFret => getChordFrets(rootFret, voicedChord, selectedVoicing.strings)
+        rootFret => getChordFrets(rootFret, voicedChord, selectedVoicing.stringJumps)
       )
     }
 
@@ -101,7 +101,7 @@ export default function GuitarArmProvider({ strings, children }: Props) {
     return highlightedFrets.some(highlightedFret => areNumberArraysEquals(fret, highlightedFret))
   }
 
-  function getChordFrets(rootNoteFret: Fret, chord: Note[], voicingStrings: number[]) {
+  function getChordFrets(rootNoteFret: Fret, chord: Note[], stringJumps: number[]) {
     const fretEnd = 21
 
     const frets = chord.slice(1, chord.length).reduce((result, chordNote, index) => {
@@ -111,7 +111,7 @@ export default function GuitarArmProvider({ strings, children }: Props) {
         return result
       }
 
-      const stringStep = 1 + voicingStrings[index + 1]
+      const stringStep = 1 + stringJumps[index + 1]
 
       const searchFrets = getFrets(
         previousResult[0] + stringStep,

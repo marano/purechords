@@ -1,23 +1,10 @@
-import { Position } from '../types'
+import { ScaleNoteIndex } from '../types'
+
+const { first, third, fifth, seventh } = ScaleNoteIndex
 
 export default {
-  'Dyad': [
-    Position.first,
-    Position.third,
-  ],
-  'Power Dyad': [
-    Position.first,
-    Position.fifth,
-  ],
-  'Triad': [
-    Position.first,
-    Position.third,
-    Position.fifth,
-  ],
-  'Seventh': [
-    Position.first,
-    Position.third,
-    Position.fifth,
-    Position.seventh,
-  ],
+  'Dyad': [first, third],
+  'Power Dyad': [first, fifth],
+  'Triad': [first, third, fifth],
+  'Seventh': [first, third, fifth, seventh],
 }

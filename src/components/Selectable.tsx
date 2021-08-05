@@ -50,7 +50,7 @@ function isEqual<T extends Comparable>(valueA?: T, valueB?: T) {
     const voicingB = valueB as Voicing
 
     return areNumberArraysEquals(voicingA.order, voicingB.order)
-      && areNumberArraysEquals(voicingA.strings, voicingB.strings)
+      && areNumberArraysEquals(voicingA.stringJumps, voicingB.stringJumps)
 
   } else {
     return false

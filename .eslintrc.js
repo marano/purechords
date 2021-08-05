@@ -24,6 +24,7 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
+    'array-bracket-spacing': ['error', 'never'],
     'array-callback-return': ['off'],
     'comma-dangle': ['error', {
       arrays: 'always-multiline',
