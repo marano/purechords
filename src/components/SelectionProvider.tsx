@@ -8,6 +8,11 @@ type Props = {
 
 export default function SelectionProvider({ children }: Props) {
   const [
+    selectedNote,
+    setSelectedNote,
+  ] = useState<Note | undefined>()
+
+  const [
     selectedScaleIntervals,
     setSelectedScaleIntervals,
   ] = useState<Interval[] | undefined>()
@@ -33,6 +38,9 @@ export default function SelectionProvider({ children }: Props) {
   ] = useState<Voicing | undefined>()
 
   const value = {
+    selectedNote,
+    setSelectedNote,
+
     selectedScaleIntervals,
     setSelectedScaleIntervals(intervals?: Interval[]) {
       setSelectedScale(undefined)

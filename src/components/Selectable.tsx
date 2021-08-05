@@ -36,7 +36,9 @@ export default function Selectable<T extends Comparable>({ onSelect, value, sele
 }
 
 function isEqual<T extends Comparable>(valueA?: T, valueB?: T) {
-  if (typeof valueA === 'number' && typeof valueB === 'number') {
+  if (valueA === undefined || valueB === undefined) {
+    return false
+  } else if (typeof valueA === 'number' && typeof valueB === 'number') {
     return valueA === valueB
   } else if (valueA instanceof Array && valueB instanceof Array) {
     return areNumberArraysEquals(valueA, valueB)
@@ -62,6 +64,6 @@ function isScale<T extends Comparable>(value?: T): value is NonNullable<T> {
 }
 
 function isVoicing<T extends Comparable>(value?: T): value is NonNullable<T> {
-  return value !== undefined && 'order' in value && 'strings' in value
+  return value !== undefined && 'order' in value && 'stringJumps' in value
 }
 
