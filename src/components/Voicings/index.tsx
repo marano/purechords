@@ -1,4 +1,5 @@
 import chordVoicings from '../../constants/chordVoicings'
+import getVoicingName from '../../utils/getVoicingName'
 import Grid from '../Grid'
 import Selectable from '../Selectable'
 import Separator from '../Separator'
@@ -30,7 +31,7 @@ export default function Voicings() {
               selectedValue={selectedVoicing}
               onSelect={setSelectedVoicing}
             >
-              {voicing.order.join(' ')}
+              {getVoicingName(voicing)}
             </Selectable>
         )}
       </Grid>
