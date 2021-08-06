@@ -13,7 +13,10 @@ export default function App() {
       <Scales />
       <Chords />
       <Voicings />
-      <GuitarArm strings={[Note.E, Note.A, Note.D, Note.G, Note.B, Note.E]} fretCount={21} />
+      <GuitarArm
+        strings={[Note.E, Note.A, Note.D, Note.G, Note.B, Note.E]}
+        fretCount={21}
+      />
     </SelectionProvider>
   )
 }
