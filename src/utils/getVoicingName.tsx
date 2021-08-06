@@ -20,7 +20,7 @@ export default function getVoicingName(voicing: Voicing) {
       const before = result.slice(0, index)
 
       const between = stringJumps > 0
-        ? replicate(' ')(stringJumps)
+        ? replicate('-')(stringJumps)
         : []
 
       const after = result.slice(index, result.length)
