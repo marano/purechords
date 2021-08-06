@@ -26,7 +26,7 @@ export default function Voicings() {
         {chordVoicings.map(
           voicing =>
             <Selectable
-              key={voicing.order.join('')}
+              key={getVoicingName(voicing)}
               value={voicing}
               selectedValue={selectedVoicing}
               onSelect={setSelectedVoicing}

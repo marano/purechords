@@ -52,8 +52,6 @@ export default function GuitarArmProvider({ strings, children }: Props) {
       const rootFrets = getFrets(stringStart, stringEnd, fretStart, fretEnd)
         .filter(fret => getNote(fret) == voicedChord[0])
 
-      console.log('voicedChord', voicedChord)
-
       return rootFrets.flatMap(
         rootFret => getChordFrets(rootFret, voicedChord, selectedVoicing.stringJumps)
       )
