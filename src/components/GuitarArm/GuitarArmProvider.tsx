@@ -13,7 +13,9 @@ type Props = {
   children: ReactNode
 }
 
-export default function GuitarArmProvider({ strings, children }: Props) {
+export default function GuitarArmProvider(
+  { strings, children }: Props
+) {
   const {
     selectedNote,
     selectedScaleIntervals,
