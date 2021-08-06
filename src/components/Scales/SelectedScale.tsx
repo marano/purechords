@@ -7,18 +7,18 @@ import useSelectionContext from '../useSelectionContext'
 export default function SelectedScale() {
   const {
     selectedNote,
-    selectedScaleIntervals,
+    selectedScale,
   } = useSelectionContext()
 
   if (
     selectedNote === undefined
-      || selectedScaleIntervals ===  undefined
+      || selectedScale ===  undefined
   ) {
     return null
   }
 
   const notes = getScaleNotes(
-    selectedScaleIntervals,
+    selectedScale,
     selectedNote
   )
 

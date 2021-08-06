@@ -1,4 +1,4 @@
-import { ChordType, Interval } from '../../types'
+import { ChordType, Interval, Scale } from '../../types'
 import getScaleNotes from '../../utils/getScaleNotes'
 import Grid from '../Grid'
 import Separator from '../Separator'
@@ -8,20 +8,20 @@ import ChordOption from './ChordOption'
 export default function ChordSelection() {
   const {
     selectedNote,
-    selectedScaleIntervals,
+    selectedScale,
     selectedChordType,
   } = useSelectionContext()
 
   if (
     selectedNote === undefined ||
-    selectedScaleIntervals === undefined ||
+    selectedScale === undefined ||
     selectedChordType === undefined
   ) {
     return null
   }
 
   const scaleNotes = getScaleNotes(
-    selectedScaleIntervals,
+    selectedScale,
     selectedNote
   )
 
@@ -37,7 +37,7 @@ export default function ChordSelection() {
               intervals={
                 getChordIntervals(
                   selectedChordType,
-                  selectedScaleIntervals,
+                  selectedScale,
                   scaleNoteIndex
                 )
               }
@@ -51,13 +51,13 @@ export default function ChordSelection() {
 
 function getChordIntervals(
   chordType: ChordType,
-  scaleIntervals: Interval[],
+  scale: Scale,
   scaleIndex: number
 ) {
   return chordType.map(
     chordPosition =>
-      getScaleIntervalAtIndex(scaleIntervals, scaleIndex + chordPosition)
-       - getScaleIntervalAtIndex(scaleIntervals, scaleIndex)
+      getScaleIntervalAtIndex(scale, scaleIndex + chordPosition)
+       - getScaleIntervalAtIndex(scale, scaleIndex)
   )
 }
 

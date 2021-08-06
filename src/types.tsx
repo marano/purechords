@@ -48,6 +48,8 @@ export type FretIndex = number
 
 export type Fret = [StringIndex, FretIndex]
 
+export type Scale = Interval[]
+
 export type ChordType = ScaleNoteIndex[]
 export type Chord = Note[]
 

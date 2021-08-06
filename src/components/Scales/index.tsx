@@ -1,6 +1,6 @@
 import Separator from '../Separator'
 import useSelectionContext from '../useSelectionContext'
-import ScaleIntervalsSelection from './ScaleIntervalsSelection'
+import ScaleIntervalsSelection from './ScaleSelection'
 import SelectedScale from './SelectedScale'
 
 export default function Scales() {

@@ -18,7 +18,7 @@ export default function GuitarArmProvider(
 ) {
   const {
     selectedNote,
-    selectedScaleIntervals,
+    selectedScale,
     selectedChord,
     selectedVoicing,
   } = useSelectionContext()
@@ -75,7 +75,7 @@ export default function GuitarArmProvider(
 
     if (
       selectedNote !== undefined
-        && selectedScaleIntervals !== undefined
+        && selectedScale !== undefined
     ) {
       const stringStart = 0
       const stringEnd = strings.length
@@ -86,7 +86,7 @@ export default function GuitarArmProvider(
       const frets = getFrets(stringStart, stringEnd, fretStart, fretEnd)
 
       const selectedScaleNotes = getScaleNotes(
-        selectedScaleIntervals,
+        selectedScale,
         selectedNote
       )
 

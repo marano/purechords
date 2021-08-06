@@ -6,12 +6,12 @@ import ChordTypeSelection from './ChordTypeSelection'
 export default function Chords() {
   const {
     selectedNote,
-    selectedScaleIntervals,
+    selectedScale,
   } = useSelectionContext()
 
   if (
     selectedNote === undefined
-      || selectedScaleIntervals === undefined
+      || selectedScale === undefined
   ) {
     return null
   }

@@ -1,12 +1,12 @@
 import { createContext } from 'react'
-import { Chord, ChordType, Interval, Note, Voicing } from '../types'
+import { Chord, ChordType, Note, Scale, Voicing } from '../types'
 
 type Value = {
   selectedNote?: Note
   setSelectedNote: (note?: Note) => void
 
-  selectedScaleIntervals?: Interval[]
-  setSelectedScaleIntervals: (intervals?: Interval[]) => void
+  selectedScale?: Scale
+  setSelectedScale: (scale?: Scale) => void
 
   selectedChordType?: ChordType
   setSelectedChordType: (chordType?: ChordType) => void

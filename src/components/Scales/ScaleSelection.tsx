@@ -5,8 +5,8 @@ import useSelectionContext from '../useSelectionContext'
 
 export default function ScaleIntervalsSelection() {
   const {
-    selectedScaleIntervals,
-    setSelectedScaleIntervals,
+    selectedScale,
+    setSelectedScale,
   } = useSelectionContext()
 
   const scaleIntervalsEntries = Object.entries(scaleIntervals)
@@ -18,8 +18,8 @@ export default function ScaleIntervalsSelection() {
           <Selectable
             key={scaleName}
             value={intervals}
-            selectedValue={selectedScaleIntervals}
-            onSelect={setSelectedScaleIntervals}
+            selectedValue={selectedScale}
+            onSelect={setSelectedScale}
           >
             {scaleName}
           </Selectable>
