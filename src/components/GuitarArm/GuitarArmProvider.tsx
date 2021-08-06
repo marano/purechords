@@ -39,7 +39,10 @@ export default function GuitarArmProvider({ strings, children }: Props) {
   }
 
   function getHighlightedFrets(): Fret[] {
-    if (selectedVoicing && selectedChord) {
+    if (
+      selectedVoicing !== undefined
+        && selectedChord !== undefined
+    ) {
       const stringStart = 0
       const stringEnd = strings.length
 
@@ -57,7 +60,7 @@ export default function GuitarArmProvider({ strings, children }: Props) {
       )
     }
 
-    if (selectedChord) {
+    if (selectedChord !== undefined) {
       const stringStart = 0
       const stringEnd = strings.length
 
@@ -96,6 +99,20 @@ export default function GuitarArmProvider({ strings, children }: Props) {
             return true
           }
         }
+      )
+    }
+
+    if (selectedNote !== undefined) {
+      const stringStart = 0
+      const stringEnd = strings.length
+
+      const fretStart = 0
+      const fretEnd = 21
+
+      const frets = getFrets(stringStart, stringEnd, fretStart, fretEnd)
+
+      return frets.filter(
+        fret => getNote(fret) === selectedNote
       )
     }
 
