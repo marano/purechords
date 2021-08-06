@@ -5,7 +5,19 @@ import Separator from '../Separator'
 import useSelectionContext from '../useSelectionContext'
 
 export default function Voicings() {
-  const { selectedVoicing, setSelectedVoicing } = useSelectionContext()
+  const {
+    selectedChordType,
+    selectedChord,
+    selectedVoicing,
+    setSelectedVoicing,
+  } = useSelectionContext()
+
+  if (
+    selectedChordType === undefined
+    || selectedChord === undefined
+  ) {
+    return null
+  }
 
   return (
     <>
