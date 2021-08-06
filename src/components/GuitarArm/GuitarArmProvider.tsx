@@ -15,7 +15,8 @@ type Props = {
 
 export default function GuitarArmProvider({ strings, children }: Props) {
   const {
-    selectedScale,
+    selectedNote,
+    selectedScaleIntervals,
     selectedChord,
     selectedVoicing,
   } = useSelectionContext()
@@ -69,7 +70,10 @@ export default function GuitarArmProvider({ strings, children }: Props) {
         .filter(fret => selectedChord.includes(getNote(fret)))
     }
 
-    if (selectedScale !== undefined) {
+    if (
+      selectedNote !== undefined
+        && selectedScaleIntervals !== undefined
+    ) {
       const stringStart = 0
       const stringEnd = strings.length
 
@@ -78,7 +82,10 @@ export default function GuitarArmProvider({ strings, children }: Props) {
 
       const frets = getFrets(stringStart, stringEnd, fretStart, fretEnd)
 
-      const selectedScaleNotes = getScaleNotes(selectedScale)
+      const selectedScaleNotes = getScaleNotes(
+        selectedScaleIntervals,
+        selectedNote
+      )
 
       let currentScaleNote = 0
 

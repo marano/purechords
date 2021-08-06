@@ -7,20 +7,23 @@ import ChordOption from './ChordOption'
 
 export default function ChordSelection() {
   const {
+    selectedNote,
     selectedScaleIntervals,
-    selectedScale,
     selectedChordType,
   } = useSelectionContext()
 
   if (
+    selectedNote === undefined ||
     selectedScaleIntervals === undefined ||
-    selectedScale === undefined ||
     selectedChordType === undefined
   ) {
     return null
   }
 
-  const scaleNotes = getScaleNotes(selectedScale)
+  const scaleNotes = getScaleNotes(
+    selectedScaleIntervals,
+    selectedNote
+  )
 
   return (
     <>

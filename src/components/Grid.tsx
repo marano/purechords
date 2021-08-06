@@ -2,6 +2,7 @@ import styled from 'styled-components/macro'
 
 type Props = {
   columnCount: number
+  borderless?: boolean
 }
 
 export default styled.div`
@@ -10,12 +11,12 @@ export default styled.div`
   justify-items: center;
   place-items: center;
   grid-gap: 1px;
-  background-color: black;
-  border: 1px black solid;
+  background-color: ${(props: Props) => props.borderless ? 'white' : 'black'};
+  border: 1px ${(props: Props) => props.borderless ? 'white' : 'black'} solid;
 
   > div {
-    align-self: strech;
-    justify-self: strech;
+    align-self: stretch;
+    justify-self: stretch;
     width: 100%;
     text-align: center;
     background-color: white;

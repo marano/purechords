@@ -51,11 +51,6 @@ export type Fret = [StringIndex, FretIndex]
 export type ChordType = ScaleNoteIndex[]
 export type Chord = Note[]
 
-export interface Scale {
-  key: Note
-  intervals: Interval[]
-}
-
 export interface Voicing {
   order: ChordNotePosition[]
   stringJumps: number[]
