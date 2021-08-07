@@ -1,4 +1,4 @@
-import chordTypes from '../../constants/chordTypes'
+import { ChordType } from '../../types'
 import Grid from '../Grid'
 import Selectable from '../Selectable'
 import useSelectionContext from '../useSelectionContext'
@@ -6,13 +6,15 @@ import useSelectionContext from '../useSelectionContext'
 export default function ChordTypeSelection() {
   const { selectedChordType, setSelectedChordType } = useSelectionContext()
 
+  const chordTypes = Object.values(ChordType)
+
   return (
-    <Grid columnCount={Object.values(chordTypes).length}>
-      {Object.entries(chordTypes).map(
-        ([chordType, intervals]) =>
+    <Grid columnCount={chordTypes.length}>
+      {chordTypes.map(
+        chordType =>
           <Selectable
             key={chordType}
-            value={intervals}
+            value={chordType}
             selectedValue={selectedChordType}
             onSelect={setSelectedChordType}
           >

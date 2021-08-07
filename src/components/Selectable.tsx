@@ -7,7 +7,7 @@ const Pointer = styled.div`
   cursor: pointer;
 `
 
-type Comparable = number | number[] | Voicing
+type Comparable = string | number | number[] | Voicing
 
 type Props<T extends Comparable> = {
   onSelect: (value?: T) => void
@@ -39,6 +39,8 @@ function isEqual<T extends Comparable>(valueA?: T, valueB?: T) {
   if (valueA === undefined || valueB === undefined) {
     return false
   } else if (typeof valueA === 'number' && typeof valueB === 'number') {
+    return valueA === valueB
+  } else if (typeof valueA === 'string' && typeof valueB === 'string') {
     return valueA === valueB
   } else if (valueA instanceof Array && valueB instanceof Array) {
     return areNumberArraysEquals(valueA, valueB)

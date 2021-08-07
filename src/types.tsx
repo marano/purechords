@@ -29,18 +29,25 @@ export enum Interval {
   Oct,
 }
 
-export enum ScaleNoteIndex {
+export enum ScaleNotePosition {
   first = 0,
   third = 2,
   fifth = 4,
-  seventh = 6
+  seventh = 6,
 }
 
 export enum ChordNotePosition {
   first = 0,
   third = 1,
   fifth = 2,
-  seventh = 3
+  seventh = 3,
+}
+
+export enum ChordType {
+  dyad = 'Dyad',
+  powerDyad = 'Power Dyad',
+  triad = 'Triad',
+  seventh = 'Seventh',
 }
 
 export type StringIndex = number
@@ -50,7 +57,7 @@ export type Fret = [StringIndex, FretIndex]
 
 export type Scale = Interval[]
 
-export type ChordType = ScaleNoteIndex[]
+export type ChordPositions = ScaleNotePosition[]
 export type Chord = Note[]
 
 export interface Voicing {

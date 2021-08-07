@@ -25,10 +25,16 @@ export default function Voicings() {
     return null
   }
 
+  const voicings = chordVoicings[selectedChordType]
+
+  if (voicings.length === 0) {
+    return null
+  }
+
   return (
     <>
-      <Grid columnCount={chordVoicings.length}>
-        {chordVoicings.map(
+      <Grid columnCount={voicings.length}>
+        {voicings.map(
           voicing =>
             <Selectable
               key={getVoicingName(voicing)}

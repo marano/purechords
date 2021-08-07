@@ -1,3 +1,4 @@
+import chordPositions from '../../constants/chordPositions'
 import { ChordType, Interval, Scale } from '../../types'
 import getScaleNotes from '../../utils/getScaleNotes'
 import Grid from '../Grid'
@@ -54,7 +55,7 @@ function getChordIntervals(
   scale: Scale,
   scaleIndex: number
 ) {
-  return chordType.map(
+  return chordPositions[chordType].map(
     chordPosition =>
       getScaleIntervalAtIndex(scale, scaleIndex + chordPosition)
        - getScaleIntervalAtIndex(scale, scaleIndex)

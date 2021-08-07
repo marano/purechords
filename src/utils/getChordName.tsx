@@ -1,5 +1,4 @@
 import { ChordType, Interval, Note } from '../types'
-import chordTypes from '../constants/chordTypes'
 import getNoteName from './getNoteName'
 
 export default function getChordName(
@@ -14,13 +13,13 @@ export default function getChordName(
   const keyNoteName = getNoteName(keyNote)
 
   switch(chordType) {
-    case chordTypes['Dyad']:
+    case ChordType.dyad:
       return keyNoteName
 
-    case chordTypes['Power Dyad']:
+    case ChordType.powerDyad:
       return `${keyNoteName}5`
 
-    case chordTypes['Triad']: {
+    case ChordType.triad: {
       const isMajor = thirdInterval === Interval.M3 && fifthInterval === Interval.P5
       const isMinor = thirdInterval === Interval.m3 && fifthInterval === Interval.P5
       const isDiminished = thirdInterval === Interval.m3 && fifthInterval === Interval.TT
@@ -34,7 +33,7 @@ export default function getChordName(
       return `${keyNoteName}???`
     }
 
-    case chordTypes['Seventh']: {
+    case ChordType.seventh: {
       const isMajor = thirdInterval === Interval.M3 && seventhInterval === Interval.M7
       const isMinor = thirdInterval === Interval.m3 && seventhInterval === Interval.m7
 
