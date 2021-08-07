@@ -1,6 +1,3 @@
-import chordPositions from '../../constants/chordPositions'
-import { ChordType, Interval, Scale } from '../../types'
-import getScaleNotes from '../../utils/getScaleNotes'
 import Grid from '../Grid'
 import Separator from '../Separator'
 import useSelectionContext from '../useSelectionContext'
@@ -21,56 +18,21 @@ export default function ChordSelection() {
     return null
   }
 
-  const scaleNotes = getScaleNotes(
-    selectedScale,
-    selectedNote
-  )
-
   return (
     <>
-      <Grid columnCount={scaleNotes.length}>
-        {scaleNotes.map(
-          (scaleNote, scaleNoteIndex) =>
+      <Grid columnCount={selectedScale.length}>
+        {selectedScale.map(
+          (interval, scaleDegree) =>
             <ChordOption
-              key={scaleNote}
-              chordIndex={scaleNoteIndex}
-              keyNote={scaleNote}
+              key={`${scaleDegree}-${interval}`}
+              keyNote={selectedNote}
+              scale={selectedScale}
+              scaleDegree={scaleDegree}
               chordType={selectedChordType}
-              intervals={
-                getChordIntervals(
-                  selectedChordType,
-                  selectedScale,
-                  scaleNoteIndex
-                )
-              }
             />
         )}
       </Grid>
       <Separator />
     </>
   )
-}
-
-function getChordIntervals(
-  chordType: ChordType,
-  scale: Scale,
-  scaleIndex: number
-) {
-  return chordPositions[chordType].map(
-    chordPosition =>
-      getScaleIntervalAtIndex(scale, scaleIndex + chordPosition)
-       - getScaleIntervalAtIndex(scale, scaleIndex)
-  )
-}
-
-function getScaleIntervalAtIndex(
-  scaleIntervals: Interval[],
-  index: number
-) {
-  const lastIndex = scaleIntervals.length - 1
-  const rotations = Math.floor(index / lastIndex)
-  const lastInterval = scaleIntervals[lastIndex]
-  const rest = index - (lastIndex * rotations)
-
-  return (rotations * lastInterval) + scaleIntervals[rest]
 }

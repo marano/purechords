@@ -1,4 +1,5 @@
 import chordVoicings from '../../constants/chordVoicings'
+import getChord from '../../utils/getChord'
 import getNoteName from '../../utils/getNoteName'
 import getVoicingName from '../../utils/getVoicingName'
 import Grid from '../Grid'
@@ -11,7 +12,7 @@ export default function Voicings() {
     selectedNote,
     selectedScale,
     selectedChordType,
-    selectedChord,
+    selectedScaleDegree,
     selectedVoicing,
     setSelectedVoicing,
   } = useSelectionContext()
@@ -20,7 +21,7 @@ export default function Voicings() {
     selectedNote === undefined
     || selectedScale === undefined
     || selectedChordType === undefined
-    || selectedChord === undefined
+    || selectedScaleDegree === undefined
   ) {
     return null
   }
@@ -30,6 +31,13 @@ export default function Voicings() {
   if (voicings.length === 0) {
     return null
   }
+
+  const chord = getChord(
+    selectedScale,
+    selectedScaleDegree,
+    selectedChordType,
+    selectedNote
+  )
 
   return (
     <>
@@ -45,7 +53,7 @@ export default function Voicings() {
               {getVoicingName(voicing)}
               <br/>
               {voicing.order
-                .map(index => selectedChord[index])
+                .map(index => chord[index])
                 .map(getNoteName)
                 .join(' ')}
             </Selectable>

@@ -1,4 +1,5 @@
 import { Fret } from '../../types'
+import getChord from '../../utils/getChord'
 import { getNoteColor } from '../../utils/getNoteColor'
 import getNoteName from '../../utils/getNoteName'
 import useSelectionContext from '../useSelectionContext'
@@ -14,7 +15,8 @@ export default function GuitarFret({ fret }: Props) {
   const {
     selectedNote,
     selectedScale,
-    selectedChord,
+    selectedChordType,
+    selectedScaleDegree,
   } = useSelectionContext()
 
   const {
@@ -52,9 +54,17 @@ export default function GuitarFret({ fret }: Props) {
     if (
       selectedNote !== undefined
       && selectedScale !== undefined
-      && selectedChord !== undefined
+      && selectedChordType !== undefined
+      && selectedScaleDegree !== undefined
     ) {
-      return selectedChord[0] === note
+      const chord = getChord(
+        selectedScale,
+        selectedScaleDegree,
+        selectedChordType,
+        selectedNote
+      )
+
+      return chord[0] === note
     }
 
     if (

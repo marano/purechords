@@ -2,6 +2,7 @@ import { ReactNode } from 'react'
 import { Fret, Note } from '../../types'
 import addIntervalToNote from '../../utils/addIntervalToNotes'
 import areNumberArraysEquals from '../../utils/areNumberArraysEquals'
+import getChord from '../../utils/getChord'
 import getFrets from '../../utils/getFrets'
 import getScaleNotes from '../../utils/getScaleNotes'
 import isNonNullable from '../../utils/isNonNullable'
@@ -20,7 +21,7 @@ export default function GuitarArmProvider(
     selectedNote,
     selectedScale,
     selectedChordType,
-    selectedChord,
+    selectedScaleDegree,
     selectedVoicing,
   } = useSelectionContext()
 
@@ -46,7 +47,7 @@ export default function GuitarArmProvider(
       selectedNote !== undefined
         && selectedScale !== undefined
         && selectedChordType !== undefined
-        && selectedChord !== undefined
+        && selectedScaleDegree !== undefined
         && selectedVoicing !== undefined
     ) {
       const stringStart = 0
@@ -55,8 +56,15 @@ export default function GuitarArmProvider(
       const fretStart = 0
       const fretEnd = 21
 
+      const chord = getChord(
+        selectedScale,
+        selectedScaleDegree,
+        selectedChordType,
+        selectedNote
+      )
+
       const voicedChord = selectedVoicing.order
-        .map(noteIndex => selectedChord[noteIndex])
+        .map(noteIndex => chord[noteIndex])
 
       const rootFrets = getFrets(stringStart, stringEnd, fretStart, fretEnd)
         .filter(fret => getNote(fret) == voicedChord[0])
@@ -70,7 +78,7 @@ export default function GuitarArmProvider(
       selectedNote !== undefined
         && selectedScale !== undefined
         && selectedChordType !== undefined
-        && selectedChord !== undefined
+        && selectedScaleDegree !== undefined
     ) {
       const stringStart = 0
       const stringEnd = strings.length
@@ -78,8 +86,15 @@ export default function GuitarArmProvider(
       const fretStart = 0
       const fretEnd = 21
 
+      const chord = getChord(
+        selectedScale,
+        selectedScaleDegree,
+        selectedChordType,
+        selectedNote
+      )
+
       return getFrets(stringStart, stringEnd, fretStart, fretEnd)
-        .filter(fret => selectedChord.includes(getNote(fret)))
+        .filter(fret => chord.includes(getNote(fret)))
     }
 
     if (

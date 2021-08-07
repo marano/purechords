@@ -1,5 +1,5 @@
 import { useState, ReactNode } from 'react'
-import { ChordType, Note, Scale, Voicing } from '../types'
+import { ChordType, Note, Scale, ScaleDegree, Voicing } from '../types'
 import SelectionContext from './SelectionContext'
 
 type Props = {
@@ -23,9 +23,9 @@ export default function SelectionProvider({ children }: Props) {
   ] = useState<ChordType | undefined>()
 
   const [
-    selectedChord,
-    setSelectedChord,
-  ] = useState<Note[] | undefined>()
+    selectedScaleDegree,
+    setSelectedScaleDegree,
+  ] = useState<ScaleDegree | undefined>()
 
   const [
     selectedVoicing,
@@ -42,8 +42,8 @@ export default function SelectionProvider({ children }: Props) {
     selectedChordType,
     setSelectedChordType,
 
-    selectedChord,
-    setSelectedChord,
+    selectedScaleDegree,
+    setSelectedScaleDegree,
 
     selectedVoicing,
     setSelectedVoicing,

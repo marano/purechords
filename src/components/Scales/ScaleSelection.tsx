@@ -26,5 +26,4 @@ export default function ScaleIntervalsSelection() {
       )}
     </Grid>
   )
-
 }

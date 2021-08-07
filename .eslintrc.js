@@ -35,6 +35,7 @@ module.exports = {
     }],
     'comma-spacing': ['error', { 'before': false, 'after': true }],
     'consistent-return': ['off'],
+    'eol-last': ['error', 'always'],
     'indent': ['error', 2, { SwitchCase: 1 }],
     'linebreak-style': ['error', 'unix'],
     'no-else-return': ['off'],

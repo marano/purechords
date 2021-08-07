@@ -1,38 +1,50 @@
-import { ChordType, Interval, Note } from '../../types'
+import { ChordType, Note, Scale, ScaleDegree } from '../../types'
+import getChordIntervals from '../../utils/getChordIntervals'
 import getChordName from '../../utils/getChordName'
+import getChord from '../../utils/getChord'
 import getNoteName from '../../utils/getNoteName'
-import intervalsToNotes from '../../utils/intervalsToNotes'
 import toRoman from '../../utils/toRoman'
 import Selectable from '../Selectable'
 import useSelectionContext from '../useSelectionContext'
 
 type Props = {
-  chordIndex: number
   keyNote: Note
+  scale: Scale
+  scaleDegree: ScaleDegree
   chordType: ChordType
-  intervals: Interval[]
 }
 
 export default function ChordOption({
-  chordIndex,
   keyNote,
+  scale,
+  scaleDegree,
   chordType,
-  intervals,
 }: Props) {
   const {
-    selectedChord,
-    setSelectedChord,
+    selectedScaleDegree,
+    setSelectedScaleDegree,
   } = useSelectionContext()
 
-  const chord = intervalsToNotes(intervals, keyNote)
+  const intervals = getChordIntervals(
+    chordType,
+    scale,
+    scaleDegree
+  )
+
+  const chord = getChord(
+    scale,
+    scaleDegree,
+    chordType,
+    keyNote
+  )
 
   return (
     <Selectable
-      value={chord}
-      selectedValue={selectedChord}
-      onSelect={setSelectedChord}
+      value={scaleDegree}
+      selectedValue={selectedScaleDegree}
+      onSelect={setSelectedScaleDegree}
     >
-      {toRoman(chordIndex + 1)}
+      {toRoman(scaleDegree + 1)}
       <br />
       {getChordName(chordType, intervals, keyNote)}
       <br/>
