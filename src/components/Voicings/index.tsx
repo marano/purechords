@@ -7,6 +7,8 @@ import useSelectionContext from '../useSelectionContext'
 
 export default function Voicings() {
   const {
+    selectedNote,
+    selectedScale,
     selectedChordType,
     selectedChord,
     selectedVoicing,
@@ -14,7 +16,9 @@ export default function Voicings() {
   } = useSelectionContext()
 
   if (
-    selectedChordType === undefined
+    selectedNote === undefined
+    || selectedScale === undefined
+    || selectedChordType === undefined
     || selectedChord === undefined
   ) {
     return null

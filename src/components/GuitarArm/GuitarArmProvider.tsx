@@ -19,6 +19,7 @@ export default function GuitarArmProvider(
   const {
     selectedNote,
     selectedScale,
+    selectedChordType,
     selectedChord,
     selectedVoicing,
   } = useSelectionContext()
@@ -42,8 +43,11 @@ export default function GuitarArmProvider(
 
   function getHighlightedFrets(): Fret[] {
     if (
-      selectedVoicing !== undefined
+      selectedNote !== undefined
+        && selectedScale !== undefined
+        && selectedChordType !== undefined
         && selectedChord !== undefined
+        && selectedVoicing !== undefined
     ) {
       const stringStart = 0
       const stringEnd = strings.length
@@ -62,7 +66,12 @@ export default function GuitarArmProvider(
       )
     }
 
-    if (selectedChord !== undefined) {
+    if (
+      selectedNote !== undefined
+        && selectedScale !== undefined
+        && selectedChordType !== undefined
+        && selectedChord !== undefined
+    ) {
       const stringStart = 0
       const stringEnd = strings.length
 
