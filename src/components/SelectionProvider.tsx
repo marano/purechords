@@ -1,5 +1,5 @@
 import { useState, ReactNode } from 'react'
-import { ChordType, Interval, Note, Scale, Voicing } from '../types'
+import { ChordType, Note, Scale, Voicing } from '../types'
 import SelectionContext from './SelectionContext'
 
 type Props = {
