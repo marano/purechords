@@ -1,6 +1,15 @@
 import { ChordType, Interval, Note } from '../types'
 import getNoteName from './getNoteName'
 
+const {
+  m3,
+  M3,
+  TT,
+  P5,
+  m7,
+  M7,
+} = Interval
+
 export default function getChordName(
   chordType: ChordType,
   intervals: Interval[],
@@ -20,10 +29,10 @@ export default function getChordName(
       return `${keyNoteName}5`
 
     case ChordType.triad: {
-      const isMajor = thirdInterval === Interval.M3 && fifthInterval === Interval.P5
-      const isMinor = thirdInterval === Interval.m3 && fifthInterval === Interval.P5
-      const isDiminished = thirdInterval === Interval.m3 && fifthInterval === Interval.TT
-      const isAugmented = thirdInterval === Interval.M3 && fifthInterval === (Interval.P5 + 1)
+      const isMajor = thirdInterval === M3 && fifthInterval === P5
+      const isMinor = thirdInterval === m3 && fifthInterval === P5
+      const isDiminished = thirdInterval === m3 && fifthInterval === TT
+      const isAugmented = thirdInterval === M3 && fifthInterval === (P5 + 1)
 
       if (isMajor) return `${keyNoteName}maj`
       if (isMinor) return `${keyNoteName}min`
@@ -34,30 +43,30 @@ export default function getChordName(
     }
 
     case ChordType.seventh: {
-      const isMajor = thirdInterval === Interval.M3 && seventhInterval === Interval.M7
-      const isMinor = thirdInterval === Interval.m3 && seventhInterval === Interval.m7
+      const isMajor = thirdInterval === M3 && seventhInterval === M7
+      const isMinor = thirdInterval === m3 && seventhInterval === m7
 
-      const isMinMajor = thirdInterval === Interval.m3 && fifthInterval === Interval.P5
+      const isMinMajor = thirdInterval === m3 && fifthInterval === P5
 
-      const isDiminished = thirdInterval === Interval.m3
-        && fifthInterval === Interval.TT
-        && seventhInterval === (Interval.m7 - 1)
+      const isDiminished = thirdInterval === m3
+        && fifthInterval === TT
+        && seventhInterval === (m7 - 1)
 
-      const isHalfDiminished = thirdInterval === Interval.m3
-        && fifthInterval === Interval.TT
-        && seventhInterval === Interval.m7
+      const isHalfDiminished = thirdInterval === m3
+        && fifthInterval === TT
+        && seventhInterval === m7
 
-      const isDominant = thirdInterval === Interval.M3
-        && fifthInterval === Interval.P5
-        && seventhInterval === Interval.m7
+      const isDominant = thirdInterval === M3
+        && fifthInterval === P5
+        && seventhInterval === m7
 
-      const isDominantFlatFive = thirdInterval === Interval.M3
-        && fifthInterval === Interval.TT
-        && seventhInterval === Interval.m7
+      const isDominantFlatFive = thirdInterval === M3
+        && fifthInterval === TT
+        && seventhInterval === m7
 
-      const isAugmentedFifth = thirdInterval === Interval.M3
-        && fifthInterval === (Interval.P5 + 1)
-        && seventhInterval === Interval.m7
+      const isAugmentedFifth = thirdInterval === M3
+        && fifthInterval === (P5 + 1)
+        && seventhInterval === m7
 
       if (isDiminished) return `${keyNoteName}dim7`
       if (isHalfDiminished) return `${keyNoteName}min7(dim5)`
