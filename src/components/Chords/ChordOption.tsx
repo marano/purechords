@@ -11,8 +11,15 @@ type Props = {
   intervals: Interval[]
 }
 
-export default function ChordOption({ keyNote, chordType, intervals }: Props) {
-  const { selectedChord, setSelectedChord } = useSelectionContext()
+export default function ChordOption({
+  keyNote,
+  chordType,
+  intervals,
+}: Props) {
+  const {
+    selectedChord,
+    setSelectedChord,
+  } = useSelectionContext()
 
   const chord = intervalsToNotes(intervals, keyNote)
 
