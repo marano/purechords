@@ -1,4 +1,4 @@
-import { ChordType, Note, Scale, ScaleDegree } from '../types'
+import { Chord, ChordType, Note, Scale, ScaleDegree } from '../types'
 import getChordIntervals from './getChordIntervals'
 import getScaleNotes from './getScaleNotes'
 import intervalsToNotes from './intervalsToNotes'

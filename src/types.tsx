@@ -80,6 +80,7 @@ export enum ScaleNotePosition {
   third = 2,
   fifth = 4,
   seventh = 6,
+  nineth = 8,
 }
 
 export enum ChordNotePosition {
@@ -94,6 +95,7 @@ export enum ChordType {
   powerDyad = 'Power Dyad',
   triad = 'Triad',
   seventh = 'Seventh',
+  seventhAdd9 = 'Seventh Add 9',
 }
 
 export type StringIndex = number

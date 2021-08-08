@@ -85,4 +85,17 @@ export default {
       stringJumps: [0, 2, 0, 0],
     },
   ],
+  [ChordType.seventhAdd9]: [
+    // {
+    //   order: [2],
+    //   stringJumps: [0, 0, 0, 0],
+    //   // first = 0,
+    //   // third = 2,
+    //   // fifth = 4,
+    //   // seventh = 6,
+    //   // nineth = 8,
+    //   // [ChordType.seventhAdd9]: [first, third, seventh, nineth],
+    //   //
+    // },
+  ],
 }
