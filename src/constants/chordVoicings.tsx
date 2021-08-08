@@ -1,4 +1,4 @@
-import { ChordNotePosition, ChordType } from '../types'
+import { ChordNotePosition, ChordType, SeventhAdded9ChordNotePosition } from '../types'
 
 const { first, third, fifth, seventh } = ChordNotePosition
 
@@ -86,16 +86,32 @@ export default {
     },
   ],
   [ChordType.seventhAdd9]: [
-    // {
-    //   order: [2],
-    //   stringJumps: [0, 0, 0, 0],
-    //   // first = 0,
-    //   // third = 2,
-    //   // fifth = 4,
-    //   // seventh = 6,
-    //   // nineth = 8,
-    //   // [ChordType.seventhAdd9]: [first, third, seventh, nineth],
-    //   //
-    // },
+    {
+      order: [
+        SeventhAdded9ChordNotePosition.first,
+        SeventhAdded9ChordNotePosition.third,
+        SeventhAdded9ChordNotePosition.seventh,
+        SeventhAdded9ChordNotePosition.nineth,
+      ],
+      stringJumps: [0, 0, 0, 0],
+    },
+    {
+      order: [
+        SeventhAdded9ChordNotePosition.third,
+        SeventhAdded9ChordNotePosition.first,
+        SeventhAdded9ChordNotePosition.nineth,
+        SeventhAdded9ChordNotePosition.seventh,
+      ],
+      stringJumps: [0, 0, 0, 0],
+    },
+    {
+      order: [
+        SeventhAdded9ChordNotePosition.third,
+        SeventhAdded9ChordNotePosition.first,
+        SeventhAdded9ChordNotePosition.nineth,
+        SeventhAdded9ChordNotePosition.seventh,
+      ],
+      stringJumps: [0, 1, 0, 0],
+    },
   ],
 }

@@ -90,6 +90,13 @@ export enum ChordNotePosition {
   seventh = 3,
 }
 
+export enum SeventhAdded9ChordNotePosition {
+  first = 0,
+  third = 1,
+  seventh = 2,
+  nineth = 3,
+}
+
 export enum ChordType {
   dyad = 'Dyad',
   powerDyad = 'Power Dyad',
@@ -110,6 +117,6 @@ export type ChordPositions = ScaleNotePosition[]
 export type Chord = Note[]
 
 export interface Voicing {
-  order: ChordNotePosition[]
+  order: (ChordNotePosition | SeventhAdded9ChordNotePosition)[]
   stringJumps: number[]
 }
