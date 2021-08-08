@@ -20,8 +20,8 @@ export default function ChordSelection() {
 
   return (
     <>
-      <Grid columnCount={selectedScale.length}>
-        {selectedScale.map(
+      <Grid columnCount={selectedScale.length - 1}>
+        {selectedScale.slice(0, selectedScale.length - 1).map(
           (interval, scaleDegree) =>
             <ChordOption
               key={`${scaleDegree}-${interval}`}

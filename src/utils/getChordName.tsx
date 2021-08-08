@@ -4,8 +4,10 @@ import getNoteName from './getNoteName'
 const {
   m3,
   M3,
-  TT,
+  d5,
   P5,
+  A5,
+  d7,
   m7,
   M7,
 } = Interval
@@ -31,8 +33,8 @@ export default function getChordName(
     case ChordType.triad: {
       const isMajor = thirdInterval === M3 && fifthInterval === P5
       const isMinor = thirdInterval === m3 && fifthInterval === P5
-      const isDiminished = thirdInterval === m3 && fifthInterval === TT
-      const isAugmented = thirdInterval === M3 && fifthInterval === (P5 + 1)
+      const isDiminished = thirdInterval === m3 && fifthInterval === d5
+      const isAugmented = thirdInterval === M3 && fifthInterval === A5
 
       if (isMajor) return `${keyNoteName}maj`
       if (isMinor) return `${keyNoteName}min`
@@ -49,11 +51,11 @@ export default function getChordName(
       const isMinMajor = thirdInterval === m3 && fifthInterval === P5
 
       const isDiminished = thirdInterval === m3
-        && fifthInterval === TT
-        && seventhInterval === (m7 - 1)
+        && fifthInterval === d5
+        && seventhInterval === d7
 
       const isHalfDiminished = thirdInterval === m3
-        && fifthInterval === TT
+        && fifthInterval === d5
         && seventhInterval === m7
 
       const isDominant = thirdInterval === M3
@@ -61,11 +63,11 @@ export default function getChordName(
         && seventhInterval === m7
 
       const isDominantFlatFive = thirdInterval === M3
-        && fifthInterval === TT
+        && fifthInterval === d5
         && seventhInterval === m7
 
       const isAugmentedFifth = thirdInterval === M3
-        && fifthInterval === (P5 + 1)
+        && fifthInterval === A5
         && seventhInterval === m7
 
       if (isDiminished) return `${keyNoteName}dim7`
