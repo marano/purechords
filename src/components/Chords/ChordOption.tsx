@@ -1,21 +1,21 @@
 import { ChordType, Note, Scale, ScaleDegree } from '../../types'
+import getChord from '../../utils/getChord'
 import getChordIntervals from '../../utils/getChordIntervals'
 import getChordName from '../../utils/getChordName'
-import getChord from '../../utils/getChord'
 import getNoteName from '../../utils/getNoteName'
 import toRoman from '../../utils/toRoman'
 import Selectable from '../Selectable'
 import useSelectionContext from '../useSelectionContext'
 
 type Props = {
-  keyNote: Note
+  scaleKey: Note
   scale: Scale
   scaleDegree: ScaleDegree
   chordType: ChordType
 }
 
 export default function ChordOption({
-  keyNote,
+  scaleKey,
   scale,
   scaleDegree,
   chordType,
@@ -33,10 +33,12 @@ export default function ChordOption({
 
   const chord = getChord(
     scale,
+    scaleKey,
     scaleDegree,
-    chordType,
-    keyNote
+    chordType
   )
+
+  const chordKey = chord[0]
 
   return (
     <Selectable
@@ -46,7 +48,7 @@ export default function ChordOption({
     >
       {toRoman(scaleDegree + 1)}
       <br />
-      {getChordName(chordType, intervals, keyNote)}
+      {getChordName(chordType, intervals, chordKey)}
       <br/>
       {chord.map(getNoteName).join(' ')}
     </Selectable>

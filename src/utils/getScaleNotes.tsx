@@ -1,8 +1,8 @@
-import { Interval, Note } from '../types'
+import { Note, Scale } from '../types'
 import intervalsToNotes from './intervalsToNotes'
 
-export default function getScaleNotes(intervals: Interval[], key: Note) {
-  const notes = intervalsToNotes(intervals, key)
+export default function getScaleNotes(scale: Scale, key: Note) {
+  const notes = intervalsToNotes(scale, key)
 
   return notes.slice(0, notes.length - 1)
 }

@@ -59,9 +59,9 @@ export default function GuitarFret({ fret }: Props) {
     ) {
       const chord = getChord(
         selectedScale,
+        selectedNote,
         selectedScaleDegree,
-        selectedChordType,
-        selectedNote
+        selectedChordType
       )
 
       return chord[0] === note

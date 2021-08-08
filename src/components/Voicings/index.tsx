@@ -34,9 +34,9 @@ export default function Voicings() {
 
   const chord = getChord(
     selectedScale,
+    selectedNote,
     selectedScaleDegree,
-    selectedChordType,
-    selectedNote
+    selectedChordType
   )
 
   return (

@@ -25,7 +25,7 @@ export default function ChordSelection() {
           (interval, scaleDegree) =>
             <ChordOption
               key={`${scaleDegree}-${interval}`}
-              keyNote={selectedNote}
+              scaleKey={selectedNote}
               scale={selectedScale}
               scaleDegree={scaleDegree}
               chordType={selectedChordType}

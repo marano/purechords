@@ -58,9 +58,9 @@ export default function GuitarArmProvider(
 
       const chord = getChord(
         selectedScale,
+        selectedNote,
         selectedScaleDegree,
-        selectedChordType,
-        selectedNote
+        selectedChordType
       )
 
       const voicedChord = selectedVoicing.order
@@ -88,9 +88,9 @@ export default function GuitarArmProvider(
 
       const chord = getChord(
         selectedScale,
+        selectedNote,
         selectedScaleDegree,
-        selectedChordType,
-        selectedNote
+        selectedChordType
       )
 
       return getFrets(stringStart, stringEnd, fretStart, fretEnd)
