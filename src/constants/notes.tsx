@@ -1,4 +1,8 @@
 import { isNumber } from 'fp-ts/number'
 import { Note } from '../types'
 
-export default Object.values(Note).filter(isNumber)
+const noteValues = Object.values(Note).filter(isNumber)
+
+export default noteValues.filter(
+  (value, index) => noteValues.indexOf(value) === index
+)
