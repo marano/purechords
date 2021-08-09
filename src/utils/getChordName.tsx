@@ -22,12 +22,16 @@ function findTrait(
   traitIntervals: Record<string, (Interval | undefined)[]>,
   intervals: Interval[]
 ) {
-  return keys(traitIntervals).reverse().find(
+  const trait = keys(traitIntervals).reverse().find(
     trait =>
       traitIntervals[trait].every(
         (interval, intervalIndex) =>
           interval === undefined
             || interval === intervals[intervalIndex]
       )
-  ) || '?'
+  )
+
+  return trait === undefined
+    ? '?'
+    : trait
 }

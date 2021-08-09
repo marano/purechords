@@ -15,8 +15,12 @@ const {
 } = Interval
 
 export default {
-  [ChordType.dyad]: {},
-  [ChordType.powerDyad]: {},
+  [ChordType.dyad]: {
+    '': [__, __],
+  },
+  [ChordType.powerDyad]: {
+    '5': [__, __],
+  },
   [ChordType.triad]: {
     maj: [P1, M3, P5],
     min: [P1, m3, P5],
