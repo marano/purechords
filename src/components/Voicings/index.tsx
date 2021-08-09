@@ -1,6 +1,7 @@
 import chordVoicings from '../../constants/chordVoicings'
 import getChord from '../../utils/getChord'
 import getNoteName from '../../utils/getNoteName'
+import getVoicedChord from '../../utils/getVoicedChord'
 import getVoicingName from '../../utils/getVoicingName'
 import Grid from '../Grid'
 import Selectable from '../Selectable'
@@ -52,8 +53,7 @@ export default function Voicings() {
             >
               {getVoicingName(voicing)}
               <br/>
-              {voicing.order
-                .map(index => chord[index])
+              {getVoicedChord(chord, voicing)
                 .map(getNoteName)
                 .join(' ')}
             </Selectable>

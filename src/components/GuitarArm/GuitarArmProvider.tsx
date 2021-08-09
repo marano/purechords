@@ -5,6 +5,7 @@ import areNumberArraysEquals from '../../utils/areNumberArraysEquals'
 import getChord from '../../utils/getChord'
 import getFrets from '../../utils/getFrets'
 import getScaleNotes from '../../utils/getScaleNotes'
+import getVoicedChord from '../../utils/getVoicedChord'
 import isNonNullable from '../../utils/isNonNullable'
 import useSelectionContext from '../useSelectionContext'
 import GuitarArmContext from './GuitarArmContext'
@@ -63,8 +64,7 @@ export default function GuitarArmProvider(
         selectedChordType
       )
 
-      const voicedChord = selectedVoicing.order
-        .map(noteIndex => chord[noteIndex])
+      const voicedChord =getVoicedChord(chord, selectedVoicing)
 
       const rootFrets = getFrets(stringStart, stringEnd, fretStart, fretEnd)
         .filter(fret => getNote(fret) == voicedChord[0])

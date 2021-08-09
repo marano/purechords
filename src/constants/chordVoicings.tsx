@@ -1,10 +1,10 @@
-import { ChordNotePosition, ChordType, SeventhAdded9ChordNotePosition } from '../types'
+import { ChordType, ScaleNotePosition, Voicing } from '../types'
 
-const { first, third, fifth, seventh } = ChordNotePosition
+const { first, third, fifth, seventh, ninth } = ScaleNotePosition
 
 export default {
-  [ChordType.dyad]: [],
-  [ChordType.powerDyad]: [],
+  [ChordType.dyad]: [] as Voicing[],
+  [ChordType.powerDyad]: [] as Voicing[],
   [ChordType.triad]: [
     {
       order: [first, third, fifth],
@@ -87,30 +87,15 @@ export default {
   ],
   [ChordType.seventhAdd9]: [
     {
-      order: [
-        SeventhAdded9ChordNotePosition.first,
-        SeventhAdded9ChordNotePosition.third,
-        SeventhAdded9ChordNotePosition.seventh,
-        SeventhAdded9ChordNotePosition.nineth,
-      ],
+      order: [first, third, seventh, ninth],
       stringJumps: [0, 0, 0, 0],
     },
     {
-      order: [
-        SeventhAdded9ChordNotePosition.third,
-        SeventhAdded9ChordNotePosition.first,
-        SeventhAdded9ChordNotePosition.nineth,
-        SeventhAdded9ChordNotePosition.seventh,
-      ],
+      order: [third, first, ninth, seventh],
       stringJumps: [0, 0, 0, 0],
     },
     {
-      order: [
-        SeventhAdded9ChordNotePosition.third,
-        SeventhAdded9ChordNotePosition.first,
-        SeventhAdded9ChordNotePosition.nineth,
-        SeventhAdded9ChordNotePosition.seventh,
-      ],
+      order: [third, first, ninth, seventh],
       stringJumps: [0, 1, 0, 0],
     },
   ],

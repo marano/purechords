@@ -15,10 +15,12 @@ export default function getChord(
     scaleDegree
   )
 
-  const chordKey = getScaleNotes(
+  const scaleNotes = getScaleNotes(
     scale,
     scaleKey
-  )[scaleDegree]
+  )
+
+  const chordKey = scaleNotes[scaleDegree]
 
   return intervalsToNotes(intervals, chordKey)
 }

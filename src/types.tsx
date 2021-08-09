@@ -80,21 +80,7 @@ export enum ScaleNotePosition {
   third = 2,
   fifth = 4,
   seventh = 6,
-  nineth = 8,
-}
-
-export enum ChordNotePosition {
-  first = 0,
-  third = 1,
-  fifth = 2,
-  seventh = 3,
-}
-
-export enum SeventhAdded9ChordNotePosition {
-  first = 0,
-  third = 1,
-  seventh = 2,
-  nineth = 3,
+  ninth = 8,
 }
 
 export enum ChordType {
@@ -117,6 +103,6 @@ export type ChordPositions = ScaleNotePosition[]
 export type Chord = Note[]
 
 export interface Voicing {
-  order: (ChordNotePosition | SeventhAdded9ChordNotePosition)[]
+  order: ScaleNotePosition[]
   stringJumps: number[]
 }

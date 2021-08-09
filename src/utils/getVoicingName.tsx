@@ -1,19 +1,10 @@
 import { replicate } from 'fp-ts/lib/ReadonlyNonEmptyArray'
-import { ChordNotePosition, Voicing } from '../types'
-
-const { first, third, fifth, seventh } = ChordNotePosition
-
-const nameByPosition = {
-  [first]: '1',
-  [third]: '3',
-  [fifth]: '5',
-  [seventh]: '7',
-}
+import { Voicing } from '../types'
 
 export default function getVoicingName(voicing: Voicing) {
-  const positionNames = voicing.order.map(
-    position => nameByPosition[position]
-  )
+  const positionNames = voicing.order
+    .map(position => position + 1)
+    .map(position => position.toString())
 
   return voicing.stringJumps.reduce(
     (result, stringJumps, index) => {
