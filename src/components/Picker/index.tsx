@@ -5,6 +5,7 @@ import Notes from './Notes'
 import PickerProvider from './PickerProvider'
 import Scales from './Scales'
 import Voicings from './Voicings'
+import Separator from '../Separator'
 
 export default function Picker() {
   return (
@@ -14,6 +15,7 @@ export default function Picker() {
       <Chords />
       <Voicings />
       <Guitar />
+      <Separator />
       <AddSelectionButton />
     </PickerProvider>
   )

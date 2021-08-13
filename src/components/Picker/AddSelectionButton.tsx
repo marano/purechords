@@ -4,6 +4,7 @@ import useStudyContext from '../useStudyContext'
 
 const Container = styled.div`
   display: flex;
+  justify-content: center;
 `
 
 export default function AddSelectionButton() {
