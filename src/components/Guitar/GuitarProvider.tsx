@@ -8,16 +8,18 @@ import getScaleNotes from '../../utils/getScaleNotes'
 import getVoicedChord from '../../utils/getVoicedChord'
 import isNonNullable from '../../utils/isNonNullable'
 import useSelectionContext from '../useSelectionContext'
+import useSettingsContext from '../useSettingsContext'
 import GuitarContext from './GuitarContext'
 
 type Props = {
-  strings: Note[]
   children: ReactNode
 }
 
 export default function GuitarProvider(
-  { strings, children }: Props
+  { children }: Props
 ) {
+  const { strings, fretCount } = useSettingsContext()
+
   const {
     selectedNote,
     selectedScale,
@@ -55,7 +57,7 @@ export default function GuitarProvider(
       const stringEnd = strings.length
 
       const fretStart = 0
-      const fretEnd = 21
+      const fretEnd = fretCount
 
       const chord = getChord(
         selectedScale,
@@ -88,7 +90,7 @@ export default function GuitarProvider(
       const stringEnd = strings.length
 
       const fretStart = 0
-      const fretEnd = 21
+      const fretEnd = fretCount
 
       const chord = getChord(
         selectedScale,
@@ -137,7 +139,7 @@ export default function GuitarProvider(
       const stringEnd = strings.length
 
       const fretStart = 0
-      const fretEnd = 21
+      const fretEnd = fretCount
 
       const frets = getFrets(stringStart, stringEnd, fretStart, fretEnd)
 
@@ -160,7 +162,7 @@ export default function GuitarProvider(
     chord: Note[],
     stringJumps: number[]
   ) {
-    const fretEnd = 21
+    const fretEnd = fretCount
 
     const frets = chord
       .slice(1, chord.length)

@@ -14,7 +14,7 @@ export default function Guitar() {
   const frets = getFrets(0, strings.length, 0, fretCount)
 
   return (
-    <GuitarProvider strings={strings}>
+    <GuitarProvider>
       <Grid columnCount={fretCount}>
         <FretMark>&nbsp;</FretMark>
         {range(1, fretCount - 1).map(
