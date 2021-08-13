@@ -32,20 +32,22 @@ export default function SelectionProvider({ children }: Props) {
     setSelectedVoicing,
   ] = useState<Voicing | undefined>()
 
-  const value = {
+  const selection = {
     selectedNote,
-    setSelectedNote,
-
     selectedScale,
-    setSelectedScale,
-
     selectedChordType,
-    setSelectedChordType,
-
     selectedScaleDegree,
-    setSelectedScaleDegree,
-
     selectedVoicing,
+  }
+
+  const value = {
+    ...selection,
+    selection,
+
+    setSelectedNote,
+    setSelectedScale,
+    setSelectedChordType,
+    setSelectedScaleDegree,
     setSelectedVoicing,
   }
 

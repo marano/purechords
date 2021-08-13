@@ -5,7 +5,7 @@ import getNoteName from '../../utils/getNoteName'
 import useSelectionContext from '../useSelectionContext'
 import FretContainer from './FretContainer'
 import RootCircle from './RootCircle'
-import useGuitarArmContext from './useGuitarArmContext'
+import useGuitarContext from './useGuitarContext'
 
 type Props = {
   fret: Fret
@@ -22,7 +22,7 @@ export default function GuitarFret({ fret }: Props) {
   const {
     getNote,
     isFretHighlighted,
-  } = useGuitarArmContext()
+  } = useGuitarContext()
 
   const note = getNote(fret)
   const noteColor = getNoteColor(note)

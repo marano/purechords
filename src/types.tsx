@@ -106,3 +106,11 @@ export interface Voicing {
   order: ScaleNotePosition[]
   stringJumps: number[]
 }
+
+export interface Selection {
+  selectedNote?: Note
+  selectedScale?: Scale
+  selectedChordType?: ChordType
+  selectedScaleDegree?: ScaleDegree
+  selectedVoicing?: Voicing
+}

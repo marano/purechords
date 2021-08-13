@@ -16,7 +16,12 @@ type Props<T extends Comparable> = {
   selectedValue?: T,
 }
 
-export default function Selectable<T extends Comparable>({ onSelect, value, selectedValue, children }: Props<T>) {
+export default function Selectable<T extends Comparable>({
+  onSelect,
+  value,
+  selectedValue,
+  children,
+}: Props<T>) {
   const isSelected = isEqual(value, selectedValue)
   const className = isSelected ? 'highlighted' : undefined
 

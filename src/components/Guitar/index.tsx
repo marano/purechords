@@ -1,22 +1,20 @@
 import { range } from 'fp-ts/ReadonlyNonEmptyArray'
-import { Fret, Note } from '../../types'
+import { Fret } from '../../types'
 import getFrets from '../../utils/getFrets'
 import toRoman from '../../utils/toRoman'
 import Grid from '../Grid'
+import useSettingsContext from '../useSettingsContext'
 import FretMark from './FretMark'
-import GuitarArmProvider from './GuitarArmProvider'
+import GuitarProvider from './GuitarProvider'
 import GuitarFret from './GuitarFret'
 
-type Props = {
-  strings: Note[]
-  fretCount: number
-}
+export default function Guitar() {
+  const { strings, fretCount } = useSettingsContext()
 
-export default function GuitarArm({ strings, fretCount }: Props) {
   const frets = getFrets(0, strings.length, 0, fretCount)
 
   return (
-    <GuitarArmProvider strings={strings}>
+    <GuitarProvider strings={strings}>
       <Grid columnCount={fretCount}>
         <FretMark>&nbsp;</FretMark>
         {range(1, fretCount - 1).map(
@@ -30,7 +28,7 @@ export default function GuitarArm({ strings, fretCount }: Props) {
           fret => <GuitarFret key={key(fret)} fret={fret} />
         )}
       </Grid>
-    </GuitarArmProvider>
+    </GuitarProvider>
   )
 }
 

@@ -8,14 +8,14 @@ import getScaleNotes from '../../utils/getScaleNotes'
 import getVoicedChord from '../../utils/getVoicedChord'
 import isNonNullable from '../../utils/isNonNullable'
 import useSelectionContext from '../useSelectionContext'
-import GuitarArmContext from './GuitarArmContext'
+import GuitarContext from './GuitarContext'
 
 type Props = {
   strings: Note[]
   children: ReactNode
 }
 
-export default function GuitarArmProvider(
+export default function GuitarProvider(
   { strings, children }: Props
 ) {
   const {
@@ -34,9 +34,9 @@ export default function GuitarArmProvider(
   const highlightedFrets = getHighlightedFrets()
 
   return (
-    <GuitarArmContext.Provider value={value}>
+    <GuitarContext.Provider value={value}>
       {children}
-    </GuitarArmContext.Provider>
+    </GuitarContext.Provider>
   )
 
   function getNote([stringIndex, fretIndex]: Fret) {
@@ -70,7 +70,11 @@ export default function GuitarArmProvider(
         .filter(fret => getNote(fret) == voicedChord[0])
 
       return rootFrets.flatMap(
-        rootFret => getChordFrets(rootFret, voicedChord, selectedVoicing.stringJumps)
+        rootFret => getChordFrets(
+          rootFret,
+          voicedChord,
+          selectedVoicing.stringJumps
+        )
       )
     }
 
@@ -146,34 +150,42 @@ export default function GuitarArmProvider(
   }
 
   function isFretHighlighted(fret: Fret) {
-    return highlightedFrets.some(highlightedFret => areNumberArraysEquals(fret, highlightedFret))
+    return highlightedFrets.some(
+      highlightedFret => areNumberArraysEquals(fret, highlightedFret)
+    )
   }
 
-  function getChordFrets(rootNoteFret: Fret, chord: Note[], stringJumps: number[]) {
+  function getChordFrets(
+    rootNoteFret: Fret,
+    chord: Note[],
+    stringJumps: number[]
+  ) {
     const fretEnd = 21
 
-    const frets = chord.slice(1, chord.length).reduce((result, chordNote, index) => {
-      const previousResult = index === 0 ? rootNoteFret : result[index - 1]
+    const frets = chord
+      .slice(1, chord.length)
+      .reduce((result, chordNote, index) => {
+        const previousResult = index === 0 ? rootNoteFret : result[index - 1]
 
-      if (previousResult === undefined) {
-        return result
-      }
+        if (previousResult === undefined) {
+          return result
+        }
 
-      const stringStep = 1 + stringJumps[index + 1]
+        const stringStep = 1 + stringJumps[index + 1]
 
-      const [previousString, previousFret] = previousResult
+        const [previousString, previousFret] = previousResult
 
-      const searchFrets = getFrets(
-        previousString + stringStep,
-        Math.min(strings.length, previousString + stringStep + 1),
-        Math.max(0, previousFret - 6),
-        Math.min(fretEnd, previousFret + 6)
-      )
+        const searchFrets = getFrets(
+          previousString + stringStep,
+          Math.min(strings.length, previousString + stringStep + 1),
+          Math.max(0, previousFret - 6),
+          Math.min(fretEnd, previousFret + 6)
+        )
 
-      const fretFound = searchFrets.find(fret => getNote(fret) === chordNote)
+        const fretFound = searchFrets.find(fret => getNote(fret) === chordNote)
 
-      return [...result, fretFound]
-    }, [] as (Fret | undefined)[])
+        return [...result, fretFound]
+      }, [] as (Fret | undefined)[])
 
     if (frets.every(isNonNullable)) {
       return [rootNoteFret, ...frets]
