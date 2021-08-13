@@ -1,13 +1,12 @@
-import scaleIntervals from '../../constants/scaleIntervals'
-import Grid from '../Grid'
-import Selectable from '../Selectable'
-import useSelectionContext from '../useSelectionContext'
+import scaleIntervals from '../../../constants/scaleIntervals'
+import Grid from '../../Grid'
+import Selectable from '../../Selectable'
+import useSelectionContext from '../../useSelectionContext'
+import usePickerContext from '../usePickerContext'
 
 export default function ScaleIntervalsSelection() {
-  const {
-    selectedScale,
-    setSelectedScale,
-  } = useSelectionContext()
+  const { selectedScale } = useSelectionContext()
+  const { setSelectedScale }= usePickerContext()
 
   const scaleIntervalsEntries = Object.entries(scaleIntervals)
 

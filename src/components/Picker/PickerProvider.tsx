@@ -1,12 +1,13 @@
 import { useState, ReactNode } from 'react'
-import { ChordType, Note, Scale, ScaleDegree, Voicing } from '../types'
-import SelectionContext from './SelectionContext'
+import { ChordType, Note, Scale, ScaleDegree, Voicing } from '../../types'
+import SelectionContext from '../SelectionContext'
+import PickerContext from './PickerContext'
 
 type Props = {
   children: ReactNode
 }
 
-export default function SelectionProvider({ children }: Props) {
+export default function PickerProvider({ children }: Props) {
   const [
     selectedNote,
     setSelectedNote,
@@ -41,9 +42,6 @@ export default function SelectionProvider({ children }: Props) {
   }
 
   const value = {
-    ...selection,
-    selection,
-
     setSelectedNote,
     setSelectedScale,
     setSelectedChordType,
@@ -52,8 +50,10 @@ export default function SelectionProvider({ children }: Props) {
   }
 
   return (
-    <SelectionContext.Provider value={value}>
-      {children}
-    </SelectionContext.Provider>
+    <PickerContext.Provider value={value}>
+      <SelectionContext.Provider value={selection}>
+        {children}
+      </SelectionContext.Provider>
+    </PickerContext.Provider>
   )
 }

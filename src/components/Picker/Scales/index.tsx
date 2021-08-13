@@ -1,5 +1,5 @@
-import Separator from '../Separator'
-import useSelectionContext from '../useSelectionContext'
+import Separator from '../../Separator'
+import useSelectionContext from '../../useSelectionContext'
 import ScaleIntervalsSelection from './ScaleSelection'
 import SelectedScale from './SelectedScale'
 

@@ -1,13 +1,13 @@
 import styled from 'styled-components/macro'
-import useSelectionContext from './useSelectionContext'
-import useStudyContext from './useStudyContext'
+import useSelectionContext from '../useSelectionContext'
+import useStudyContext from '../useStudyContext'
 
 const Container = styled.div`
   display: flex;
 `
 
 export default function AddSelectionButton() {
-  const { selection } = useSelectionContext()
+  const selection = useSelectionContext()
   const { addSelection } = useStudyContext()
 
   return (

@@ -1,6 +1,6 @@
-import Grid from '../Grid'
-import Separator from '../Separator'
-import useSelectionContext from '../useSelectionContext'
+import Grid from '../../Grid'
+import Separator from '../../Separator'
+import useSelectionContext from '../../useSelectionContext'
 import ChordOption from './ChordOption'
 
 export default function ChordSelection() {

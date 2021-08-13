@@ -1,13 +1,12 @@
-import { ChordType } from '../../types'
-import Grid from '../Grid'
-import Selectable from '../Selectable'
-import useSelectionContext from '../useSelectionContext'
+import { ChordType } from '../../../types'
+import Grid from '../../Grid'
+import Selectable from '../../Selectable'
+import useSelectionContext from '../../useSelectionContext'
+import usePickerContext from '../usePickerContext'
 
 export default function ChordTypeSelection() {
-  const {
-    selectedChordType,
-    setSelectedChordType,
-  } = useSelectionContext()
+  const { selectedChordType } = useSelectionContext()
+  const { setSelectedChordType } = usePickerContext()
 
   const chordTypes = Object.values(ChordType)
 

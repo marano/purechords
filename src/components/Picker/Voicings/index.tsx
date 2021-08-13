@@ -1,12 +1,13 @@
-import chordVoicings from '../../constants/chordVoicings'
-import getChord from '../../utils/getChord'
-import getNoteName from '../../utils/getNoteName'
-import getVoicedChord from '../../utils/getVoicedChord'
-import getVoicingName from '../../utils/getVoicingName'
-import Grid from '../Grid'
-import Selectable from '../Selectable'
-import Separator from '../Separator'
-import useSelectionContext from '../useSelectionContext'
+import chordVoicings from '../../../constants/chordVoicings'
+import getChord from '../../../utils/getChord'
+import getNoteName from '../../../utils/getNoteName'
+import getVoicedChord from '../../../utils/getVoicedChord'
+import getVoicingName from '../../../utils/getVoicingName'
+import Grid from '../../Grid'
+import Selectable from '../../Selectable'
+import Separator from '../../Separator'
+import useSelectionContext from '../../useSelectionContext'
+import usePickerContext from '../usePickerContext'
 
 export default function Voicings() {
   const {
@@ -15,8 +16,9 @@ export default function Voicings() {
     selectedChordType,
     selectedScaleDegree,
     selectedVoicing,
-    setSelectedVoicing,
   } = useSelectionContext()
+
+  const { setSelectedVoicing } = usePickerContext()
 
   if (
     selectedNote === undefined

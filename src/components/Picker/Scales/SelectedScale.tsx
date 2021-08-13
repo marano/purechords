@@ -1,8 +1,8 @@
-import getNoteName from '../../utils/getNoteName'
-import getScaleNotes from '../../utils/getScaleNotes'
-import Grid from '../Grid'
-import Separator from '../Separator'
-import useSelectionContext from '../useSelectionContext'
+import getNoteName from '../../../utils/getNoteName'
+import getScaleNotes from '../../../utils/getScaleNotes'
+import Grid from '../../Grid'
+import Separator from '../../Separator'
+import useSelectionContext from '../../useSelectionContext'
 
 export default function SelectedScale() {
   const {

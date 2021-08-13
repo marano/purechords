@@ -42,6 +42,7 @@ module.exports = {
     'no-multiple-empty-lines': ['error', { max: 1 }],
     'no-trailing-spaces': ['error'],
     'no-use-before-define': ['error', { functions: false, classes: false }],
+    'object-curly-spacing': ['error', 'always'],
     'max-len': ['error', { code: 80, 'ignoreTemplateLiterals': true }],
     'quotes': ['error', 'single'],
     'semi': ['error', 'never'],
