@@ -1,5 +1,7 @@
 import { Fret } from '../../types'
 import getChord from '../../utils/getChord'
+import getChordInterval from '../../utils/getChordInterval'
+import getIntervalName from '../../utils/getIntervalName'
 import { getNoteColor } from '../../utils/getNoteColor'
 import getNoteName from '../../utils/getNoteName'
 import useSelectionContext from '../useSelectionContext'
@@ -25,10 +27,25 @@ export default function GuitarFret({ fret }: Props) {
   } = useGuitarContext()
 
   const note = getNote(fret)
+
+  const chordInterval = selectedNote !== undefined
+    && selectedChordType !== undefined
+    && selectedScale !== undefined
+    && selectedScaleDegree !== undefined
+    ? getChordInterval(
+      selectedNote,
+      selectedChordType,
+      selectedScale,
+      selectedScaleDegree,
+      note
+    )
+    : undefined
+
   const noteColor = getNoteColor(note)
 
   const isHighlighted = isFretHighlighted(fret)
-  const isRootNote = getIsRootNote()
+  const rootNote = getRootNote()
+  const isRootNote = rootNote === note
   const isRootHighlighted = isRootNote && isHighlighted
 
   return (
@@ -39,8 +56,16 @@ export default function GuitarFret({ fret }: Props) {
       <RootCircle isHighlighted={isRootHighlighted}>
         {getNoteName(note)}
       </RootCircle>
+
+      {getInterval()}
     </FretContainer>
   )
+
+  function getInterval() {
+    if (!isRootNote && isHighlighted && chordInterval !== undefined) {
+      return getIntervalName(chordInterval)
+    }
+  }
 
   function getContainerColor() {
     if (isHighlighted) {
@@ -50,7 +75,7 @@ export default function GuitarFret({ fret }: Props) {
     }
   }
 
-  function getIsRootNote() {
+  function getRootNote() {
     if (
       selectedNote !== undefined
       && selectedScale !== undefined
@@ -64,16 +89,12 @@ export default function GuitarFret({ fret }: Props) {
         selectedChordType
       )
 
-      return chord[0] === note
-    }
-
-    if (
+      return chord[0]
+    } else if (
       selectedNote !== undefined
       && selectedScale !== undefined
     ) {
-      return selectedNote === note
+      return selectedNote
     }
-
-    return false
   }
 }
