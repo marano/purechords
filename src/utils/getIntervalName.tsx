@@ -1,6 +1,6 @@
 import { Interval } from '../types'
 
-const priorities = ['P', 'M', 'm', 'TT', 'd', 'A']
+const priorities = ['P', 'M', 'm', 'd', 'TT', 'A']
 
 const prefixes = priorities.flatMap(
   prefix =>
