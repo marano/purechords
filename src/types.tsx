@@ -1,38 +1,3 @@
-export enum Note {
-  'B#' = 0,
-  'C'  = 0,
-
-  'C#' = 1,
-  'Db' = 1,
-
-  'D'  = 2,
-
-  'D#' = 3,
-  'Eb' = 3,
-
-  'E'  = 4,
-  'Fb' = 4,
-
-  'E#' = 5,
-  'F'  = 5,
-
-  'F#' = 6,
-  'Gb' = 6,
-
-  'G'  = 7,
-
-  'G#' = 8,
-  'Ab' = 8,
-
-  'A'  = 9,
-
-  'A#' = 10,
-  'Bb' = 10,
-
-  'B'  = 11,
-  'Cb' = 11
-}
-
 export enum Interval {
   P1 = 0,
   d2 = 0,
@@ -73,6 +38,41 @@ export enum Interval {
 
   A7 = 12,
   P8 = 12,
+}
+
+export enum Note {
+  'B#' = Interval.P1,
+  'C'  = Interval.P1,
+
+  'C#' = Interval.A1,
+  'Db' = Interval.m2,
+
+  'D'  = Interval.M2,
+
+  'D#' = Interval.A2,
+  'Eb' = Interval.m3,
+
+  'E'  = Interval.M3,
+  'Fb' = Interval.d4,
+
+  'E#' = Interval.A3,
+  'F'  = Interval.P4,
+
+  'F#' = Interval.A4,
+  'Gb' = Interval.d5,
+
+  'G'  = Interval.P5,
+
+  'G#' = Interval.A5,
+  'Ab' = Interval.m6,
+
+  'A'  = Interval.M6,
+
+  'A#' = Interval.A6,
+  'Bb' = Interval.m7,
+
+  'B'  = Interval.M7,
+  'Cb' = Interval.d8
 }
 
 export enum ScaleNotePosition {
