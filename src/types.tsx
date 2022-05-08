@@ -102,7 +102,6 @@ export type Fret = [StringIndex, FretIndex]
 
 export type Scale = Interval[]
 
-export type ChordPositions = ScaleDegree[]
 export type Chord = Note[]
 
 export interface Voicing {
