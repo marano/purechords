@@ -1,6 +1,6 @@
-import { ChordType, ScaleNotePosition } from '../types'
+import { ChordType, ScaleDegree } from '../types'
 
-const { first, third, fifth, seventh, ninth } = ScaleNotePosition
+const { first, third, fifth, seventh, ninth } = ScaleDegree
 
 export default {
   [ChordType.dyad]: [first, third],

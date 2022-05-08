@@ -53,7 +53,7 @@ function isEqual<T extends Comparable>(valueA?: T, valueB?: T) {
     const voicingA = valueA as Voicing
     const voicingB = valueB as Voicing
 
-    return areNumberArraysEquals(voicingA.order, voicingB.order)
+    return areNumberArraysEquals(voicingA.scaleDegrees, voicingB.scaleDegrees)
       && areNumberArraysEquals(voicingA.stringJumps, voicingB.stringJumps)
 
   } else {
@@ -62,6 +62,8 @@ function isEqual<T extends Comparable>(valueA?: T, valueB?: T) {
 }
 
 function isVoicing<T extends Comparable>(value?: T): value is NonNullable<T> {
-  return value !== undefined && 'order' in value && 'stringJumps' in value
+  return value !== undefined
+    && 'scaleDegrees' in value
+    && 'stringJumps' in value
 }
 

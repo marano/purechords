@@ -1,15 +1,15 @@
-import chordPositions from '../constants/chordPositions'
+import scaleDegreesByChordType from '../constants/scaleDegreesByChordType'
 import { ChordType, Scale, ScaleDegree } from '../types'
 
 export default function getChordIntervals(
   chordType: ChordType,
   scale: Scale,
-  scaleDegree: ScaleDegree
+  keyScaleDegree: ScaleDegree
 ) {
-  return chordPositions[chordType].map(
-    chordPosition =>
-      getScaleIntervalAtIndex(scale, scaleDegree + chordPosition)
-       - getScaleIntervalAtIndex(scale, scaleDegree)
+  return scaleDegreesByChordType[chordType].map(
+    scaleDegree =>
+      getScaleIntervalAtIndex(scale, keyScaleDegree + scaleDegree)
+       - getScaleIntervalAtIndex(scale, keyScaleDegree)
   )
 }
 

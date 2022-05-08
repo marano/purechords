@@ -2,7 +2,7 @@ import { ChordType } from '../types'
 import scaleIntervals from '../constants/scaleIntervals'
 import getChordIntervals from './getChordIntervals'
 import chordTraits from '../constants/chordTraits'
-import { ScaleNotePosition } from '../types'
+import { ScaleDegree } from '../types'
 
 const {
   triad,
@@ -20,7 +20,7 @@ const {
   fifth,
   sixth,
   seventh,
-} = ScaleNotePosition
+} = ScaleDegree
 
 describe('getChordIntervals', () => {
   describe('Major scale triads', () => {

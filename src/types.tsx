@@ -75,7 +75,7 @@ export enum Note {
   'Cb' = Interval.d8
 }
 
-export enum ScaleNotePosition {
+export enum ScaleDegree {
   first = 0,
   second = 1,
   third = 2,
@@ -101,13 +101,12 @@ export type FretIndex = number
 export type Fret = [StringIndex, FretIndex]
 
 export type Scale = Interval[]
-export type ScaleDegree = number
 
-export type ChordPositions = ScaleNotePosition[]
+export type ChordPositions = ScaleDegree[]
 export type Chord = Note[]
 
 export interface Voicing {
-  order: ScaleNotePosition[]
+  scaleDegrees: ScaleDegree[]
   stringJumps: number[]
 }
 

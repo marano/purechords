@@ -1,4 +1,4 @@
-import chordPositions from '../constants/chordPositions'
+import scaleDegreesByChordType from '../constants/scaleDegreesByChordType'
 import chordVoicings from '../constants/chordVoicings'
 import { Chord, ChordType, Voicing } from '../types'
 
@@ -7,10 +7,9 @@ export default function getVoicedChord(chord: Chord, voicing: Voicing) {
     .values(ChordType)
     .find(chordType => chordVoicings[chordType].includes(voicing))!
 
-  const order = voicing.order.map(
-    scaleNotePosition =>
-      chordPositions[chordType].indexOf(scaleNotePosition)
-  )
-
-  return order.map(index => chord[index])
+  return voicing.scaleDegrees
+    .map(
+      scaleDegree => scaleDegreesByChordType[chordType].indexOf(scaleDegree)
+    )
+    .map(index => chord[index])
 }

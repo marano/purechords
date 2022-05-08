@@ -1,101 +1,101 @@
-import { ChordType, ScaleNotePosition, Voicing } from '../types'
+import { ChordType, ScaleDegree, Voicing } from '../types'
 
-const { first, third, fifth, seventh, ninth } = ScaleNotePosition
+const { first, third, fifth, seventh, ninth } = ScaleDegree
 
 export default {
   [ChordType.dyad]: [] as Voicing[],
   [ChordType.powerDyad]: [] as Voicing[],
   [ChordType.triad]: [
     {
-      order: [first, third, fifth],
+      scaleDegrees: [first, third, fifth],
       stringJumps: [0, 0, 0],
     },
     {
-      order: [third, fifth, first],
+      scaleDegrees: [third, fifth, first],
       stringJumps: [0, 0, 0],
     },
     {
-      order: [fifth, first, third],
+      scaleDegrees: [fifth, first, third],
       stringJumps: [0, 0, 0],
     },
     {
-      order: [first, fifth, third],
+      scaleDegrees: [first, fifth, third],
       stringJumps: [0, 1, 0],
     },
     {
-      order: [third, first, fifth],
+      scaleDegrees: [third, first, fifth],
       stringJumps: [0, 1, 0],
     },
     {
-      order: [fifth, third, first],
+      scaleDegrees: [fifth, third, first],
       stringJumps: [0, 1, 0],
     },
   ],
   [ChordType.seventh]: [
     {
-      order: [first, third, fifth, seventh],
+      scaleDegrees: [first, third, fifth, seventh],
       stringJumps: [0, 0, 0, 0],
     },
     {
-      order: [first, fifth, seventh, third],
+      scaleDegrees: [first, fifth, seventh, third],
       stringJumps: [0, 0, 0, 0],
     },
     {
-      order: [third, seventh, first, fifth],
+      scaleDegrees: [third, seventh, first, fifth],
       stringJumps: [0, 0, 0, 0],
     },
     {
-      order: [fifth, first, third, seventh],
+      scaleDegrees: [fifth, first, third, seventh],
       stringJumps: [0, 0, 0, 0],
     },
     {
-      order: [seventh, third, fifth, first],
+      scaleDegrees: [seventh, third, fifth, first],
       stringJumps: [0, 0, 0, 0],
     },
     {
-      order: [first, seventh, third, fifth],
+      scaleDegrees: [first, seventh, third, fifth],
       stringJumps: [0, 1, 0, 0],
     },
     {
-      order: [third, first, fifth, seventh],
+      scaleDegrees: [third, first, fifth, seventh],
       stringJumps: [0, 1, 0, 0],
     },
     {
-      order: [fifth, third, seventh, first],
+      scaleDegrees: [fifth, third, seventh, first],
       stringJumps: [0, 1, 0, 0],
     },
     {
-      order: [seventh, fifth, first, third],
+      scaleDegrees: [seventh, fifth, first, third],
       stringJumps: [0, 1, 0, 0],
     },
     {
-      order: [first, third, fifth, seventh],
+      scaleDegrees: [first, third, fifth, seventh],
       stringJumps: [0, 2, 0, 0],
     },
     {
-      order: [third, fifth, seventh, first],
+      scaleDegrees: [third, fifth, seventh, first],
       stringJumps: [0, 2, 0, 0],
     },
     {
-      order: [fifth, seventh, first, third],
+      scaleDegrees: [fifth, seventh, first, third],
       stringJumps: [0, 2, 0, 0],
     },
     {
-      order: [seventh, first, third, fifth],
+      scaleDegrees: [seventh, first, third, fifth],
       stringJumps: [0, 2, 0, 0],
     },
   ],
   [ChordType.seventhAdd9]: [
     {
-      order: [first, third, seventh, ninth],
+      scaleDegrees: [first, third, seventh, ninth],
       stringJumps: [0, 0, 0, 0],
     },
     {
-      order: [third, first, ninth, seventh],
+      scaleDegrees: [third, first, ninth, seventh],
       stringJumps: [0, 0, 0, 0],
     },
     {
-      order: [third, first, ninth, seventh],
+      scaleDegrees: [third, first, ninth, seventh],
       stringJumps: [0, 1, 0, 0],
     },
   ],

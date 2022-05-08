@@ -2,9 +2,9 @@ import { replicate } from 'fp-ts/lib/ReadonlyNonEmptyArray'
 import { Voicing } from '../types'
 
 export default function getVoicingName(voicing: Voicing) {
-  const positionNames = voicing.order
-    .map(position => position + 1)
-    .map(position => position.toString())
+  const positionNames = voicing.scaleDegrees
+    .map(scaleDegree => scaleDegree + 1)
+    .map(scaleDegreePosition => scaleDegreePosition.toString())
 
   return voicing.stringJumps.reduce(
     (result, stringJumps, index) => {
