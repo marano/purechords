@@ -11,8 +11,8 @@ const {
 const {
   Major,
 } = scaleIntervals
-const {
 
+const {
   first,
   second,
   third,
