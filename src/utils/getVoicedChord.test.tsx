@@ -14,4 +14,10 @@ describe('getVoicedChord', () => {
       getVoicedChord([Note.C, Note.E, Note.G], chordVoicings.Triad[1])
     ).toEqual([Note.E, Note.G, Note.C])
   )
+
+  test('Cmaj 1/_/5/3', () =>
+    expect(
+      getVoicedChord([Note.C, Note.E, Note.G], chordVoicings.Triad[3])
+    ).toEqual([Note.C, Note.G, Note.E])
+  )
 })
