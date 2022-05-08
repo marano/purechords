@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { Fret, Note } from '../../types'
+import { Chord, Fret } from '../../types'
 import addIntervalToNote from '../../utils/addIntervalToNotes'
 import areNumberArraysEquals from '../../utils/areNumberArraysEquals'
 import getChord from '../../utils/getChord'
@@ -66,7 +66,7 @@ export default function GuitarProvider(
         selectedChordType
       )
 
-      const voicedChord =getVoicedChord(chord, selectedVoicing)
+      const voicedChord = getVoicedChord(chord, selectedVoicing)
 
       const rootFrets = getFrets(stringStart, stringEnd, fretStart, fretEnd)
         .filter(fret => getNote(fret) == voicedChord[0])
@@ -159,7 +159,7 @@ export default function GuitarProvider(
 
   function getChordFrets(
     rootNoteFret: Fret,
-    chord: Note[],
+    chord: Chord,
     stringJumps: number[]
   ) {
     const fretEnd = fretCount
