@@ -14,7 +14,7 @@ export default function AddSelectionButton() {
   return (
     <Container>
       <button onClick={onClick}>
-        Add selection to study
+        Hello TeSolva Team, thanks for your attention
       </button>
     </Container>
   )

@@ -10,9 +10,9 @@ export default styled.div`
   grid-template-columns: repeat(${(props: Props) => props.columnCount}, 1fr);
   justify-items: center;
   place-items: center;
-  grid-gap: 1px;
+  grid-gap: 2px;
   background-color: ${(props: Props) => props.borderless ? 'white' : 'black'};
-  border: 1px ${(props: Props) => props.borderless ? 'white' : 'black'} solid;
+  border: 3px ${(props: Props) => props.borderless ? 'white' : 'black'} solid;
 
   > div {
     align-self: stretch;
